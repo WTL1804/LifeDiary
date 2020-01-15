@@ -1,0 +1,8 @@
+platform:ios, '9.0'
+target 'LifeDiary' do
+pod 'AFNetworking'
+pod 'Masonry'
+pod 'SDWebImage'
+pod 'JSONModel'
+pod 'SOZOChromoplast'
+end
