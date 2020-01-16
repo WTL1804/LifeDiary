@@ -8,6 +8,9 @@
 
 #import "GoodsViewController.h"
 #import "WelcomeViewController.h"
+#import "GoodsView.h"
+#import "GoodsHeadView.h"
+#import "AddItemsViewController.h"
 @interface GoodsViewController ()
 
 @end
@@ -23,10 +26,13 @@
     
     
     
-    
-    _goodsView = [[GoodsView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
+    _goodsView = [[GoodsView alloc] initWithFrame:CGRectMake(0, 100, self.view.frame.size.width, self.view.frame.size.height - 100 - self.tabBarController.tabBar.bounds.size.height)];
     [self.view addSubview:_goodsView];
     [_goodsView setUI];
+    
+    _headView = [[GoodsHeadView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 100)];
+    [self.view addSubview:_headView];
+    [_headView setUI];
     
     self.tabBarController.tabBar.tintColor = [UIColor greenColor];
     self.tabBarController.tabBar.backgroundImage = [UIImage new];
@@ -35,24 +41,33 @@
     UIImage *temImageOne = [UIImage imageNamed:@"whiteBackGroundImage.png"];
     tabBarbackGroundImageView.image  = temImageOne;
     [self.tabBarController.tabBar addSubview:tabBarbackGroundImageView];
+    self.tabBarController.tabBar.backgroundColor = [UIColor whiteColor];
     
-    
-    UIButton *addButton = [[UIButton alloc] initWithFrame:CGRectMake(self.view.frame.size.width/2-36, -36, 72, 72)];
+    _addButton = [[UIButton alloc] initWithFrame:CGRectMake(self.view.frame.size.width/2-36, -36, 72, 72)];
    
     UIImage *tempImage = [[UIImage imageNamed:@"tianjia"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
-    [addButton setImage:tempImage forState:UIControlStateNormal];
-    [self.tabBarController.tabBar addSubview:addButton];
+    [_addButton setImage:tempImage forState:UIControlStateNormal];
+    [self.tabBarController.tabBar addSubview:_addButton];
+    [self.addButton addTarget:self action:@selector(clickButton) forControlEvents:UIControlEventTouchUpInside];
     
     
-    
-    UIBlurEffect *blur = [UIBlurEffect effectWithStyle:UIBlurEffectStyleRegular];
-    UIVisualEffectView *effectview = [[UIVisualEffectView alloc] initWithEffect:blur];
-    effectview.frame =self.view.frame;
-    [self.view addSubview:effectview];
+    //高斯模糊
+//    UIBlurEffect *blur = [UIBlurEffect effectWithStyle:UIBlurEffectStyleRegular];
+//    UIVisualEffectView *effectview = [[UIVisualEffectView alloc] initWithEffect:blur];
+//    effectview.frame =self.view.frame;
+//    [self.view addSubview:effectview];
     
     self.title = @"物品";
 }
 
+- (void)clickButton {
+    NSLog(@"点击事件");
+    AddItemsViewController *addViewController = [[AddItemsViewController alloc] init];
+    [self presentViewController:addViewController animated:YES completion:nil];
+}
+- (void)viewWillAppear:(BOOL)animated {
+    self.navigationController.navigationBar.hidden = YES;
+}
 /*
 #pragma mark - Navigation
 

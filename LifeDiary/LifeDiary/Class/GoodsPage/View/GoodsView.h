@@ -7,12 +7,16 @@
 //
 
 #import <UIKit/UIKit.h>
-
+@class BaseTableViewCell;
 NS_ASSUME_NONNULL_BEGIN
 
-@interface GoodsView : UIView
+@interface GoodsView : UIView <UITableViewDelegate, UITableViewDataSource>
 
 - (void)setUI;
+
+@property (nonatomic, strong) UITableView *mainTableView;
+
+@property (nonatomic, strong) BaseTableViewCell *mainCell;
 
 @end
 

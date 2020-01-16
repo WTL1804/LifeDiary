@@ -8,7 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		2DAF5BCAAB755510CED7AD5A /* libPods-LifeDiary.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D843190B34F29CAE2A3E9CB /* libPods-LifeDiary.a */; };
+		84544FDC23D0962900639E34 /* BaseTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 84544FDB23D0962900639E34 /* BaseTableViewCell.m */; };
+		84544FDF23D0998100639E34 /* AddItemsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84544FDE23D0998100639E34 /* AddItemsViewController.m */; };
+		84544FE223D09AB100639E34 /* AddItemsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 84544FE123D09AB100639E34 /* AddItemsView.m */; };
 		845E1CF023CC07DE005E4960 /* welcome.png in Resources */ = {isa = PBXBuildFile; fileRef = 845E1CEF23CC07DE005E4960 /* welcome.png */; };
+		845E1CF323CFF0FD005E4960 /* GoodsHeadView.m in Sources */ = {isa = PBXBuildFile; fileRef = 845E1CF223CFF0FD005E4960 /* GoodsHeadView.m */; };
 		8462477223A5A4F50022EF97 /* GoodsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8462477123A5A4F50022EF97 /* GoodsView.m */; };
 		8462477D23A5ADE00022EF97 /* DiscoveryView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8462477C23A5ADE00022EF97 /* DiscoveryView.m */; };
 		8462478023A5ADF80022EF97 /* DiscoveryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8462477F23A5ADF80022EF97 /* DiscoveryViewController.m */; };
@@ -48,7 +52,15 @@
 
 /* Begin PBXFileReference section */
 		6674C06A9C623361F49A8A0B /* Pods-LifeDiary.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LifeDiary.debug.xcconfig"; path = "Target Support Files/Pods-LifeDiary/Pods-LifeDiary.debug.xcconfig"; sourceTree = "<group>"; };
+		84544FDA23D0962900639E34 /* BaseTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BaseTableViewCell.h; sourceTree = "<group>"; };
+		84544FDB23D0962900639E34 /* BaseTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BaseTableViewCell.m; sourceTree = "<group>"; };
+		84544FDD23D0998100639E34 /* AddItemsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AddItemsViewController.h; sourceTree = "<group>"; };
+		84544FDE23D0998100639E34 /* AddItemsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AddItemsViewController.m; sourceTree = "<group>"; };
+		84544FE023D09AB100639E34 /* AddItemsView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AddItemsView.h; sourceTree = "<group>"; };
+		84544FE123D09AB100639E34 /* AddItemsView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AddItemsView.m; sourceTree = "<group>"; };
 		845E1CEF23CC07DE005E4960 /* welcome.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = welcome.png; sourceTree = "<group>"; };
+		845E1CF123CFF0FD005E4960 /* GoodsHeadView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GoodsHeadView.h; sourceTree = "<group>"; };
+		845E1CF223CFF0FD005E4960 /* GoodsHeadView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GoodsHeadView.m; sourceTree = "<group>"; };
 		8462477023A5A4F50022EF97 /* GoodsView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GoodsView.h; sourceTree = "<group>"; };
 		8462477123A5A4F50022EF97 /* GoodsView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GoodsView.m; sourceTree = "<group>"; };
 		8462477B23A5ADE00022EF97 /* DiscoveryView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DiscoveryView.h; sourceTree = "<group>"; };
@@ -128,11 +140,24 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		84544FD923D0960300639E34 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				84544FDA23D0962900639E34 /* BaseTableViewCell.h */,
+				84544FDB23D0962900639E34 /* BaseTableViewCell.m */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
 		8462477323A5A4FE0022EF97 /* View */ = {
 			isa = PBXGroup;
 			children = (
 				8462477023A5A4F50022EF97 /* GoodsView.h */,
 				8462477123A5A4F50022EF97 /* GoodsView.m */,
+				845E1CF123CFF0FD005E4960 /* GoodsHeadView.h */,
+				845E1CF223CFF0FD005E4960 /* GoodsHeadView.m */,
+				84544FE023D09AB100639E34 /* AddItemsView.h */,
+				84544FE123D09AB100639E34 /* AddItemsView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -142,6 +167,8 @@
 			children = (
 				84AA2CEF23A5A4C4008B38E8 /* GoodsViewController.h */,
 				84AA2CF023A5A4C4008B38E8 /* GoodsViewController.m */,
+				84544FDD23D0998100639E34 /* AddItemsViewController.h */,
+				84544FDE23D0998100639E34 /* AddItemsViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -241,6 +268,7 @@
 			isa = PBXGroup;
 			children = (
 				84762B9123A5C62E00713ECA /* Sourse */,
+				84544FD923D0960300639E34 /* Base */,
 				84762B9F23A6314400713ECA /* WelcomePage */,
 				8462477623A5A5780022EF97 /* GoodsPage */,
 				8462477723A5A5A90022EF97 /* DiscoveryPage */,
@@ -475,14 +503,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				8462477223A5A4F50022EF97 /* GoodsView.m in Sources */,
+				84544FDF23D0998100639E34 /* AddItemsViewController.m in Sources */,
 				84DD173B2395383900B10515 /* AppDelegate.m in Sources */,
 				84762BA723A632A300713ECA /* WelcomeViewController.m in Sources */,
+				84544FE223D09AB100639E34 /* AddItemsView.m in Sources */,
+				84544FDC23D0962900639E34 /* BaseTableViewCell.m in Sources */,
 				8462478023A5ADF80022EF97 /* DiscoveryViewController.m in Sources */,
 				84DD174C2395383B00B10515 /* main.m in Sources */,
 				84DD173E2395383900B10515 /* SceneDelegate.m in Sources */,
 				84AA2CF123A5A4C4008B38E8 /* GoodsViewController.m in Sources */,
 				8462477D23A5ADE00022EF97 /* DiscoveryView.m in Sources */,
 				84762BA423A6328100713ECA /* WelComeView.m in Sources */,
+				845E1CF323CFF0FD005E4960 /* GoodsHeadView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

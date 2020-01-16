@@ -7,12 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "WelComeView.h"
+@class WelComeView;
 NS_ASSUME_NONNULL_BEGIN
 
 @interface WelcomeViewController : UIViewController
 @property (nonatomic, strong) WelComeView *welComeView;
 @property (nonatomic, strong) NSTimer *timer;
+@property (nonatomic) int number;
 @end
 
 NS_ASSUME_NONNULL_END

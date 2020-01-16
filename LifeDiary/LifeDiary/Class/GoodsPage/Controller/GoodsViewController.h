@@ -7,11 +7,16 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "GoodsView.h"
+@class GoodsView;
+@class GoodsHeadView;
 NS_ASSUME_NONNULL_BEGIN
 
 @interface GoodsViewController : UIViewController
+
 @property (nonatomic, strong) GoodsView *goodsView;
+@property (nonatomic, strong) GoodsHeadView *headView;
+
+@property (nonatomic, strong) UIButton *addButton;
 
 @end
 
