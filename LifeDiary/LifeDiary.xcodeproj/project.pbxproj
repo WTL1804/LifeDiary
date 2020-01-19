@@ -11,11 +11,16 @@
 		84544FDC23D0962900639E34 /* BaseTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 84544FDB23D0962900639E34 /* BaseTableViewCell.m */; };
 		84544FDF23D0998100639E34 /* AddItemsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84544FDE23D0998100639E34 /* AddItemsViewController.m */; };
 		84544FE223D09AB100639E34 /* AddItemsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 84544FE123D09AB100639E34 /* AddItemsView.m */; };
+		84544FE423D29B5700639E34 /* 照相机.png in Resources */ = {isa = PBXBuildFile; fileRef = 84544FE323D29B5700639E34 /* 照相机.png */; };
+		84544FE723D2A61800639E34 /* Camera.m in Sources */ = {isa = PBXBuildFile; fileRef = 84544FE623D2A61800639E34 /* Camera.m */; };
+		84544FEA23D3E23A00639E34 /* LifeDiaryManage.m in Sources */ = {isa = PBXBuildFile; fileRef = 84544FE923D3E23A00639E34 /* LifeDiaryManage.m */; };
+		84544FED23D3E40900639E34 /* Access_tokenModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 84544FEC23D3E40900639E34 /* Access_tokenModel.m */; };
 		845E1CF023CC07DE005E4960 /* welcome.png in Resources */ = {isa = PBXBuildFile; fileRef = 845E1CEF23CC07DE005E4960 /* welcome.png */; };
 		845E1CF323CFF0FD005E4960 /* GoodsHeadView.m in Sources */ = {isa = PBXBuildFile; fileRef = 845E1CF223CFF0FD005E4960 /* GoodsHeadView.m */; };
 		8462477223A5A4F50022EF97 /* GoodsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8462477123A5A4F50022EF97 /* GoodsView.m */; };
 		8462477D23A5ADE00022EF97 /* DiscoveryView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8462477C23A5ADE00022EF97 /* DiscoveryView.m */; };
 		8462478023A5ADF80022EF97 /* DiscoveryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8462477F23A5ADF80022EF97 /* DiscoveryViewController.m */; };
+		846BD31F23D3F0A100133FF7 /* PhotoIdentificationModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 846BD31E23D3F0A100133FF7 /* PhotoIdentificationModel.m */; };
 		84762B9323A5C68700713ECA /* wupinguanli.png in Resources */ = {isa = PBXBuildFile; fileRef = 84762B9223A5C68700713ECA /* wupinguanli.png */; };
 		84762B9623A5C7C200713ECA /* tianjia.png in Resources */ = {isa = PBXBuildFile; fileRef = 84762B9423A5C7C100713ECA /* tianjia.png */; };
 		84762B9723A5C7C200713ECA /* faxian.png in Resources */ = {isa = PBXBuildFile; fileRef = 84762B9523A5C7C200713ECA /* faxian.png */; };
@@ -58,6 +63,13 @@
 		84544FDE23D0998100639E34 /* AddItemsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AddItemsViewController.m; sourceTree = "<group>"; };
 		84544FE023D09AB100639E34 /* AddItemsView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AddItemsView.h; sourceTree = "<group>"; };
 		84544FE123D09AB100639E34 /* AddItemsView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AddItemsView.m; sourceTree = "<group>"; };
+		84544FE323D29B5700639E34 /* 照相机.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "照相机.png"; sourceTree = "<group>"; };
+		84544FE523D2A61800639E34 /* Camera.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Camera.h; path = LifeDiary/Class/GoodsPage/View/Camera.h; sourceTree = SOURCE_ROOT; };
+		84544FE623D2A61800639E34 /* Camera.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = Camera.m; path = LifeDiary/Class/GoodsPage/View/Camera.m; sourceTree = SOURCE_ROOT; };
+		84544FE823D3E23A00639E34 /* LifeDiaryManage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LifeDiaryManage.h; sourceTree = "<group>"; };
+		84544FE923D3E23A00639E34 /* LifeDiaryManage.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LifeDiaryManage.m; sourceTree = "<group>"; };
+		84544FEB23D3E40900639E34 /* Access_tokenModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Access_tokenModel.h; sourceTree = "<group>"; };
+		84544FEC23D3E40900639E34 /* Access_tokenModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Access_tokenModel.m; sourceTree = "<group>"; };
 		845E1CEF23CC07DE005E4960 /* welcome.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = welcome.png; sourceTree = "<group>"; };
 		845E1CF123CFF0FD005E4960 /* GoodsHeadView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GoodsHeadView.h; sourceTree = "<group>"; };
 		845E1CF223CFF0FD005E4960 /* GoodsHeadView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GoodsHeadView.m; sourceTree = "<group>"; };
@@ -67,6 +79,8 @@
 		8462477C23A5ADE00022EF97 /* DiscoveryView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DiscoveryView.m; sourceTree = "<group>"; };
 		8462477E23A5ADF80022EF97 /* DiscoveryViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DiscoveryViewController.h; sourceTree = "<group>"; };
 		8462477F23A5ADF80022EF97 /* DiscoveryViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DiscoveryViewController.m; sourceTree = "<group>"; };
+		846BD31D23D3F0A100133FF7 /* PhotoIdentificationModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PhotoIdentificationModel.h; sourceTree = "<group>"; };
+		846BD31E23D3F0A100133FF7 /* PhotoIdentificationModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PhotoIdentificationModel.m; sourceTree = "<group>"; };
 		84762B9223A5C68700713ECA /* wupinguanli.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = wupinguanli.png; sourceTree = "<group>"; };
 		84762B9423A5C7C100713ECA /* tianjia.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tianjia.png; sourceTree = "<group>"; };
 		84762B9523A5C7C200713ECA /* faxian.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = faxian.png; sourceTree = "<group>"; };
@@ -145,6 +159,10 @@
 			children = (
 				84544FDA23D0962900639E34 /* BaseTableViewCell.h */,
 				84544FDB23D0962900639E34 /* BaseTableViewCell.m */,
+				84544FE823D3E23A00639E34 /* LifeDiaryManage.h */,
+				84544FE923D3E23A00639E34 /* LifeDiaryManage.m */,
+				84544FEB23D3E40900639E34 /* Access_tokenModel.h */,
+				84544FEC23D3E40900639E34 /* Access_tokenModel.m */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -176,6 +194,10 @@
 		8462477523A5A5500022EF97 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				84544FE523D2A61800639E34 /* Camera.h */,
+				84544FE623D2A61800639E34 /* Camera.m */,
+				846BD31D23D3F0A100133FF7 /* PhotoIdentificationModel.h */,
+				846BD31E23D3F0A100133FF7 /* PhotoIdentificationModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -228,6 +250,7 @@
 		84762B9123A5C62E00713ECA /* Sourse */ = {
 			isa = PBXGroup;
 			children = (
+				84544FE323D29B5700639E34 /* 照相机.png */,
 				84762B9223A5C68700713ECA /* wupinguanli.png */,
 				84762B9523A5C7C200713ECA /* faxian.png */,
 				84762B9423A5C7C100713ECA /* tianjia.png */,
@@ -451,6 +474,7 @@
 				84762B9723A5C7C200713ECA /* faxian.png in Resources */,
 				84DD17462395383B00B10515 /* Assets.xcassets in Resources */,
 				84DD17442395383900B10515 /* Main.storyboard in Resources */,
+				84544FE423D29B5700639E34 /* 照相机.png in Resources */,
 				84762B9623A5C7C200713ECA /* tianjia.png in Resources */,
 				84762B9E23A621F900713ECA /* whiteBackGroundImage.png in Resources */,
 			);
@@ -502,13 +526,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				84544FE723D2A61800639E34 /* Camera.m in Sources */,
+				84544FED23D3E40900639E34 /* Access_tokenModel.m in Sources */,
 				8462477223A5A4F50022EF97 /* GoodsView.m in Sources */,
 				84544FDF23D0998100639E34 /* AddItemsViewController.m in Sources */,
 				84DD173B2395383900B10515 /* AppDelegate.m in Sources */,
 				84762BA723A632A300713ECA /* WelcomeViewController.m in Sources */,
 				84544FE223D09AB100639E34 /* AddItemsView.m in Sources */,
+				846BD31F23D3F0A100133FF7 /* PhotoIdentificationModel.m in Sources */,
 				84544FDC23D0962900639E34 /* BaseTableViewCell.m in Sources */,
 				8462478023A5ADF80022EF97 /* DiscoveryViewController.m in Sources */,
+				84544FEA23D3E23A00639E34 /* LifeDiaryManage.m in Sources */,
 				84DD174C2395383B00B10515 /* main.m in Sources */,
 				84DD173E2395383900B10515 /* SceneDelegate.m in Sources */,
 				84AA2CF123A5A4C4008B38E8 /* GoodsViewController.m in Sources */,

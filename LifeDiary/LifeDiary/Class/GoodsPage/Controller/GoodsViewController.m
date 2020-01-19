@@ -63,10 +63,14 @@
 - (void)clickButton {
     NSLog(@"点击事件");
     AddItemsViewController *addViewController = [[AddItemsViewController alloc] init];
-    [self presentViewController:addViewController animated:YES completion:nil];
+    [self.navigationController pushViewController:addViewController animated:YES];
 }
 - (void)viewWillAppear:(BOOL)animated {
     self.navigationController.navigationBar.hidden = YES;
+    
+}
+- (void)viewWillDisappear:(BOOL)animated {
+    self.navigationController.navigationBar.hidden = NO;
 }
 /*
 #pragma mark - Navigation

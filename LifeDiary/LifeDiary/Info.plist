@@ -20,6 +20,10 @@
 	<string>1</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>NSCameraUsageDescription</key>
+	<string>为了给您提供更好的服务，App需要访问您的相机</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>为了给您提供更好的服务，App需要访问您的相机</string>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>

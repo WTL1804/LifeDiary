@@ -9,11 +9,21 @@
 #import <UIKit/UIKit.h>
 
 NS_ASSUME_NONNULL_BEGIN
+@protocol ClickCamera <NSObject>
 
-@interface AddItemsView : UIView
+- (void)clickCamera;
+
+@end
+@interface AddItemsView : UIView <UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 
 - (void)setUI;
 
+@property (nonatomic, strong) UIButton *photoBtn;
+@property (nonatomic) CGRect navigationFrame;
+
+@property (nonatomic, strong) UIImagePickerController *imagePicker;
+@property (nonatomic, strong) UIImageView *imageView;
+@property (nonatomic, weak) id <ClickCamera>delegateClickCamera;
 @end
 
 NS_ASSUME_NONNULL_END

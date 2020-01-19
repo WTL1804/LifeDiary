@@ -10,10 +10,13 @@
 @class AddItemsView;
 NS_ASSUME_NONNULL_BEGIN
 
-@interface AddItemsViewController : UIViewController
+@interface AddItemsViewController : UIViewController <UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 
 @property (nonatomic, strong)AddItemsView * addItemsView;
 
+@property (nonatomic, strong) UIImagePickerController *imagePicker;
+@property (nonatomic, strong) NSString *image;
+@property (nonatomic, copy) NSString *access_token;
 @end
 
 NS_ASSUME_NONNULL_END
