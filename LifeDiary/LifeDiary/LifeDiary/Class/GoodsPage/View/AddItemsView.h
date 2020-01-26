@@ -14,7 +14,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)clickCamera;
 
 @end
-@interface AddItemsView : UIView <UIImagePickerControllerDelegate, UINavigationControllerDelegate>
+@interface AddItemsView : UIView <UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate>
 
 - (void)setUI;
 
@@ -24,6 +24,11 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) UIImagePickerController *imagePicker;
 @property (nonatomic, strong) UIImageView *imageView;
 @property (nonatomic, weak) id <ClickCamera>delegateClickCamera;
+@property (nonatomic, strong) UITextField *itemNameTextField;
+@property (nonatomic, strong) UITextField *itemNamePropertiesTextField;
+@property (nonatomic, strong) UITextField *dateTextField;
+@property (nonatomic, strong) UIDatePicker *datePicker;
+
 @end
 
 NS_ASSUME_NONNULL_END

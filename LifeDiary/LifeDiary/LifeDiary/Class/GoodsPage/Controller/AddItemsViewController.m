@@ -90,7 +90,7 @@
 //图像识别
 - (void)photoIdentification {
     [[LifeDiaryManage sharedLeton] identification:^(PhotoIdentificationModel * _Nonnull identificationModel) {
-        NSLog(@"%@", [identificationModel.result[0] valueForKey:@"keyword"]);
+        NSLog(@"照片里很可能是%@   概率为%@", [identificationModel.result[0] valueForKey:@"keyword"], [identificationModel.result[0] valueForKey:@"score"]);
     } error:^(NSError * _Nonnull error) {
         NSLog(@"图像识别失败");
     }];

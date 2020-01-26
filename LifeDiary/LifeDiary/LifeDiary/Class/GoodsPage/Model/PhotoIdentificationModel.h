@@ -15,7 +15,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 
 @interface ObjectModel : JSONModel
-@property (nonatomic, copy) NSString *root;
+@property (nonatomic, copy) NSString *score;
 @property (nonatomic, copy) NSString *keyword;
 @end
 
