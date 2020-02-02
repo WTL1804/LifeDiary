@@ -75,7 +75,11 @@
     self.navigationController.navigationBar.hidden = NO;
 }
 - (void)passItem:(Items *)items {
-    self.tempItems = items;
+    self.tempItems = [items mutableCopy];
+    Items *temp = [items copy];
+    NSLog(@"%@\nmut:%@\ncopy:%@",items, _tempItems, temp);
+    NSLog(@"addDate:%p\nname:%p\nattribute:%p\nshelfLifeNumber:%p\nproduct:%p\nImageData:%p",items.addDate,items.name, items.attribute,items.shelfLifeNumber, items.productionDate,items.imageData);
+    NSLog(@"addDate:%p\nname:%p\nattribute:%p\nshelfLifeNumber:%p\nproduct:%p\nImageData:%p",temp.addDate,temp.name, temp.attribute,temp.shelfLifeNumber, temp.productionDate,temp.imageData);
     NSLog(@"123");
 }
 /*

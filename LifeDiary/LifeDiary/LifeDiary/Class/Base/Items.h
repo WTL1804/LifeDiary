@@ -10,7 +10,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface Items : NSObject <NSMutableCopying>
+@interface Items : NSObject <NSMutableCopying, NSCopying>
 @property (nonatomic, copy) NSString *name;
 //分类的根据
 @property (nonatomic, copy) NSString *attribute;
@@ -19,6 +19,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, copy) NSDate *addDate;
 @property (nonatomic, copy) NSData *imageData;
 @property (nonatomic) NSNumber *numberOfItem;
+@property (nonatomic, copy) NSDate *overDue;
 
 - (void)setAttribute:(NSString * _Nonnull)attribute;
 @end

@@ -111,6 +111,12 @@
         if (self.addItemsView.addItems.name != nil) {
             if (self.addItemsView.addItems.productionDate != nil) {
                 if (self.addItemsView.addItems.shelfLifeNumber != nil) {
+                    //计算过期日。
+                    int days = [self.addItemsView.addItems.shelfLifeNumber intValue];
+                    NSDate *date;
+                    NSTimeInterval  oneDay = 24*60*60;
+                    date = [self.addItemsView.addItems.productionDate initWithTimeInterval:oneDay *days sinceDate:self.addItemsView.addItems.productionDate];
+                    self.addItemsView.addItems.overDue = [date copy];
                     [self.delegateItems passItem:self.addItemsView.addItems];
                     [self.navigationController popViewControllerAnimated:YES];
                 }

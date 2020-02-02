@@ -21,14 +21,33 @@
         _addDate = now;
         _imageData = nil;
         _numberOfItem = [NSNumber numberWithInt:1];
+        _overDue = now;
     }
     return self;
 }
-- (id)copy {
-    
+- (id)mutableCopyWithZone:(NSZone *)zone {
+    Items *items = [[Items alloc] init];
+    items.addDate = [_addDate copy];
+    items.attribute = [_attribute mutableCopy];
+    items.imageData = [_imageData mutableCopy];
+    items.name = [_name mutableCopy];
+    items.numberOfItem = _numberOfItem;
+    items.productionDate = [_productionDate copy];
+    items.shelfLifeNumber = _shelfLifeNumber;
+    items.overDue = [_overDue copy];
+    return items;
 }
-- (id)mutableCopy {
-    
+- (id)copyWithZone:(NSZone *)zone {
+    Items *items = [Items allocWithZone:zone];
+    items.addDate = _addDate;
+    items.attribute = _attribute;
+    items.imageData = _imageData;
+    items.name = _name;
+    items.numberOfItem = _numberOfItem;
+    items.productionDate = _productionDate;
+    items.shelfLifeNumber = _shelfLifeNumber;
+    items.overDue = _overDue;
+    return items;
 }
 
 @end
