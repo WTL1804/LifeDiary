@@ -22,6 +22,7 @@
         _imageData = nil;
         _numberOfItem = [NSNumber numberWithInt:1];
         _overDue = now;
+        _dataType = @"ModelOne";
     }
     return self;
 }
@@ -35,6 +36,7 @@
     items.productionDate = [_productionDate copy];
     items.shelfLifeNumber = _shelfLifeNumber;
     items.overDue = [_overDue copy];
+    items.dataType = [_dataType mutableCopy];
     return items;
 }
 - (id)copyWithZone:(NSZone *)zone {
@@ -47,7 +49,9 @@
     items.productionDate = _productionDate;
     items.shelfLifeNumber = _shelfLifeNumber;
     items.overDue = _overDue;
+    items.dataType = _dataType;
     return items;
+     // return self;
 }
 
 @end

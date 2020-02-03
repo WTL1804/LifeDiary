@@ -18,16 +18,16 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "555E5462-2C70-4C72-BCF1-5471B21EC822"
+            uuid = "A9AF4E95-063A-4C9E-9E3E-58C126FBA8A1"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "LifeDiary/Class/GoodsPage/Controller/GoodsViewController.m"
+            filePath = "LifeDiary/Class/Base/BaseCell/ModelOneCell.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "83"
-            endingLineNumber = "83"
-            landmarkName = "-passItem:"
+            startingLineNumber = "17"
+            endingLineNumber = "17"
+            landmarkName = "-setLayOutInSubclass:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

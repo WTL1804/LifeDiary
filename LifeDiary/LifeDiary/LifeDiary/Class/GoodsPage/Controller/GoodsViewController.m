@@ -75,12 +75,14 @@
     self.navigationController.navigationBar.hidden = NO;
 }
 - (void)passItem:(Items *)items {
-    self.tempItems = [items mutableCopy];
     Items *temp = [items copy];
-    NSLog(@"%@\nmut:%@\ncopy:%@",items, _tempItems, temp);
-    NSLog(@"addDate:%p\nname:%p\nattribute:%p\nshelfLifeNumber:%p\nproduct:%p\nImageData:%p",items.addDate,items.name, items.attribute,items.shelfLifeNumber, items.productionDate,items.imageData);
-    NSLog(@"addDate:%p\nname:%p\nattribute:%p\nshelfLifeNumber:%p\nproduct:%p\nImageData:%p",temp.addDate,temp.name, temp.attribute,temp.shelfLifeNumber, temp.productionDate,temp.imageData);
-    NSLog(@"123");
+//    NSLog(@"%@\nmut:%@\ncopy:%@",items, _tempItems, temp);
+//    NSLog(@"addDate:%p\nname:%p\nattribute:%p\nshelfLifeNumber:%p\nproduct:%p\nImageData:%p",items.addDate,items.name, items.attribute,items.shelfLifeNumber, items.productionDate,items.imageData);
+//    NSLog(@"addDate:%p\nname:%p\nattribute:%p\nshelfLifeNumber:%p\nproduct:%p\nImageData:%p",temp.addDate,temp.name, temp.attribute,temp.shelfLifeNumber, temp.productionDate,temp.imageData);
+//    NSLog(@"123");
+    NSDictionary *dict = [NSDictionary dictionaryWithObjects:@[temp.addDate,temp.attribute,temp.imageData,temp.name,temp.numberOfItem,temp.overDue,temp.productionDate,temp.shelfLifeNumber,temp.dataType] forKeys:@[@"addDate",@"attribute",@"imageDate",@"name",@"numberOfItem",@"overDue",@"productionDate",@"shelfLifeNumber",@"tag"]];
+    [_goodsView.itemsArray addObject:dict];
+    [_goodsView.mainTableView reloadData];
 }
 /*
 #pragma mark - Navigation

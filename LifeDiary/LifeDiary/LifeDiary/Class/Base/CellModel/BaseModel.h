@@ -1,8 +1,8 @@
 //
-//  Items.h
+//  CellBaseModel.h
 //  LifeDiary
 //
-//  Created by 王天亮 on 2020/1/27.
+//  Created by 王天亮 on 2020/2/3.
 //  Copyright © 2020 王天亮. All rights reserved.
 //
 
@@ -10,7 +10,10 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface Items : NSObject <NSMutableCopying, NSCopying>
+@interface BaseModel : NSObject
+
+
++ (instancetype)initWithDictionary:(NSDictionary *) dictionary;
 @property (nonatomic, copy) NSString *name;
 //分类的根据
 @property (nonatomic, copy) NSString *attribute;
@@ -22,7 +25,6 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, copy) NSDate *overDue;
 @property (nonatomic, copy) NSString *dataType;
 
-- (void)setAttribute:(NSString * _Nonnull)attribute;
 @end
 
 NS_ASSUME_NONNULL_END

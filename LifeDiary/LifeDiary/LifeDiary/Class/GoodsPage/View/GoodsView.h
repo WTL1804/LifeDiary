@@ -18,6 +18,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, strong) BaseTableViewCell *mainCell;
 
+@property (nonatomic, strong) NSMutableArray *itemsArray;
+
+
 @end
 
 NS_ASSUME_NONNULL_END

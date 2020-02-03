@@ -8,6 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		2DAF5BCAAB755510CED7AD5A /* libPods-LifeDiary.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D843190B34F29CAE2A3E9CB /* libPods-LifeDiary.a */; };
+		8446020023E8401A0077227C /* BaseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 844601FF23E8401A0077227C /* BaseModel.m */; };
+		8446020423E840570077227C /* ModelOne.m in Sources */ = {isa = PBXBuildFile; fileRef = 8446020323E840570077227C /* ModelOne.m */; };
+		8446020723E8406A0077227C /* ModelTwo.m in Sources */ = {isa = PBXBuildFile; fileRef = 8446020623E8406A0077227C /* ModelTwo.m */; };
+		8446021423E847F00077227C /* ModelOneCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8446021323E847F00077227C /* ModelOneCell.m */; };
+		8446021723E8480C0077227C /* ModelTwoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8446021623E8480C0077227C /* ModelTwoCell.m */; };
 		84544FDC23D0962900639E34 /* BaseTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 84544FDB23D0962900639E34 /* BaseTableViewCell.m */; };
 		84544FDF23D0998100639E34 /* AddItemsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84544FDE23D0998100639E34 /* AddItemsViewController.m */; };
 		84544FE223D09AB100639E34 /* AddItemsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 84544FE123D09AB100639E34 /* AddItemsView.m */; };
@@ -58,6 +63,16 @@
 
 /* Begin PBXFileReference section */
 		6674C06A9C623361F49A8A0B /* Pods-LifeDiary.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LifeDiary.debug.xcconfig"; path = "Target Support Files/Pods-LifeDiary/Pods-LifeDiary.debug.xcconfig"; sourceTree = "<group>"; };
+		844601FE23E8401A0077227C /* BaseModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BaseModel.h; sourceTree = "<group>"; };
+		844601FF23E8401A0077227C /* BaseModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BaseModel.m; sourceTree = "<group>"; };
+		8446020223E840570077227C /* ModelOne.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ModelOne.h; sourceTree = "<group>"; };
+		8446020323E840570077227C /* ModelOne.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ModelOne.m; sourceTree = "<group>"; };
+		8446020523E8406A0077227C /* ModelTwo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ModelTwo.h; sourceTree = "<group>"; };
+		8446020623E8406A0077227C /* ModelTwo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ModelTwo.m; sourceTree = "<group>"; };
+		8446021223E847F00077227C /* ModelOneCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ModelOneCell.h; sourceTree = "<group>"; };
+		8446021323E847F00077227C /* ModelOneCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ModelOneCell.m; sourceTree = "<group>"; };
+		8446021523E8480C0077227C /* ModelTwoCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ModelTwoCell.h; sourceTree = "<group>"; };
+		8446021623E8480C0077227C /* ModelTwoCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ModelTwoCell.m; sourceTree = "<group>"; };
 		84544FDA23D0962900639E34 /* BaseTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BaseTableViewCell.h; sourceTree = "<group>"; };
 		84544FDB23D0962900639E34 /* BaseTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BaseTableViewCell.m; sourceTree = "<group>"; };
 		84544FDD23D0998100639E34 /* AddItemsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AddItemsViewController.h; sourceTree = "<group>"; };
@@ -157,11 +172,37 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		84544FD923D0960300639E34 /* Base */ = {
+		8446020123E840330077227C /* CellModel */ = {
+			isa = PBXGroup;
+			children = (
+				844601FE23E8401A0077227C /* BaseModel.h */,
+				844601FF23E8401A0077227C /* BaseModel.m */,
+				8446020223E840570077227C /* ModelOne.h */,
+				8446020323E840570077227C /* ModelOne.m */,
+				8446020523E8406A0077227C /* ModelTwo.h */,
+				8446020623E8406A0077227C /* ModelTwo.m */,
+			);
+			path = CellModel;
+			sourceTree = "<group>";
+		};
+		8446021123E844510077227C /* BaseCell */ = {
 			isa = PBXGroup;
 			children = (
 				84544FDA23D0962900639E34 /* BaseTableViewCell.h */,
 				84544FDB23D0962900639E34 /* BaseTableViewCell.m */,
+				8446021223E847F00077227C /* ModelOneCell.h */,
+				8446021323E847F00077227C /* ModelOneCell.m */,
+				8446021523E8480C0077227C /* ModelTwoCell.h */,
+				8446021623E8480C0077227C /* ModelTwoCell.m */,
+			);
+			path = BaseCell;
+			sourceTree = "<group>";
+		};
+		84544FD923D0960300639E34 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				8446021123E844510077227C /* BaseCell */,
+				8446020123E840330077227C /* CellModel */,
 				84544FE823D3E23A00639E34 /* LifeDiaryManage.h */,
 				84544FE923D3E23A00639E34 /* LifeDiaryManage.m */,
 				84544FEB23D3E40900639E34 /* Access_tokenModel.h */,
@@ -539,13 +580,18 @@
 				84762BA723A632A300713ECA /* WelcomeViewController.m in Sources */,
 				84544FE223D09AB100639E34 /* AddItemsView.m in Sources */,
 				846BD31F23D3F0A100133FF7 /* PhotoIdentificationModel.m in Sources */,
+				8446021723E8480C0077227C /* ModelTwoCell.m in Sources */,
 				84544FDC23D0962900639E34 /* BaseTableViewCell.m in Sources */,
 				8462478023A5ADF80022EF97 /* DiscoveryViewController.m in Sources */,
 				84544FEA23D3E23A00639E34 /* LifeDiaryManage.m in Sources */,
 				84DD174C2395383B00B10515 /* main.m in Sources */,
+				8446020423E840570077227C /* ModelOne.m in Sources */,
+				8446020723E8406A0077227C /* ModelTwo.m in Sources */,
 				846BD36923DEAD7B00133FF7 /* Items.m in Sources */,
 				84DD173E2395383900B10515 /* SceneDelegate.m in Sources */,
+				8446020023E8401A0077227C /* BaseModel.m in Sources */,
 				84AA2CF123A5A4C4008B38E8 /* GoodsViewController.m in Sources */,
+				8446021423E847F00077227C /* ModelOneCell.m in Sources */,
 				8462477D23A5ADE00022EF97 /* DiscoveryView.m in Sources */,
 				84762BA423A6328100713ECA /* WelComeView.m in Sources */,
 				845E1CF323CFF0FD005E4960 /* GoodsHeadView.m in Sources */,
