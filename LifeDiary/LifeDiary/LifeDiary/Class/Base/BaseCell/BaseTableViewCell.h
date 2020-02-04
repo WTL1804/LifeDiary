@@ -11,11 +11,7 @@
 NS_ASSUME_NONNULL_BEGIN
 @class BaseModel;
 @interface BaseTableViewCell : UITableViewCell
-//GoodsView
-@property (nonatomic, strong) UIImageView *imageViewOfItems;
-@property (nonatomic, strong) UILabel *deadLineLabel;
-@property (nonatomic, strong) UILabel *addDateLabel;
-@property (nonatomic, strong) UILabel *titleLabel;
+
 
 
 + (instancetype)initWithModel:(BaseModel *)baseModel;

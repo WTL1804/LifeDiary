@@ -28,8 +28,8 @@
     [self addSubview:_mainTableView];
     
     _itemsArray = [[NSMutableArray alloc] init];
-    NSDictionary *dict = @{@"key":@"123",@"tag":@"ModelOne"};
-    [_itemsArray addObject:dict];
+//    NSDictionary *dict = @{@"key":@"123",@"tag":@"BaseModel"};
+//    [_itemsArray addObject:dict];
     
 }
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -39,7 +39,7 @@
     return 1;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return (self.frame.size.height) / 3;
+    return (self.frame.size.height) / 4;
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
 //    self.mainCell = [_mainTableView dequeueReusableCellWithIdentifier:@"GoodsViewCell" forIndexPath:indexPath];

@@ -13,12 +13,16 @@
 
 + (instancetype)initWithDictionary:(NSDictionary *)dictionary {
     BaseModel *baseModel = nil;
-    if ([dictionary[@"tag"]isEqual:@"ModelOne"]) {
-        return [[ModelOne alloc] init];
-    } else if ([dictionary[@"tag"]isEqual:@"ModelOne"]) {
-        return [[ModelTwo alloc] init];
+    if ([dictionary[@"dataType"]isEqual:@"ModelOne"]) {
+        baseModel =  [[ModelOne alloc] init];
+    } else if ([dictionary[@"dataType"]isEqual:@"ModelTwo"]) {
+        baseModel =  [[ModelTwo alloc] init];
     }
     [baseModel setValuesForKeysWithDictionary:dictionary];
     return baseModel;
 }
+- (void)setValue:(id)value forUndefinedKey:(NSString *)key {
+    NSLog(@"%@", key);
+}
+
 @end

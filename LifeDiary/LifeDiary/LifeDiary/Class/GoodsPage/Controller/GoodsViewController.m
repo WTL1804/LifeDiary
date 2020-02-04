@@ -61,7 +61,7 @@
 }
 
 - (void)clickButton {
-    NSLog(@"点击事件");
+   
     AddItemsViewController *addViewController = [[AddItemsViewController alloc] init];
     self.tempItems = [[Items alloc] init];
     addViewController.delegateItems = self;
@@ -80,7 +80,7 @@
 //    NSLog(@"addDate:%p\nname:%p\nattribute:%p\nshelfLifeNumber:%p\nproduct:%p\nImageData:%p",items.addDate,items.name, items.attribute,items.shelfLifeNumber, items.productionDate,items.imageData);
 //    NSLog(@"addDate:%p\nname:%p\nattribute:%p\nshelfLifeNumber:%p\nproduct:%p\nImageData:%p",temp.addDate,temp.name, temp.attribute,temp.shelfLifeNumber, temp.productionDate,temp.imageData);
 //    NSLog(@"123");
-    NSDictionary *dict = [NSDictionary dictionaryWithObjects:@[temp.addDate,temp.attribute,temp.imageData,temp.name,temp.numberOfItem,temp.overDue,temp.productionDate,temp.shelfLifeNumber,temp.dataType] forKeys:@[@"addDate",@"attribute",@"imageDate",@"name",@"numberOfItem",@"overDue",@"productionDate",@"shelfLifeNumber",@"tag"]];
+    NSDictionary *dict = [NSDictionary dictionaryWithObjects:@[temp.addDate,temp.attribute,temp.imageData,temp.name,temp.numberOfItem,temp.overDue,temp.productionDate,temp.shelfLifeNumber,temp.dataType] forKeys:@[@"addDate",@"attribute",@"imageData",@"name",@"numberOfItem",@"overDue",@"productionDate",@"shelfLifeNumber",@"dataType"]];
     [_goodsView.itemsArray addObject:dict];
     [_goodsView.mainTableView reloadData];
 }

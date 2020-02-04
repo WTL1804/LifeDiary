@@ -9,8 +9,16 @@
 #import "BaseTableViewCell.h"
 
 NS_ASSUME_NONNULL_BEGIN
-
+@class ModelOne;
 @interface ModelOneCell : BaseTableViewCell
+//GoodsView
+@property (nonatomic, strong) UIImageView *imageViewOfItems;
+@property (nonatomic, strong) UILabel *deadLineLabel;
+@property (nonatomic, strong) UILabel *addDateLabel;
+@property (nonatomic, strong) UILabel *titleLabel;
+@property (nonatomic, strong) UILabel *attributeLabel;
+
+@property (nonatomic, strong) ModelOne *modelOne;
 
 @end
 

@@ -58,7 +58,7 @@
     _ShelfLifeTextField.borderStyle = UITextBorderStyleRoundedRect;
     _ShelfLifeTextField.delegate = self;
     _ShelfLifeTextField.placeholder =@"保质期/天";
-    _ShelfLifeTextField.keyboardType = UIKeyboardTypeNumberPad;
+    _ShelfLifeTextField.keyboardType = UIKeyboardTypeDefault;
     
     //numberTextField
     _numberTextField = [[UITextField alloc] init];
@@ -66,7 +66,7 @@
     _numberTextField.borderStyle = UITextBorderStyleRoundedRect;
     _numberTextField.delegate = self;
     _numberTextField.placeholder =@"数量/个默认为1";
-    _numberTextField.keyboardType = UIKeyboardTypeNumberPad;
+    _numberTextField.keyboardType = UIKeyboardTypeDefault;
     
     
     
@@ -74,7 +74,7 @@
     _datePicker.locale = [NSLocale localeWithLocaleIdentifier:@"zh"];
     _datePicker.datePickerMode = UIDatePickerModeDate;
     [_datePicker setDate:[NSDate date]];
-    self.datePicker.frame = CGRectMake(0, self.frame.size.height-200, self.frame.size.width, 200);
+    //self.datePicker.frame = CGRectMake(0, self.frame.size.height-200, self.frame.size.width, 200);
     [self.datePicker addTarget:self action:@selector(dateUpdate) forControlEvents:UIControlEventValueChanged];
     
     _addItems = [[Items alloc] init];
