@@ -19,6 +19,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) UILabel *numberOfItemLabel;
 @property (nonatomic, strong) UILabel *titleLabel;
 @property (nonatomic, strong) UILabel *attributeLabel;
+
+@property (nonatomic, strong) UISegmentedControl *increaseSegmentControl;
 @end
 
 NS_ASSUME_NONNULL_END

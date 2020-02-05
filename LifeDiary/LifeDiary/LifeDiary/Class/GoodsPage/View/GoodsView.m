@@ -25,11 +25,13 @@
     self.mainTableView.dataSource = self;
     self.mainTableView.delegate = self;
    // [self.mainTableView registerClass: [BaseTableViewCell class] forCellReuseIdentifier:@"GoodsViewCell"];
+    self.mainTableView.backgroundColor = [UIColor whiteColor];
     [self addSubview:_mainTableView];
     
     _itemsArray = [[NSMutableArray alloc] init];
 //    NSDictionary *dict = @{@"key":@"123",@"tag":@"BaseModel"};
 //    [_itemsArray addObject:dict];
+    
     
 }
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -53,5 +55,11 @@
     }
     [cell setLayOutInSubclass:baseModel];
     return cell;
+}
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
+    return nil;
+}
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+    return 0;
 }
 @end

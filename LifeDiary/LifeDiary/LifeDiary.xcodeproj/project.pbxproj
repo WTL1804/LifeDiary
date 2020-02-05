@@ -13,6 +13,7 @@
 		8446020723E8406A0077227C /* ModelTwo.m in Sources */ = {isa = PBXBuildFile; fileRef = 8446020623E8406A0077227C /* ModelTwo.m */; };
 		8446021423E847F00077227C /* ModelOneCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8446021323E847F00077227C /* ModelOneCell.m */; };
 		8446021723E8480C0077227C /* ModelTwoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8446021623E8480C0077227C /* ModelTwoCell.m */; };
+		8446021923EB0A980077227C /* person.png in Resources */ = {isa = PBXBuildFile; fileRef = 8446021823EB0A980077227C /* person.png */; };
 		84544FDC23D0962900639E34 /* BaseTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 84544FDB23D0962900639E34 /* BaseTableViewCell.m */; };
 		84544FDF23D0998100639E34 /* AddItemsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84544FDE23D0998100639E34 /* AddItemsViewController.m */; };
 		84544FE223D09AB100639E34 /* AddItemsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 84544FE123D09AB100639E34 /* AddItemsView.m */; };
@@ -73,6 +74,7 @@
 		8446021323E847F00077227C /* ModelOneCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ModelOneCell.m; sourceTree = "<group>"; };
 		8446021523E8480C0077227C /* ModelTwoCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ModelTwoCell.h; sourceTree = "<group>"; };
 		8446021623E8480C0077227C /* ModelTwoCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ModelTwoCell.m; sourceTree = "<group>"; };
+		8446021823EB0A980077227C /* person.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = person.png; sourceTree = "<group>"; };
 		84544FDA23D0962900639E34 /* BaseTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BaseTableViewCell.h; sourceTree = "<group>"; };
 		84544FDB23D0962900639E34 /* BaseTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BaseTableViewCell.m; sourceTree = "<group>"; };
 		84544FDD23D0998100639E34 /* AddItemsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AddItemsViewController.h; sourceTree = "<group>"; };
@@ -302,6 +304,7 @@
 				84762B9423A5C7C100713ECA /* tianjia.png */,
 				84762B9D23A621F900713ECA /* whiteBackGroundImage.png */,
 				845E1CEF23CC07DE005E4960 /* welcome.png */,
+				8446021823EB0A980077227C /* person.png */,
 			);
 			path = Sourse;
 			sourceTree = "<group>";
@@ -518,6 +521,7 @@
 				845E1CF023CC07DE005E4960 /* welcome.png in Resources */,
 				84762B9323A5C68700713ECA /* wupinguanli.png in Resources */,
 				84762B9723A5C7C200713ECA /* faxian.png in Resources */,
+				8446021923EB0A980077227C /* person.png in Resources */,
 				84DD17462395383B00B10515 /* Assets.xcassets in Resources */,
 				84DD17442395383900B10515 /* Main.storyboard in Resources */,
 				84544FE423D29B5700639E34 /* 照相机.png in Resources */,

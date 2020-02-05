@@ -15,6 +15,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, strong) UITextField *searchField;
 
+@property (nonatomic, strong) UIButton *personBtn;
+
 @end
 
 NS_ASSUME_NONNULL_END

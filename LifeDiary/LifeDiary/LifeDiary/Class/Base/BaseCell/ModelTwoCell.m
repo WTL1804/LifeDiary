@@ -16,16 +16,21 @@
     
     _imageViewOfItems = [[UIImageView alloc] initWithImage:[UIImage imageWithData:_modelTwo.imageData]];
        [self addSubview:_imageViewOfItems];
+    _imageViewOfItems.layer.masksToBounds = YES;
+    _imageViewOfItems.layer.cornerRadius = 30;
+    
        
        _deadLineLabel = [[UILabel alloc] init];
-        NSString *stringDate = @"剩余天数:";
+        NSString *stringDate = @"剩余:";
     NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
     NSDateComponents *comp = [calendar components:NSCalendarUnitDay fromDate:[NSDate date] toDate:_modelTwo.overDue options:NSCalendarWrapComponents];
     
     NSNumber *number = [NSNumber numberWithInteger:comp.day];
        stringDate = [stringDate stringByAppendingString:[number stringValue]];
+    stringDate = [stringDate stringByAppendingString:@"天"];
        _deadLineLabel.text = stringDate;
-       [self addSubview:_deadLineLabel];
+    [_deadLineLabel setTextAlignment:NSTextAlignmentLeft];
+    [self addSubview:_deadLineLabel];
     
     _numberOfItemLabel = [[UILabel alloc] init];
     [self addSubview:_numberOfItemLabel];
@@ -41,7 +46,19 @@
     _attributeLabel = [[UILabel alloc] init];
     _attributeLabel.text = _modelTwo.attribute;
     [self addSubview:_attributeLabel];
+    
+    _increaseSegmentControl = [[UISegmentedControl alloc] init];
+    [self addSubview:_increaseSegmentControl];
+    [_increaseSegmentControl insertSegmentWithTitle:@"+" atIndex:0 animated:YES];
+    [_increaseSegmentControl insertSegmentWithTitle:@"-" atIndex:0 animated:YES];
+    [_increaseSegmentControl addTarget:self action:@selector(numberChange) forControlEvents:UIControlEventValueChanged];
+    
+   
 }
+- (void)numberChange {
+    
+}
+
 - (void)layoutSubviews {
     [super layoutSubviews];
     [_titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -53,10 +70,38 @@
     }];
     
     [_imageViewOfItems mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(_titleLabel.mas_bottom);
-        make.bottom.equalTo(self.mas_top).offset(self.frame.size.height * 7.5/9);
+        make.top.equalTo(_titleLabel.mas_bottom).offset(-5);
+        make.bottom.equalTo(self.mas_top).offset(self.frame.size.height * 8/9);
         make.left.equalTo(self.mas_left).offset(10);
         make.right.equalTo(self.mas_right).offset(-10);
+    }];
+    
+    [_deadLineLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(_imageViewOfItems.mas_bottom);
+        make.bottom.equalTo(self.mas_bottom);
+        make.left.equalTo(self.mas_left).offset(10);
+        make.right.equalTo(self.mas_left).offset(120);
+    }];
+    
+    [_attributeLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.mas_top);
+        make.bottom.equalTo(_titleLabel.mas_bottom);
+        make.left.equalTo(self.mas_right).offset(-100);
+        make.right.equalTo(self.mas_right);
+    }];
+    
+    [_numberOfItemLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+       make.top.equalTo(_imageViewOfItems.mas_bottom).offset(10);
+       make.bottom.equalTo(self.mas_bottom).offset(-10);
+       make.left.equalTo(_deadLineLabel.mas_right);
+       make.right.equalTo(_deadLineLabel.mas_right).offset(90);
+    }];
+    
+    [_increaseSegmentControl mas_makeConstraints:^(MASConstraintMaker *make) {
+       make.top.equalTo(_imageViewOfItems.mas_bottom).offset(10);
+       make.bottom.equalTo(self.mas_bottom).offset(-10);
+       make.left.equalTo(_numberOfItemLabel.mas_right);
+       make.right.equalTo(_numberOfItemLabel.mas_right).offset(100);
     }];
 }
 
