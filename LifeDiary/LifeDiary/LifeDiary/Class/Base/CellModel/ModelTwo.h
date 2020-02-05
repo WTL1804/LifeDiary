@@ -11,7 +11,15 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface ModelTwo : BaseModel
-
+@property (nonatomic, copy) NSString *name;
+@property (nonatomic, copy) NSString *attribute;
+@property (nonatomic, copy) NSDate *productionDate;
+@property (nonatomic) NSNumber  *shelfLifeNumber;
+@property (nonatomic, copy) NSDate *addDate;
+@property (nonatomic, copy) NSData *imageData;
+@property (nonatomic) NSNumber *numberOfItem;
+@property (nonatomic, copy) NSDate *overDue;
+@property (nonatomic, copy) NSString *dataType;
 @end
 
 NS_ASSUME_NONNULL_END

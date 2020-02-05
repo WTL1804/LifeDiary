@@ -7,11 +7,18 @@
 //
 
 #import "BaseTableViewCell.h"
-
+@class ModelTwo;
 NS_ASSUME_NONNULL_BEGIN
 
 @interface ModelTwoCell : BaseTableViewCell
+@property (nonatomic, strong) ModelTwo *modelTwo;
 
+@property (nonatomic, strong) UIImageView *imageViewOfItems;
+
+@property (nonatomic, strong) UILabel *deadLineLabel;
+@property (nonatomic, strong) UILabel *numberOfItemLabel;
+@property (nonatomic, strong) UILabel *titleLabel;
+@property (nonatomic, strong) UILabel *attributeLabel;
 @end
 
 NS_ASSUME_NONNULL_END
