@@ -13,49 +13,68 @@
 
 - (void)setLayOutInSubclass:(BaseModel *)baseModel {
     _modelTwo = (ModelTwo *)baseModel;
-    
+    if (!_imageViewOfItems) {
     _imageViewOfItems = [[UIImageView alloc] initWithImage:[UIImage imageWithData:_modelTwo.imageData]];
-       [self addSubview:_imageViewOfItems];
+      
     _imageViewOfItems.layer.masksToBounds = YES;
     _imageViewOfItems.layer.cornerRadius = 30;
-    
-       
-       _deadLineLabel = [[UILabel alloc] init];
+    }
+    [self addSubview:_imageViewOfItems];
+
+    if(!_deadLineLabel) {
+        _deadLineLabel = [[UILabel alloc] init];
         NSString *stringDate = @"剩余:";
-    NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
-    NSDateComponents *comp = [calendar components:NSCalendarUnitDay fromDate:[NSDate date] toDate:_modelTwo.overDue options:NSCalendarWrapComponents];
+        NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
+        NSDateComponents *comp = [calendar components:NSCalendarUnitDay fromDate:[NSDate date] toDate:_modelTwo.overDue options:NSCalendarWrapComponents];
     
-    NSNumber *number = [NSNumber numberWithInteger:comp.day];
+        NSNumber *number = [NSNumber numberWithInteger:comp.day];
        stringDate = [stringDate stringByAppendingString:[number stringValue]];
-    stringDate = [stringDate stringByAppendingString:@"天"];
+        stringDate = [stringDate stringByAppendingString:@"天"];
        _deadLineLabel.text = stringDate;
-    [_deadLineLabel setTextAlignment:NSTextAlignmentLeft];
+        [_deadLineLabel setTextAlignment:NSTextAlignmentLeft];
+    }
     [self addSubview:_deadLineLabel];
     
-    _numberOfItemLabel = [[UILabel alloc] init];
-    [self addSubview:_numberOfItemLabel];
-    NSString *numberString = @"数量：";
-    numberString = [numberString stringByAppendingString:[_modelTwo.numberOfItem stringValue]];
-    _numberOfItemLabel.text = numberString;
+    if (!_numberOfItemLabel) {
+        _numberOfItemLabel = [[UILabel alloc] init];
+       
+        NSString *numberString = @"数量：";
+        numberString = [numberString stringByAppendingString:[_modelTwo.numberOfItem stringValue]];
+        _numberOfItemLabel.text = numberString;
+    }
+     [self addSubview:_numberOfItemLabel];
     
-    
-    _titleLabel = [[UILabel alloc] init];
-    _titleLabel.text = _modelTwo.name;
+    if (!_titleLabel) {
+        _titleLabel = [[UILabel alloc] init];
+        _titleLabel.text = _modelTwo.name;
+    }
     [self addSubview:_titleLabel];
     
-    _attributeLabel = [[UILabel alloc] init];
-    _attributeLabel.text = _modelTwo.attribute;
+    if (!_attributeLabel) {
+        _attributeLabel = [[UILabel alloc] init];
+        _attributeLabel.text = _modelTwo.attribute;
+    }
     [self addSubview:_attributeLabel];
     
-    _increaseSegmentControl = [[UISegmentedControl alloc] init];
-    [self addSubview:_increaseSegmentControl];
-    [_increaseSegmentControl insertSegmentWithTitle:@"+" atIndex:0 animated:YES];
-    [_increaseSegmentControl insertSegmentWithTitle:@"-" atIndex:0 animated:YES];
-    [_increaseSegmentControl addTarget:self action:@selector(numberChange) forControlEvents:UIControlEventValueChanged];
-    
-   
+    if (!_increaseStepper) {
+        _increaseStepper = [[UIStepper alloc] init];
+        _increaseStepper.maximumValue = 999;
+        _increaseStepper.minimumValue = 0;
+        _increaseStepper.value = [_modelTwo.numberOfItem doubleValue];
+        [_increaseStepper addTarget:self action:@selector(numberChange:) forControlEvents:UIControlEventValueChanged];
+    }
+    [self addSubview:_increaseStepper];
+
 }
-- (void)numberChange {
+- (void)numberChange:(UIStepper *)sc{
+    _modelTwo.numberOfItem = [NSNumber numberWithDouble:sc.value];
+    NSNumber *number = [NSNumber numberWithDouble:sc.value];
+    NSString *numberString = @"数量：";
+           numberString = [numberString stringByAppendingString:[number stringValue]];
+           _numberOfItemLabel.text = numberString;
+    
+    
+    [self.numberChangeDelegate numberChange:sc name:_modelTwo.name];
     
 }
 
@@ -97,7 +116,7 @@
        make.right.equalTo(_deadLineLabel.mas_right).offset(90);
     }];
     
-    [_increaseSegmentControl mas_makeConstraints:^(MASConstraintMaker *make) {
+    [_increaseStepper mas_makeConstraints:^(MASConstraintMaker *make) {
        make.top.equalTo(_imageViewOfItems.mas_bottom).offset(10);
        make.bottom.equalTo(self.mas_bottom).offset(-10);
        make.left.equalTo(_numberOfItemLabel.mas_right);

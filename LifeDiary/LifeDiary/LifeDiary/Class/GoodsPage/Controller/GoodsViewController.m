@@ -29,6 +29,7 @@
     _goodsView = [[GoodsView alloc] initWithFrame:CGRectMake(0, 100, self.view.frame.size.width, self.view.frame.size.height - 100 - self.tabBarController.tabBar.bounds.size.height)];
     [self.view addSubview:_goodsView];
     [_goodsView setUI];
+    //_goodsView.cell.numberChangeDelegate = self;
     
     _headView = [[GoodsHeadView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 100)];
     [self.view addSubview:_headView];
@@ -63,7 +64,7 @@
 - (void)clickButton {
    
     AddItemsViewController *addViewController = [[AddItemsViewController alloc] init];
-    self.tempItems = [[Items alloc] init];
+    self.temp = [[Items alloc] init];
     addViewController.delegateItems = self;
     [self.navigationController pushViewController:addViewController animated:YES];
 }
@@ -75,15 +76,29 @@
     self.navigationController.navigationBar.hidden = NO;
 }
 - (void)passItem:(Items *)items {
-    Items *temp = [items copy];
-//    NSLog(@"%@\nmut:%@\ncopy:%@",items, _tempItems, temp);
+    _temp = [items copy];
+  //  NSLog(@"%@\ncopy:%@\n",items, temp);
 //    NSLog(@"addDate:%p\nname:%p\nattribute:%p\nshelfLifeNumber:%p\nproduct:%p\nImageData:%p",items.addDate,items.name, items.attribute,items.shelfLifeNumber, items.productionDate,items.imageData);
 //    NSLog(@"addDate:%p\nname:%p\nattribute:%p\nshelfLifeNumber:%p\nproduct:%p\nImageData:%p",temp.addDate,temp.name, temp.attribute,temp.shelfLifeNumber, temp.productionDate,temp.imageData);
 //    NSLog(@"123");
-    temp.dataType = @"ModelTwo";
-    NSDictionary *dict = [NSDictionary dictionaryWithObjects:@[temp.addDate,temp.attribute,temp.imageData,temp.name,temp.numberOfItem,temp.overDue,temp.productionDate,temp.shelfLifeNumber,temp.dataType] forKeys:@[@"addDate",@"attribute",@"imageData",@"name",@"numberOfItem",@"overDue",@"productionDate",@"shelfLifeNumber",@"dataType"]];
+    _temp.dataType = @"ModelTwo";
+    NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithObjects:@[_temp.addDate,_temp.attribute,_temp.imageData,_temp.name,_temp.numberOfItem,_temp.overDue,_temp.productionDate,_temp.shelfLifeNumber,_temp.dataType] forKeys:@[@"addDate",@"attribute",@"imageData",@"name",@"numberOfItem",@"overDue",@"productionDate",@"shelfLifeNumber",@"dataType"]];
     [_goodsView.itemsArray addObject:dict];
     [_goodsView.mainTableView reloadData];
+}
+- (void)numberChange:(UIStepper *)sc name:(NSString *)string {
+    Items *tempItems = [[Items alloc] init];
+    for (int i = 0; i < _goodsView.itemsArray.count; i++) {
+        NSMutableDictionary *dict = _goodsView.itemsArray[i];
+        if ([[dict valueForKey:@"name"] isEqual:string]) {
+            tempItems.numberOfItem = [NSNumber numberWithDouble:sc.value];
+            [tempItems setValuesForKeysWithDictionary:dict];
+            NSMutableDictionary *dict2 = [NSMutableDictionary dictionaryWithObjects:@[tempItems.addDate,tempItems.attribute,tempItems.imageData,tempItems.name,tempItems.numberOfItem,tempItems.overDue,tempItems.productionDate,tempItems.shelfLifeNumber,tempItems.dataType] forKeys:@[@"addDate",@"attribute",@"imageData",@"name",@"numberOfItem",@"overDue",@"productionDate",@"shelfLifeNumber",@"dataType"]];
+            [_goodsView.itemsArray removeObjectAtIndex:i];
+            [_goodsView.itemsArray insertObject:dict2 atIndex:i];
+            break;
+        }
+    }
 }
 /*
 #pragma mark - Navigation

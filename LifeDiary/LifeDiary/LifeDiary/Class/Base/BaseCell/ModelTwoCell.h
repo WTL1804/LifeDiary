@@ -9,7 +9,11 @@
 #import "BaseTableViewCell.h"
 @class ModelTwo;
 NS_ASSUME_NONNULL_BEGIN
+@protocol numberChangeDelegate <NSObject>
 
+- (void)numberChange:(UIStepper *)sc name:(NSString *)string;
+
+@end
 @interface ModelTwoCell : BaseTableViewCell
 @property (nonatomic, strong) ModelTwo *modelTwo;
 
@@ -20,7 +24,9 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) UILabel *titleLabel;
 @property (nonatomic, strong) UILabel *attributeLabel;
 
-@property (nonatomic, strong) UISegmentedControl *increaseSegmentControl;
+@property (nonatomic, strong) UIStepper *increaseStepper;
+
+@property (nonatomic, weak) id <numberChangeDelegate>numberChangeDelegate;
 @end
 
 NS_ASSUME_NONNULL_END

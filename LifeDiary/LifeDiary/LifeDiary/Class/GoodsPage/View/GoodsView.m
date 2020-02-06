@@ -21,14 +21,20 @@
 - (void)setUI {
     self.backgroundColor = [UIColor whiteColor];
     self.mainTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height) style:UITableViewStyleGrouped];
-    
+    _itemsArray = [[NSMutableArray alloc] init];
     self.mainTableView.dataSource = self;
     self.mainTableView.delegate = self;
+    //注册
+//    for (int i = 0; i < _itemsArray.count; i++) {
+//        BaseModel *baseModel = [BaseModel initWithDictionary:_itemsArray[i]];
+//        NSString *modelName = [NSString stringWithUTF8String:object_getClassName(baseModel)];
+//        [_mainTableView registerClass:[BaseTableViewCell class] forCellReuseIdentifier:modelName];
+//    }
    // [self.mainTableView registerClass: [BaseTableViewCell class] forCellReuseIdentifier:@"GoodsViewCell"];
     self.mainTableView.backgroundColor = [UIColor whiteColor];
     [self addSubview:_mainTableView];
     
-    _itemsArray = [[NSMutableArray alloc] init];
+    
 //    NSDictionary *dict = @{@"key":@"123",@"tag":@"BaseModel"};
 //    [_itemsArray addObject:dict];
     
@@ -49,12 +55,13 @@
     
     BaseModel *baseModel = [BaseModel initWithDictionary:_itemsArray[indexPath.section]];
     NSString *modelName = [NSString stringWithUTF8String:object_getClassName(baseModel)];
-    BaseTableViewCell *cell = [_mainTableView dequeueReusableCellWithIdentifier:modelName];
-    if (cell == nil) {
-        cell = [BaseTableViewCell initWithModel:baseModel];
+    _cell = [_mainTableView dequeueReusableCellWithIdentifier:modelName];
+    
+    if (_cell == nil) {
+        _cell = [BaseTableViewCell initWithModel:baseModel];
     }
-    [cell setLayOutInSubclass:baseModel];
-    return cell;
+    [_cell setLayOutInSubclass:baseModel];
+    return _cell;
 }
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
     return nil;

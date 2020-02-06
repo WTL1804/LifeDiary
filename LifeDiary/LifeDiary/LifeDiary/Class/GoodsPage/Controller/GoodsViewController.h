@@ -13,14 +13,14 @@
 #import "AddItemsViewController.h"
 NS_ASSUME_NONNULL_BEGIN
 
-@interface GoodsViewController : UIViewController <addItemDelegate>
+@interface GoodsViewController : UIViewController <addItemDelegate, >
 
 @property (nonatomic, strong) GoodsView *goodsView;
 @property (nonatomic, strong) GoodsHeadView *headView;
 
 @property (nonatomic, strong) UIButton *addButton;
 
-@property (nonatomic, strong) Items *tempItems;
+@property (nonatomic, strong) Items *temp;
 @end
 
 NS_ASSUME_NONNULL_END

@@ -13,7 +13,6 @@ NS_ASSUME_NONNULL_BEGIN
 @interface BaseTableViewCell : UITableViewCell
 
 
-
 + (instancetype)initWithModel:(BaseModel *)baseModel;
 
 //子类的布局方法
