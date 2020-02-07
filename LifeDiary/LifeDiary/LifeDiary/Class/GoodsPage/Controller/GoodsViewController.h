@@ -12,8 +12,8 @@
 #import "Items.h"
 #import "AddItemsViewController.h"
 NS_ASSUME_NONNULL_BEGIN
-
-@interface GoodsViewController : UIViewController <addItemDelegate, >
+typedef void(^numberChangeBlock)(UIStepper *sc);
+@interface GoodsViewController : UIViewController <addItemDelegate>
 
 @property (nonatomic, strong) GoodsView *goodsView;
 @property (nonatomic, strong) GoodsHeadView *headView;
@@ -21,6 +21,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) UIButton *addButton;
 
 @property (nonatomic, strong) Items *temp;
+
 @end
 
 NS_ASSUME_NONNULL_END

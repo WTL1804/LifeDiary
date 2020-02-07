@@ -72,9 +72,8 @@
     NSString *numberString = @"数量：";
            numberString = [numberString stringByAppendingString:[number stringValue]];
            _numberOfItemLabel.text = numberString;
-    
-    
-    [self.numberChangeDelegate numberChange:sc name:_modelTwo.name];
+    NSMutableDictionary *dict = [[NSMutableDictionary alloc] initWithObjects:@[_modelTwo.name,sc] forKeys:@[@"name", @"stepper"]];
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"numberChange" object:self userInfo:dict];
     
 }
 

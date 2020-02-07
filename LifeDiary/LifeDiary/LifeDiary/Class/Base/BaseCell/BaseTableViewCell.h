@@ -10,6 +10,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 @class BaseModel;
+
 @interface BaseTableViewCell : UITableViewCell
 
 

@@ -7,7 +7,6 @@
 //
 
 #import "GoodsHeadView.h"
-
 @implementation GoodsHeadView
 
 /*
@@ -19,7 +18,7 @@
 */
 - (void)setUI {
     self.backgroundColor = [UIColor whiteColor];
-    self.searchField = [[UITextField alloc] initWithFrame:CGRectMake(70, 50, 225, 35)];
+    self.searchField = [[UITextField alloc] initWithFrame:CGRectMake(70, 50, 235, 35)];
     self.searchField.backgroundColor = [UIColor colorWithWhite:0.95 alpha:1];
     self.searchField.layer.borderWidth = 0.1;
     self.searchField.layer.cornerRadius = 5;
@@ -31,9 +30,18 @@
     [self addSubview:_personBtn];
     [_personBtn setImage:[UIImage imageNamed:@"person.png"] forState:UIControlStateNormal];
     [_personBtn addTarget:self action:@selector(clickPersonBtn) forControlEvents:UIControlEventTouchUpInside];
+    
+    self.allBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    [_allBtn setFrame:CGRectMake(320, 50, 33, 33)];
+    [self addSubview:_allBtn];
+    [_allBtn setImage:[UIImage imageNamed:@"quanbu.png"] forState:UIControlStateNormal];
+    [_allBtn addTarget:self action:@selector(clickAllBtn) forControlEvents:UIControlEventTouchUpInside];
 }
 - (void)clickPersonBtn {
 
+}
+- (void)clickAllBtn {
+    [self.deleagate clickAllBtn];
 }
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
     [_searchField resignFirstResponder];

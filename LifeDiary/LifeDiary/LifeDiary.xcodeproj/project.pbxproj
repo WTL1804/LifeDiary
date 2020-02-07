@@ -35,6 +35,8 @@
 		84762BA423A6328100713ECA /* WelComeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 84762BA323A6328100713ECA /* WelComeView.m */; };
 		84762BA723A632A300713ECA /* WelcomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84762BA623A632A300713ECA /* WelcomeViewController.m */; };
 		84AA2CF123A5A4C4008B38E8 /* GoodsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84AA2CF023A5A4C4008B38E8 /* GoodsViewController.m */; };
+		84C9A81223ED397C002EA55D /* quanbu.png in Resources */ = {isa = PBXBuildFile; fileRef = 84C9A81123ED397C002EA55D /* quanbu.png */; };
+		84C9A81823ED40AA002EA55D /* MoreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84C9A81723ED40AA002EA55D /* MoreViewController.m */; };
 		84DD173B2395383900B10515 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 84DD173A2395383900B10515 /* AppDelegate.m */; };
 		84DD173E2395383900B10515 /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 84DD173D2395383900B10515 /* SceneDelegate.m */; };
 		84DD17442395383900B10515 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84DD17422395383900B10515 /* Main.storyboard */; };
@@ -111,6 +113,9 @@
 		84762BA623A632A300713ECA /* WelcomeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WelcomeViewController.m; sourceTree = "<group>"; };
 		84AA2CEF23A5A4C4008B38E8 /* GoodsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GoodsViewController.h; sourceTree = "<group>"; };
 		84AA2CF023A5A4C4008B38E8 /* GoodsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GoodsViewController.m; sourceTree = "<group>"; };
+		84C9A81123ED397C002EA55D /* quanbu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = quanbu.png; sourceTree = "<group>"; };
+		84C9A81623ED40AA002EA55D /* MoreViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MoreViewController.h; sourceTree = "<group>"; };
+		84C9A81723ED40AA002EA55D /* MoreViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MoreViewController.m; sourceTree = "<group>"; };
 		84DD17362395383900B10515 /* LifeDiary.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LifeDiary.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		84DD17392395383900B10515 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = ../AppDelegate.h; sourceTree = "<group>"; };
 		84DD173A2395383900B10515 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = ../AppDelegate.m; sourceTree = "<group>"; };
@@ -235,6 +240,8 @@
 				84AA2CF023A5A4C4008B38E8 /* GoodsViewController.m */,
 				84544FDD23D0998100639E34 /* AddItemsViewController.h */,
 				84544FDE23D0998100639E34 /* AddItemsViewController.m */,
+				84C9A81623ED40AA002EA55D /* MoreViewController.h */,
+				84C9A81723ED40AA002EA55D /* MoreViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -305,6 +312,7 @@
 				84762B9D23A621F900713ECA /* whiteBackGroundImage.png */,
 				845E1CEF23CC07DE005E4960 /* welcome.png */,
 				8446021823EB0A980077227C /* person.png */,
+				84C9A81123ED397C002EA55D /* quanbu.png */,
 			);
 			path = Sourse;
 			sourceTree = "<group>";
@@ -522,6 +530,7 @@
 				84762B9323A5C68700713ECA /* wupinguanli.png in Resources */,
 				84762B9723A5C7C200713ECA /* faxian.png in Resources */,
 				8446021923EB0A980077227C /* person.png in Resources */,
+				84C9A81223ED397C002EA55D /* quanbu.png in Resources */,
 				84DD17462395383B00B10515 /* Assets.xcassets in Resources */,
 				84DD17442395383900B10515 /* Main.storyboard in Resources */,
 				84544FE423D29B5700639E34 /* 照相机.png in Resources */,
@@ -577,6 +586,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				84544FE723D2A61800639E34 /* Camera.m in Sources */,
+				84C9A81823ED40AA002EA55D /* MoreViewController.m in Sources */,
 				84544FED23D3E40900639E34 /* Access_tokenModel.m in Sources */,
 				8462477223A5A4F50022EF97 /* GoodsView.m in Sources */,
 				84544FDF23D0998100639E34 /* AddItemsViewController.m in Sources */,

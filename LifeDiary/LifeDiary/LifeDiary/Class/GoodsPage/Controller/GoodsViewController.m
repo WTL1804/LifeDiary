@@ -10,8 +10,9 @@
 #import "WelcomeViewController.h"
 #import "GoodsView.h"
 #import "GoodsHeadView.h"
+#import "MoreViewController.h"
 
-@interface GoodsViewController ()
+@interface GoodsViewController () <clickAllBtnDeleage>
 
 @end
 
@@ -33,6 +34,7 @@
     
     _headView = [[GoodsHeadView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 100)];
     [self.view addSubview:_headView];
+    _headView.deleagate = self;
     [_headView setUI];
     
     self.tabBarController.tabBar.tintColor = [UIColor greenColor];
@@ -59,6 +61,9 @@
 //    [self.view addSubview:effectview];
     
     self.title = @"物品";
+    
+    //通过通知来实现工厂cell的传值
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(numberChange:) name:@"numberChange" object:nil];
 }
 
 - (void)clickButton {
@@ -86,19 +91,29 @@
     [_goodsView.itemsArray addObject:dict];
     [_goodsView.mainTableView reloadData];
 }
-- (void)numberChange:(UIStepper *)sc name:(NSString *)string {
-    Items *tempItems = [[Items alloc] init];
-    for (int i = 0; i < _goodsView.itemsArray.count; i++) {
-        NSMutableDictionary *dict = _goodsView.itemsArray[i];
-        if ([[dict valueForKey:@"name"] isEqual:string]) {
-            tempItems.numberOfItem = [NSNumber numberWithDouble:sc.value];
-            [tempItems setValuesForKeysWithDictionary:dict];
-            NSMutableDictionary *dict2 = [NSMutableDictionary dictionaryWithObjects:@[tempItems.addDate,tempItems.attribute,tempItems.imageData,tempItems.name,tempItems.numberOfItem,tempItems.overDue,tempItems.productionDate,tempItems.shelfLifeNumber,tempItems.dataType] forKeys:@[@"addDate",@"attribute",@"imageData",@"name",@"numberOfItem",@"overDue",@"productionDate",@"shelfLifeNumber",@"dataType"]];
-            [_goodsView.itemsArray removeObjectAtIndex:i];
-            [_goodsView.itemsArray insertObject:dict2 atIndex:i];
-            break;
+
+- (void)numberChange:(NSNotification *)noti {
+    NSDictionary *dict = [noti userInfo];
+    UIStepper *sc = [dict valueForKey:@"stepper"];
+    NSString *name = [dict valueForKey:@"name"];
+        Items *tempItems = [[Items alloc] init];
+        for (int i = 0; i < _goodsView.itemsArray.count; i++) {
+            NSMutableDictionary *dict = _goodsView.itemsArray[i];
+            if ([[dict valueForKey:@"name"] isEqual:name]) {
+                
+                [tempItems setValuesForKeysWithDictionary:dict];
+                tempItems.numberOfItem = [NSNumber numberWithDouble:sc.value];
+                NSMutableDictionary *dict2 = [NSMutableDictionary dictionaryWithObjects:@[tempItems.addDate,tempItems.attribute,tempItems.imageData,tempItems.name,tempItems.numberOfItem,tempItems.overDue,tempItems.productionDate,tempItems.shelfLifeNumber,tempItems.dataType] forKeys:@[@"addDate",@"attribute",@"imageData",@"name",@"numberOfItem",@"overDue",@"productionDate",@"shelfLifeNumber",@"dataType"]];
+                [_goodsView.itemsArray removeObjectAtIndex:i];
+                [_goodsView.itemsArray insertObject:dict2 atIndex:i];
+                break;
+            }
         }
-    }
+}
+- (void)clickAllBtn {
+    MoreViewController *more = [[MoreViewController alloc] init];
+    more.modalPresentationStyle = UIModalPresentationOverFullScreen;
+    [self presentViewController:more animated:NO completion:nil];
 }
 /*
 #pragma mark - Navigation

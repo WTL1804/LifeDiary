@@ -9,13 +9,19 @@
 #import <UIKit/UIKit.h>
 
 NS_ASSUME_NONNULL_BEGIN
+@protocol clickAllBtnDeleage <NSObject>
 
+- (void)clickAllBtn;
+
+@end
 @interface GoodsHeadView : UIView
 - (void)setUI;
 
 @property (nonatomic, strong) UITextField *searchField;
 
 @property (nonatomic, strong) UIButton *personBtn;
+@property (nonatomic, strong) UIButton *allBtn;
+@property (nonatomic, weak) id <clickAllBtnDeleage>deleagate;
 
 @end
 
