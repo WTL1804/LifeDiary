@@ -27,7 +27,7 @@
     
     
     
-    _goodsView = [[GoodsView alloc] initWithFrame:CGRectMake(0, 100, self.view.frame.size.width, self.view.frame.size.height - 100 - self.tabBarController.tabBar.bounds.size.height)];
+    _goodsView = [[GoodsView alloc] initWithFrame:CGRectMake(0, 100, self.view.frame.size.width, self.view.frame.size.height - 100 )];
     [self.view addSubview:_goodsView];
     [_goodsView setUI];
     //_goodsView.cell.numberChangeDelegate = self;
@@ -75,10 +75,11 @@
 }
 - (void)viewWillAppear:(BOOL)animated {
     self.navigationController.navigationBar.hidden = YES;
-    
+    self.tabBarController.tabBar.hidden = NO;
 }
 - (void)viewWillDisappear:(BOOL)animated {
     self.navigationController.navigationBar.hidden = NO;
+    self.tabBarController.tabBar.hidden = YES;
 }
 - (void)passItem:(Items *)items {
     _temp = [items copy];
@@ -112,8 +113,15 @@
 }
 - (void)clickAllBtn {
     MoreViewController *more = [[MoreViewController alloc] init];
-    more.modalPresentationStyle = UIModalPresentationOverFullScreen;
-    [self presentViewController:more animated:NO completion:nil];
+    
+    //more.modalPresentationStyle = UIModalPresentationOverCurrentContext;
+    self.modalPresentationStyle = UIModalPresentationCurrentContext;
+    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:more];
+    nav.modalPresentationStyle = UIModalPresentationOverCurrentContext;
+    //加载模态视图
+    more.view.backgroundColor = [[UIColor whiteColor] colorWithAlphaComponent:0];
+    //self.tabBarController.tabBar.hidden = YES;
+    [self presentViewController:nav animated:NO completion:nil];
 }
 /*
 #pragma mark - Navigation

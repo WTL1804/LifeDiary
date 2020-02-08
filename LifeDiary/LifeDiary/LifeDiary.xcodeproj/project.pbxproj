@@ -37,6 +37,7 @@
 		84AA2CF123A5A4C4008B38E8 /* GoodsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84AA2CF023A5A4C4008B38E8 /* GoodsViewController.m */; };
 		84C9A81223ED397C002EA55D /* quanbu.png in Resources */ = {isa = PBXBuildFile; fileRef = 84C9A81123ED397C002EA55D /* quanbu.png */; };
 		84C9A81823ED40AA002EA55D /* MoreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84C9A81723ED40AA002EA55D /* MoreViewController.m */; };
+		84C9A81B23EEE525002EA55D /* AllItemsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84C9A81A23EEE525002EA55D /* AllItemsViewController.m */; };
 		84DD173B2395383900B10515 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 84DD173A2395383900B10515 /* AppDelegate.m */; };
 		84DD173E2395383900B10515 /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 84DD173D2395383900B10515 /* SceneDelegate.m */; };
 		84DD17442395383900B10515 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84DD17422395383900B10515 /* Main.storyboard */; };
@@ -116,6 +117,8 @@
 		84C9A81123ED397C002EA55D /* quanbu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = quanbu.png; sourceTree = "<group>"; };
 		84C9A81623ED40AA002EA55D /* MoreViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MoreViewController.h; sourceTree = "<group>"; };
 		84C9A81723ED40AA002EA55D /* MoreViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MoreViewController.m; sourceTree = "<group>"; };
+		84C9A81923EEE525002EA55D /* AllItemsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AllItemsViewController.h; sourceTree = "<group>"; };
+		84C9A81A23EEE525002EA55D /* AllItemsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AllItemsViewController.m; sourceTree = "<group>"; };
 		84DD17362395383900B10515 /* LifeDiary.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LifeDiary.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		84DD17392395383900B10515 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = ../AppDelegate.h; sourceTree = "<group>"; };
 		84DD173A2395383900B10515 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = ../AppDelegate.m; sourceTree = "<group>"; };
@@ -242,6 +245,8 @@
 				84544FDE23D0998100639E34 /* AddItemsViewController.m */,
 				84C9A81623ED40AA002EA55D /* MoreViewController.h */,
 				84C9A81723ED40AA002EA55D /* MoreViewController.m */,
+				84C9A81923EEE525002EA55D /* AllItemsViewController.h */,
+				84C9A81A23EEE525002EA55D /* AllItemsViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -585,6 +590,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				84C9A81B23EEE525002EA55D /* AllItemsViewController.m in Sources */,
 				84544FE723D2A61800639E34 /* Camera.m in Sources */,
 				84C9A81823ED40AA002EA55D /* MoreViewController.m in Sources */,
 				84544FED23D3E40900639E34 /* Access_tokenModel.m in Sources */,

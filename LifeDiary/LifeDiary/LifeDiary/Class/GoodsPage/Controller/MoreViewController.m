@@ -7,7 +7,7 @@
 //
 
 #import "MoreViewController.h"
-
+#import "AllItemsViewController.h"
 @interface MoreViewController ()
 
 @end
@@ -17,13 +17,57 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.view.alpha = 0.3;
     self.view.backgroundColor = [UIColor blackColor];
+    _moreTableView = [[UITableView alloc] initWithFrame:CGRectMake(250, 90, 120, 150)];
+    [self.view addSubview:_moreTableView];
+    _moreTableView.delegate = self;
+    _moreTableView.dataSource = self;
 }
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
     [self dismissViewControllerAnimated:NO completion:nil];
+    self.presentingViewController.tabBarController.tabBar.hidden = NO;
 }
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    return 3;
+}
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return 1;
+}
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return 50;
+}
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    static NSString *stringOfCell = @"tempCell";
+    _cell = [_moreTableView dequeueReusableCellWithIdentifier:stringOfCell];
+    if (_cell == nil) {
+        _cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:stringOfCell];
+    }
+    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, _cell.frame.size.width, _cell.frame.size.height)];
+    [_cell.contentView addSubview:label];
+   
+    _cell.contentView.alpha = 1;
+    label.text = @"消息";
+    
+    return _cell;
+}
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    UITableViewCell *tempCell = [tableView cellForRowAtIndexPath:indexPath];
+    if (indexPath.section == 0) {
+        AllItemsViewController *all = [[AllItemsViewController alloc] init];
+        [self.navigationController pushViewController:all animated:nil];
+        //[self dismissViewControllerAnimated:NO completion:nil];
+        
+    }
+}
+- (void)viewWillAppear:(BOOL)animated {
+    self.navigationController.navigationBar.hidden = YES;
+}
+- (void)viewWillDisappear:(BOOL)animated {
+    self.navigationController.navigationBar.hidden = NO;
+}
+
+
 /*
 #pragma mark - Navigation
 
