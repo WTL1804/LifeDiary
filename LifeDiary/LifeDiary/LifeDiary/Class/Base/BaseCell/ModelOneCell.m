@@ -9,6 +9,7 @@
 #import "ModelOneCell.h"
 #import "ModelOne.h"
 #import <Masonry.h>
+#import "BezierPathView.h"
 @implementation ModelOneCell
 
 - (void)setLayOutInSubclass:(BaseModel *)baseModel {
@@ -40,6 +41,20 @@
     _attributeLabel = [[UILabel alloc] init];
     _attributeLabel.text = _modelOne.attribute;
     [self addSubview:_attributeLabel];
+    
+//    _bezierView = [[BezierPathView alloc] initWithFrame:CGRectMake(300, 100, 50, 50)];
+//    [self addSubview:_bezierView];
+     CAShapeLayer * _shapeLayer = [CAShapeLayer layer];
+        _shapeLayer.frame = CGRectMake(0, 0, 40, 40);
+        _shapeLayer.position = self.center;
+        _shapeLayer.fillColor = [UIColor greenColor].CGColor;
+        _shapeLayer.lineWidth = 1.0f;
+        _shapeLayer.strokeColor = [UIColor redColor].CGColor;
+        UIBezierPath *bezierPath = [UIBezierPath bezierPathWithOvalInRect:CGRectMake(0, 0, 40, 40)];
+        _shapeLayer.path = bezierPath.CGPath;
+        [self.layer addSublayer:_shapeLayer];
+
+    
     
     
 }
@@ -78,6 +93,15 @@
                      make.left.equalTo(_imageViewOfItems.mas_right).offset(10);
                             make.right.equalTo(self.mas_right);
     }];
+    
+//    [_bezierView mas_makeConstraints:^(MASConstraintMaker *make) {
+//
+//        make.top.equalTo(_addDateLabel.mas_top).offset(5);
+//        make.bottom.equalTo(_deadLineLabel.mas_top).offset(-5);
+//        make.left.equalTo(_addDateLabel.mas_top);
+//        make.right.equalTo(self.mas_right);
+//
+//    }];
     
 }
 

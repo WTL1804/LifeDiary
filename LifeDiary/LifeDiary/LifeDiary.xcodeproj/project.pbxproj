@@ -18,7 +18,6 @@
 		84544FDF23D0998100639E34 /* AddItemsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84544FDE23D0998100639E34 /* AddItemsViewController.m */; };
 		84544FE223D09AB100639E34 /* AddItemsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 84544FE123D09AB100639E34 /* AddItemsView.m */; };
 		84544FE423D29B5700639E34 /* 照相机.png in Resources */ = {isa = PBXBuildFile; fileRef = 84544FE323D29B5700639E34 /* 照相机.png */; };
-		84544FE723D2A61800639E34 /* Camera.m in Sources */ = {isa = PBXBuildFile; fileRef = 84544FE623D2A61800639E34 /* Camera.m */; };
 		84544FEA23D3E23A00639E34 /* LifeDiaryManage.m in Sources */ = {isa = PBXBuildFile; fileRef = 84544FE923D3E23A00639E34 /* LifeDiaryManage.m */; };
 		84544FED23D3E40900639E34 /* Access_tokenModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 84544FEC23D3E40900639E34 /* Access_tokenModel.m */; };
 		845E1CF023CC07DE005E4960 /* welcome.png in Resources */ = {isa = PBXBuildFile; fileRef = 845E1CEF23CC07DE005E4960 /* welcome.png */; };
@@ -38,6 +37,9 @@
 		84C9A81223ED397C002EA55D /* quanbu.png in Resources */ = {isa = PBXBuildFile; fileRef = 84C9A81123ED397C002EA55D /* quanbu.png */; };
 		84C9A81823ED40AA002EA55D /* MoreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84C9A81723ED40AA002EA55D /* MoreViewController.m */; };
 		84C9A81B23EEE525002EA55D /* AllItemsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84C9A81A23EEE525002EA55D /* AllItemsViewController.m */; };
+		84C9A81E23EFDEB9002EA55D /* AllItemsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 84C9A81D23EFDEB9002EA55D /* AllItemsView.m */; };
+		84C9A82123F0063A002EA55D /* GoodsViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 84C9A82023F0063A002EA55D /* GoodsViewModel.m */; };
+		84C9A82423F1987D002EA55D /* BezierPathView.m in Sources */ = {isa = PBXBuildFile; fileRef = 84C9A82323F1987D002EA55D /* BezierPathView.m */; };
 		84DD173B2395383900B10515 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 84DD173A2395383900B10515 /* AppDelegate.m */; };
 		84DD173E2395383900B10515 /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 84DD173D2395383900B10515 /* SceneDelegate.m */; };
 		84DD17442395383900B10515 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84DD17422395383900B10515 /* Main.storyboard */; };
@@ -85,8 +87,6 @@
 		84544FE023D09AB100639E34 /* AddItemsView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AddItemsView.h; sourceTree = "<group>"; };
 		84544FE123D09AB100639E34 /* AddItemsView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AddItemsView.m; sourceTree = "<group>"; };
 		84544FE323D29B5700639E34 /* 照相机.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "照相机.png"; sourceTree = "<group>"; };
-		84544FE523D2A61800639E34 /* Camera.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Camera.h; path = LifeDiary/Class/GoodsPage/View/Camera.h; sourceTree = SOURCE_ROOT; };
-		84544FE623D2A61800639E34 /* Camera.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = Camera.m; path = LifeDiary/Class/GoodsPage/View/Camera.m; sourceTree = SOURCE_ROOT; };
 		84544FE823D3E23A00639E34 /* LifeDiaryManage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LifeDiaryManage.h; sourceTree = "<group>"; };
 		84544FE923D3E23A00639E34 /* LifeDiaryManage.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LifeDiaryManage.m; sourceTree = "<group>"; };
 		84544FEB23D3E40900639E34 /* Access_tokenModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Access_tokenModel.h; sourceTree = "<group>"; };
@@ -119,6 +119,12 @@
 		84C9A81723ED40AA002EA55D /* MoreViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MoreViewController.m; sourceTree = "<group>"; };
 		84C9A81923EEE525002EA55D /* AllItemsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AllItemsViewController.h; sourceTree = "<group>"; };
 		84C9A81A23EEE525002EA55D /* AllItemsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AllItemsViewController.m; sourceTree = "<group>"; };
+		84C9A81C23EFDEB9002EA55D /* AllItemsView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AllItemsView.h; sourceTree = "<group>"; };
+		84C9A81D23EFDEB9002EA55D /* AllItemsView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AllItemsView.m; sourceTree = "<group>"; };
+		84C9A81F23F0063A002EA55D /* GoodsViewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GoodsViewModel.h; sourceTree = "<group>"; };
+		84C9A82023F0063A002EA55D /* GoodsViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GoodsViewModel.m; sourceTree = "<group>"; };
+		84C9A82223F1987D002EA55D /* BezierPathView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BezierPathView.h; sourceTree = "<group>"; };
+		84C9A82323F1987D002EA55D /* BezierPathView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BezierPathView.m; sourceTree = "<group>"; };
 		84DD17362395383900B10515 /* LifeDiary.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LifeDiary.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		84DD17392395383900B10515 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = ../AppDelegate.h; sourceTree = "<group>"; };
 		84DD173A2395383900B10515 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = ../AppDelegate.m; sourceTree = "<group>"; };
@@ -219,6 +225,8 @@
 				84544FEC23D3E40900639E34 /* Access_tokenModel.m */,
 				846BD36723DEAD7B00133FF7 /* Items.h */,
 				846BD36823DEAD7B00133FF7 /* Items.m */,
+				84C9A82223F1987D002EA55D /* BezierPathView.h */,
+				84C9A82323F1987D002EA55D /* BezierPathView.m */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -232,6 +240,8 @@
 				845E1CF223CFF0FD005E4960 /* GoodsHeadView.m */,
 				84544FE023D09AB100639E34 /* AddItemsView.h */,
 				84544FE123D09AB100639E34 /* AddItemsView.m */,
+				84C9A81C23EFDEB9002EA55D /* AllItemsView.h */,
+				84C9A81D23EFDEB9002EA55D /* AllItemsView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -254,10 +264,10 @@
 		8462477523A5A5500022EF97 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				84544FE523D2A61800639E34 /* Camera.h */,
-				84544FE623D2A61800639E34 /* Camera.m */,
 				846BD31D23D3F0A100133FF7 /* PhotoIdentificationModel.h */,
 				846BD31E23D3F0A100133FF7 /* PhotoIdentificationModel.m */,
+				84C9A81F23F0063A002EA55D /* GoodsViewModel.h */,
+				84C9A82023F0063A002EA55D /* GoodsViewModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -591,12 +601,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				84C9A81B23EEE525002EA55D /* AllItemsViewController.m in Sources */,
-				84544FE723D2A61800639E34 /* Camera.m in Sources */,
 				84C9A81823ED40AA002EA55D /* MoreViewController.m in Sources */,
 				84544FED23D3E40900639E34 /* Access_tokenModel.m in Sources */,
 				8462477223A5A4F50022EF97 /* GoodsView.m in Sources */,
 				84544FDF23D0998100639E34 /* AddItemsViewController.m in Sources */,
 				84DD173B2395383900B10515 /* AppDelegate.m in Sources */,
+				84C9A81E23EFDEB9002EA55D /* AllItemsView.m in Sources */,
 				84762BA723A632A300713ECA /* WelcomeViewController.m in Sources */,
 				84544FE223D09AB100639E34 /* AddItemsView.m in Sources */,
 				846BD31F23D3F0A100133FF7 /* PhotoIdentificationModel.m in Sources */,
@@ -611,9 +621,11 @@
 				84DD173E2395383900B10515 /* SceneDelegate.m in Sources */,
 				8446020023E8401A0077227C /* BaseModel.m in Sources */,
 				84AA2CF123A5A4C4008B38E8 /* GoodsViewController.m in Sources */,
+				84C9A82123F0063A002EA55D /* GoodsViewModel.m in Sources */,
 				8446021423E847F00077227C /* ModelOneCell.m in Sources */,
 				8462477D23A5ADE00022EF97 /* DiscoveryView.m in Sources */,
 				84762BA423A6328100713ECA /* WelComeView.m in Sources */,
+				84C9A82423F1987D002EA55D /* BezierPathView.m in Sources */,
 				845E1CF323CFF0FD005E4960 /* GoodsHeadView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

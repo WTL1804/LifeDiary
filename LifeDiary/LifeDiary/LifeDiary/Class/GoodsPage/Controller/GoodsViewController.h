@@ -9,8 +9,10 @@
 #import <UIKit/UIKit.h>
 @class GoodsView;
 @class GoodsHeadView;
+@class GoodsViewModel;
 #import "Items.h"
 #import "AddItemsViewController.h"
+
 NS_ASSUME_NONNULL_BEGIN
 typedef void(^numberChangeBlock)(UIStepper *sc);
 @interface GoodsViewController : UIViewController <addItemDelegate>
@@ -21,6 +23,8 @@ typedef void(^numberChangeBlock)(UIStepper *sc);
 @property (nonatomic, strong) UIButton *addButton;
 
 @property (nonatomic, strong) Items *temp;
+
+@property (nonatomic, strong) GoodsViewModel *goodsModel;
 
 @end
 

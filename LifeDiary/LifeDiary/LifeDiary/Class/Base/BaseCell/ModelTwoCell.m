@@ -64,6 +64,7 @@
         [_increaseStepper addTarget:self action:@selector(numberChange:) forControlEvents:UIControlEventValueChanged];
     }
     [self addSubview:_increaseStepper];
+  
 
 }
 - (void)numberChange:(UIStepper *)sc{

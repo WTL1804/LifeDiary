@@ -10,6 +10,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 @class ModelOne;
+@class BezierPathView;
 @interface ModelOneCell : BaseTableViewCell
 //GoodsView
 @property (nonatomic, strong) UIImageView *imageViewOfItems;
@@ -17,7 +18,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) UILabel *addDateLabel;
 @property (nonatomic, strong) UILabel *titleLabel;
 @property (nonatomic, strong) UILabel *attributeLabel;
-
+@property (nonatomic, strong) BezierPathView *bezierView;
 @property (nonatomic, strong) ModelOne *modelOne;
 
 @end

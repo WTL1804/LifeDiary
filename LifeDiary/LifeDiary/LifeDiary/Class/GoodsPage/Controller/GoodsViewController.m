@@ -11,8 +11,11 @@
 #import "GoodsView.h"
 #import "GoodsHeadView.h"
 #import "MoreViewController.h"
+#import "AllItemsViewController.h"
+#import "AllItemsView.h"
+#import "GoodsViewModel.h"
 
-@interface GoodsViewController () <clickAllBtnDeleage>
+@interface GoodsViewController () <clickAllBtnDeleage, clickTheHeadCell>
 
 @end
 
@@ -27,7 +30,7 @@
     
     
     
-    _goodsView = [[GoodsView alloc] initWithFrame:CGRectMake(0, 100, self.view.frame.size.width, self.view.frame.size.height - 100 )];
+    _goodsView = [[GoodsView alloc] initWithFrame:CGRectMake(0, 100, self.view.frame.size.width, self.view.frame.size.height - 100 - self.tabBarController.tabBar.frame.size.height)];
     [self.view addSubview:_goodsView];
     [_goodsView setUI];
     //_goodsView.cell.numberChangeDelegate = self;
@@ -59,11 +62,14 @@
 //    UIVisualEffectView *effectview = [[UIVisualEffectView alloc] initWithEffect:blur];
 //    effectview.frame =self.view.frame;
 //    [self.view addSubview:effectview];
+
     
     self.title = @"物品";
     
     //通过通知来实现工厂cell的传值
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(numberChange:) name:@"numberChange" object:nil];
+    
+    _goodsModel = [[GoodsViewModel alloc] init];
 }
 
 - (void)clickButton {
@@ -83,10 +89,6 @@
 }
 - (void)passItem:(Items *)items {
     _temp = [items copy];
-  //  NSLog(@"%@\ncopy:%@\n",items, temp);
-//    NSLog(@"addDate:%p\nname:%p\nattribute:%p\nshelfLifeNumber:%p\nproduct:%p\nImageData:%p",items.addDate,items.name, items.attribute,items.shelfLifeNumber, items.productionDate,items.imageData);
-//    NSLog(@"addDate:%p\nname:%p\nattribute:%p\nshelfLifeNumber:%p\nproduct:%p\nImageData:%p",temp.addDate,temp.name, temp.attribute,temp.shelfLifeNumber, temp.productionDate,temp.imageData);
-//    NSLog(@"123");
     _temp.dataType = @"ModelTwo";
     NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithObjects:@[_temp.addDate,_temp.attribute,_temp.imageData,_temp.name,_temp.numberOfItem,_temp.overDue,_temp.productionDate,_temp.shelfLifeNumber,_temp.dataType] forKeys:@[@"addDate",@"attribute",@"imageData",@"name",@"numberOfItem",@"overDue",@"productionDate",@"shelfLifeNumber",@"dataType"]];
     [_goodsView.itemsArray addObject:dict];
@@ -97,16 +99,10 @@
     NSDictionary *dict = [noti userInfo];
     UIStepper *sc = [dict valueForKey:@"stepper"];
     NSString *name = [dict valueForKey:@"name"];
-        Items *tempItems = [[Items alloc] init];
         for (int i = 0; i < _goodsView.itemsArray.count; i++) {
             NSMutableDictionary *dict = _goodsView.itemsArray[i];
             if ([[dict valueForKey:@"name"] isEqual:name]) {
-                
-                [tempItems setValuesForKeysWithDictionary:dict];
-                tempItems.numberOfItem = [NSNumber numberWithDouble:sc.value];
-                NSMutableDictionary *dict2 = [NSMutableDictionary dictionaryWithObjects:@[tempItems.addDate,tempItems.attribute,tempItems.imageData,tempItems.name,tempItems.numberOfItem,tempItems.overDue,tempItems.productionDate,tempItems.shelfLifeNumber,tempItems.dataType] forKeys:@[@"addDate",@"attribute",@"imageData",@"name",@"numberOfItem",@"overDue",@"productionDate",@"shelfLifeNumber",@"dataType"]];
-                [_goodsView.itemsArray removeObjectAtIndex:i];
-                [_goodsView.itemsArray insertObject:dict2 atIndex:i];
+                [_goodsModel changeNumberOfItem:_goodsView.itemsArray[i] value:sc.value array:_goodsView.itemsArray number:i];
                 break;
             }
         }
@@ -114,14 +110,26 @@
 - (void)clickAllBtn {
     MoreViewController *more = [[MoreViewController alloc] init];
     
-    //more.modalPresentationStyle = UIModalPresentationOverCurrentContext;
     self.modalPresentationStyle = UIModalPresentationCurrentContext;
     UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:more];
     nav.modalPresentationStyle = UIModalPresentationOverCurrentContext;
     //加载模态视图
     more.view.backgroundColor = [[UIColor whiteColor] colorWithAlphaComponent:0];
-    //self.tabBarController.tabBar.hidden = YES;
+    more.delegate = self;
     [self presentViewController:nav animated:NO completion:nil];
+}
+- (void)clickHeadCell {
+    AllItemsViewController *all = [[AllItemsViewController alloc] init];
+    all.itemsTempMutArray = [[NSMutableArray alloc] init];
+    for (int i = 0; i < self->_goodsView.itemsArray.count; i++) {
+        NSMutableDictionary *dict = [self->_goodsView.itemsArray[i] mutableCopy];
+        NSString *dataType = @"ModelOne";
+        [dict removeObjectForKey:@"dataType"];
+        [dict setValue:dataType forKey:@"dataType"];
+        [all.itemsTempMutArray addObject:dict];
+        //NSLog(@"转换完成");
+    }
+    [self.navigationController pushViewController:all animated:NO];
 }
 /*
 #pragma mark - Navigation

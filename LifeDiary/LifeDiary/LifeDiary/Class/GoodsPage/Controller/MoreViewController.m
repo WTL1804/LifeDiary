@@ -52,11 +52,10 @@
     return _cell;
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *tempCell = [tableView cellForRowAtIndexPath:indexPath];
     if (indexPath.section == 0) {
-        AllItemsViewController *all = [[AllItemsViewController alloc] init];
-        [self.navigationController pushViewController:all animated:nil];
-        //[self dismissViewControllerAnimated:NO completion:nil];
+       // _headCellBlock(@"执行headCell的点击事件");
+        [self.delegate clickHeadCell];
+        [self dismissViewControllerAnimated:NO completion:nil];
         
     }
 }

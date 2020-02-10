@@ -24,20 +24,9 @@
     _itemsArray = [[NSMutableArray alloc] init];
     self.mainTableView.dataSource = self;
     self.mainTableView.delegate = self;
-    //注册
-//    for (int i = 0; i < _itemsArray.count; i++) {
-//        BaseModel *baseModel = [BaseModel initWithDictionary:_itemsArray[i]];
-//        NSString *modelName = [NSString stringWithUTF8String:object_getClassName(baseModel)];
-//        [_mainTableView registerClass:[BaseTableViewCell class] forCellReuseIdentifier:modelName];
-//    }
-   // [self.mainTableView registerClass: [BaseTableViewCell class] forCellReuseIdentifier:@"GoodsViewCell"];
     self.mainTableView.backgroundColor = [UIColor whiteColor];
     [self addSubview:_mainTableView];
-    
-    
-//    NSDictionary *dict = @{@"key":@"123",@"tag":@"BaseModel"};
-//    [_itemsArray addObject:dict];
-    
+
     
 }
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
