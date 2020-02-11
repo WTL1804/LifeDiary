@@ -39,7 +39,7 @@
 		84C9A81B23EEE525002EA55D /* AllItemsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84C9A81A23EEE525002EA55D /* AllItemsViewController.m */; };
 		84C9A81E23EFDEB9002EA55D /* AllItemsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 84C9A81D23EFDEB9002EA55D /* AllItemsView.m */; };
 		84C9A82123F0063A002EA55D /* GoodsViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 84C9A82023F0063A002EA55D /* GoodsViewModel.m */; };
-		84C9A82423F1987D002EA55D /* BezierPathView.m in Sources */ = {isa = PBXBuildFile; fileRef = 84C9A82323F1987D002EA55D /* BezierPathView.m */; };
+		84C9A82723F2D461002EA55D /* UIBezierPath+GetAllPoints.m in Sources */ = {isa = PBXBuildFile; fileRef = 84C9A82623F2D461002EA55D /* UIBezierPath+GetAllPoints.m */; };
 		84DD173B2395383900B10515 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 84DD173A2395383900B10515 /* AppDelegate.m */; };
 		84DD173E2395383900B10515 /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 84DD173D2395383900B10515 /* SceneDelegate.m */; };
 		84DD17442395383900B10515 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84DD17422395383900B10515 /* Main.storyboard */; };
@@ -123,8 +123,8 @@
 		84C9A81D23EFDEB9002EA55D /* AllItemsView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AllItemsView.m; sourceTree = "<group>"; };
 		84C9A81F23F0063A002EA55D /* GoodsViewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GoodsViewModel.h; sourceTree = "<group>"; };
 		84C9A82023F0063A002EA55D /* GoodsViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GoodsViewModel.m; sourceTree = "<group>"; };
-		84C9A82223F1987D002EA55D /* BezierPathView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BezierPathView.h; sourceTree = "<group>"; };
-		84C9A82323F1987D002EA55D /* BezierPathView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BezierPathView.m; sourceTree = "<group>"; };
+		84C9A82523F2D461002EA55D /* UIBezierPath+GetAllPoints.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIBezierPath+GetAllPoints.h"; sourceTree = "<group>"; };
+		84C9A82623F2D461002EA55D /* UIBezierPath+GetAllPoints.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIBezierPath+GetAllPoints.m"; sourceTree = "<group>"; };
 		84DD17362395383900B10515 /* LifeDiary.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LifeDiary.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		84DD17392395383900B10515 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = ../AppDelegate.h; sourceTree = "<group>"; };
 		84DD173A2395383900B10515 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = ../AppDelegate.m; sourceTree = "<group>"; };
@@ -210,6 +210,8 @@
 				8446021323E847F00077227C /* ModelOneCell.m */,
 				8446021523E8480C0077227C /* ModelTwoCell.h */,
 				8446021623E8480C0077227C /* ModelTwoCell.m */,
+				84C9A82523F2D461002EA55D /* UIBezierPath+GetAllPoints.h */,
+				84C9A82623F2D461002EA55D /* UIBezierPath+GetAllPoints.m */,
 			);
 			path = BaseCell;
 			sourceTree = "<group>";
@@ -225,8 +227,6 @@
 				84544FEC23D3E40900639E34 /* Access_tokenModel.m */,
 				846BD36723DEAD7B00133FF7 /* Items.h */,
 				846BD36823DEAD7B00133FF7 /* Items.m */,
-				84C9A82223F1987D002EA55D /* BezierPathView.h */,
-				84C9A82323F1987D002EA55D /* BezierPathView.m */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -607,6 +607,7 @@
 				84544FDF23D0998100639E34 /* AddItemsViewController.m in Sources */,
 				84DD173B2395383900B10515 /* AppDelegate.m in Sources */,
 				84C9A81E23EFDEB9002EA55D /* AllItemsView.m in Sources */,
+				84C9A82723F2D461002EA55D /* UIBezierPath+GetAllPoints.m in Sources */,
 				84762BA723A632A300713ECA /* WelcomeViewController.m in Sources */,
 				84544FE223D09AB100639E34 /* AddItemsView.m in Sources */,
 				846BD31F23D3F0A100133FF7 /* PhotoIdentificationModel.m in Sources */,
@@ -625,7 +626,6 @@
 				8446021423E847F00077227C /* ModelOneCell.m in Sources */,
 				8462477D23A5ADE00022EF97 /* DiscoveryView.m in Sources */,
 				84762BA423A6328100713ECA /* WelComeView.m in Sources */,
-				84C9A82423F1987D002EA55D /* BezierPathView.m in Sources */,
 				845E1CF323CFF0FD005E4960 /* GoodsHeadView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

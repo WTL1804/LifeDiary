@@ -1,8 +1,8 @@
 //
-//  BezierPathView.h
+//  UIBezierPath+GetAllPoints.h
 //  LifeDiary
 //
-//  Created by 王天亮 on 2020/2/10.
+//  Created by 王天亮 on 2020/2/11.
 //  Copyright © 2020 王天亮. All rights reserved.
 //
 
@@ -10,9 +10,8 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface BezierPathView : UIView
-
-@property (nonatomic, strong) CAShapeLayer *shapeLayer;
+@interface UIBezierPath (GetAllPoints)
+- (NSArray *)points;
 @end
 
 NS_ASSUME_NONNULL_END

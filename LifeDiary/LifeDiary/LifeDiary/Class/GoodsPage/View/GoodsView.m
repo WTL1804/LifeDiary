@@ -44,6 +44,7 @@
     
     BaseModel *baseModel = [BaseModel initWithDictionary:_itemsArray[indexPath.section]];
     NSString *modelName = [NSString stringWithUTF8String:object_getClassName(baseModel)];
+    modelName = [modelName stringByAppendingString:@"Cell"];
     _cell = [_mainTableView dequeueReusableCellWithIdentifier:modelName];
     
     if (_cell == nil) {

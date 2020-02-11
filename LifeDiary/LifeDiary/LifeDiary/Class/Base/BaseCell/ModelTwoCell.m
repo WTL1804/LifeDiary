@@ -9,6 +9,7 @@
 #import "ModelTwoCell.h"
 #import "ModelTwo.h"
 #import <Masonry.h>
+#import "UIBezierPath+GetAllPoints.h"
 @implementation ModelTwoCell
 
 - (void)setLayOutInSubclass:(BaseModel *)baseModel {
@@ -65,6 +66,37 @@
     }
     [self addSubview:_increaseStepper];
   
+    CAShapeLayer * shapeLayer = [CAShapeLayer layer];
+      shapeLayer.frame = CGRectMake(300, 100, 30, 30);
+      shapeLayer.fillColor = [UIColor whiteColor].CGColor;
+      shapeLayer.lineWidth = 1.0f;
+      shapeLayer.strokeColor = [UIColor redColor].CGColor;
+      UIBezierPath *path = [UIBezierPath bezierPathWithOvalInRect:CGRectMake(0, 0, 30, 30)];
+      shapeLayer.path = path.CGPath;
+      [self.layer addSublayer:shapeLayer];
+      
+       CAShapeLayer * _shapeLayer = [CAShapeLayer layer];
+          _shapeLayer.frame = CGRectMake(300, 100, 30, 30);
+          _shapeLayer.fillColor = [UIColor greenColor].CGColor;
+          _shapeLayer.lineWidth = 1.0f;
+          _shapeLayer.strokeColor = [UIColor redColor].CGColor;
+      //剩余天数
+          NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
+          NSDateComponents *comp = [calendar components:NSCalendarUnitDay fromDate:[NSDate date] toDate:_modelTwo.overDue options:NSCalendarWrapComponents];
+          NSNumber *number = [NSNumber numberWithInteger:comp.day];
+          CGFloat percentage = [number doubleValue] / [_modelTwo.shelfLifeNumber doubleValue];
+          UIBezierPath *bezierPath = [UIBezierPath bezierPathWithArcCenter:CGPointMake(15, 15) radius:15 startAngle:((270-180*(1-percentage))/180)*3.1415926 endAngle:((270+180*(1-percentage))/180)*3.1415926 clockwise:NO];
+          NSLog(@"%f",((270-270*(percentage))/180));
+         [bezierPath moveToPoint:bezierPath.currentPoint];
+
+          bezierPath.lineCapStyle  = kCGLineCapRound;
+          bezierPath.lineJoinStyle = kCGLineCapRound;
+          NSArray * pointArray =  [bezierPath points];
+          CGPoint tempPoint =[pointArray[0] CGPointValue];
+          [bezierPath addLineToPoint:tempPoint];
+          _shapeLayer.path = bezierPath.CGPath;
+      
+          [self.layer addSublayer:_shapeLayer];
 
 }
 - (void)numberChange:(UIStepper *)sc{
