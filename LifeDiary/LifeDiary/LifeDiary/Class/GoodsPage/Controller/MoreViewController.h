@@ -22,6 +22,7 @@ typedef void(^clickTheHeadCellBlock)(NSString *string);
 @property (nonatomic, strong) UITableView *moreTableView;
 
 @property (nonatomic, strong) UITableViewCell *cell;
+@property (nonatomic, copy) NSArray *optionsArray;
 
 @property (nonatomic, strong) clickTheHeadCellBlock headCellBlock;
 @property (nonatomic, weak) id <clickTheHeadCell> delegate;

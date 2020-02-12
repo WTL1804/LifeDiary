@@ -16,6 +16,8 @@
      _modelOne = (ModelOne *)baseModel;
     
     _imageViewOfItems = [[UIImageView alloc] initWithImage:[UIImage imageWithData:_modelOne.imageData]];
+    _imageViewOfItems.layer.cornerRadius = 5;
+    _imageViewOfItems.layer.masksToBounds = YES;
     [self addSubview:_imageViewOfItems];
     
     _deadLineLabel = [[UILabel alloc] init];
@@ -44,7 +46,7 @@
     
 
     CAShapeLayer * shapeLayer = [CAShapeLayer layer];
-    shapeLayer.frame = CGRectMake(300, 50, 40, 40);
+    shapeLayer.frame = CGRectMake(300, 45, 40, 40);
     shapeLayer.fillColor = [UIColor whiteColor].CGColor;
     shapeLayer.lineWidth = 1.0f;
     shapeLayer.strokeColor = [UIColor redColor].CGColor;
@@ -53,7 +55,7 @@
     [self.layer addSublayer:shapeLayer];
     
      CAShapeLayer * _shapeLayer = [CAShapeLayer layer];
-        _shapeLayer.frame = CGRectMake(300, 50, 40, 40);
+        _shapeLayer.frame = CGRectMake(300, 45, 40, 40);
         _shapeLayer.fillColor = [UIColor greenColor].CGColor;
         _shapeLayer.lineWidth = 1.0f;
         _shapeLayer.strokeColor = [UIColor redColor].CGColor;
@@ -63,7 +65,7 @@
         NSNumber *number = [NSNumber numberWithInteger:comp.day];
         CGFloat percentage = [number doubleValue] / [_modelOne.shelfLifeNumber doubleValue];
         UIBezierPath *bezierPath = [UIBezierPath bezierPathWithArcCenter:CGPointMake(20, 20) radius:20 startAngle:((270-180*(1-percentage))/180)*3.1415926 endAngle:((270+180*(1-percentage))/180)*3.1415926 clockwise:NO];
-        NSLog(@"%f",((270-270*(percentage))/180));
+       // NSLog(@"%f",((270-270*(percentage))/180));
        [bezierPath moveToPoint:bezierPath.currentPoint];
 
         bezierPath.lineCapStyle  = kCGLineCapRound;

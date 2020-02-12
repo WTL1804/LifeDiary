@@ -67,7 +67,7 @@
     [self addSubview:_increaseStepper];
   
     CAShapeLayer * shapeLayer = [CAShapeLayer layer];
-      shapeLayer.frame = CGRectMake(300, 100, 30, 30);
+      shapeLayer.frame = CGRectMake(320, 380, 30, 30);
       shapeLayer.fillColor = [UIColor whiteColor].CGColor;
       shapeLayer.lineWidth = 1.0f;
       shapeLayer.strokeColor = [UIColor redColor].CGColor;
@@ -76,7 +76,7 @@
       [self.layer addSublayer:shapeLayer];
       
        CAShapeLayer * _shapeLayer = [CAShapeLayer layer];
-          _shapeLayer.frame = CGRectMake(300, 100, 30, 30);
+          _shapeLayer.frame = CGRectMake(320, 380, 30, 30);
           _shapeLayer.fillColor = [UIColor greenColor].CGColor;
           _shapeLayer.lineWidth = 1.0f;
           _shapeLayer.strokeColor = [UIColor redColor].CGColor;

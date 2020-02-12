@@ -22,7 +22,10 @@
     [self.view addSubview:_moreTableView];
     _moreTableView.delegate = self;
     _moreTableView.dataSource = self;
+    
+    _optionsArray = [[NSArray alloc] initWithObjects:@"全部",@"消息",@"分类",nil];
 }
+
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
     [self dismissViewControllerAnimated:NO completion:nil];
@@ -47,7 +50,7 @@
     [_cell.contentView addSubview:label];
    
     _cell.contentView.alpha = 1;
-    label.text = @"消息";
+    label.text = _optionsArray[indexPath.section];
     
     return _cell;
 }
