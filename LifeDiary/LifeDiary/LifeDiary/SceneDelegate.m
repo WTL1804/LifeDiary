@@ -22,16 +22,10 @@
     UITabBarController *tabBarController = [[UITabBarController alloc] init];
     NSArray *array = [NSArray arrayWithObjects:goodsNav, discoveryNav, nil];
     tabBarController.viewControllers = array;
-
-    
     self.window.rootViewController = tabBarController;
     
    
     
-    
-    
-    
-
     goodsNav.title = @"物品";
     UIImage *tempImageOne = [[UIImage imageNamed:@"wupinguanli.png"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     [goodsNav.tabBarItem  setImage:tempImageOne];
