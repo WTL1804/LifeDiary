@@ -38,6 +38,7 @@
     [_allBtn addTarget:self action:@selector(clickAllBtn) forControlEvents:UIControlEventTouchUpInside];
 }
 - (void)clickPersonBtn {
+    [self.personBtnDelegate clickPersonBtn];
 }
 - (void)clickAllBtn {
     [self.deleagate clickAllBtn];

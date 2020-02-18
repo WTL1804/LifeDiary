@@ -17,5 +17,8 @@
     // Drawing code
 }
 */
+- (void)setUI {
+    self.backgroundColor = [UIColor whiteColor];
+}
 
 @end

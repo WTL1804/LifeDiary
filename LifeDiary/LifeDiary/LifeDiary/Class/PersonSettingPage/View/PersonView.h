@@ -11,7 +11,7 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface PersonView : UIView
-
+- (void)setUI;
 @end
 
 NS_ASSUME_NONNULL_END

@@ -15,6 +15,11 @@ NS_ASSUME_NONNULL_BEGIN
 
 @end
 
+@protocol clickPersonDelegate <NSObject>
+
+- (void)clickPersonBtn;
+
+@end
 @interface GoodsHeadView : UIView
 - (void)setUI;
 
@@ -23,6 +28,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) UIButton *personBtn;
 @property (nonatomic, strong) UIButton *allBtn;
 @property (nonatomic, weak) id <clickAllBtnDeleage>deleagate;
+@property (nonatomic, weak) id <clickPersonDelegate>personBtnDelegate;
 
 
 

@@ -7,6 +7,7 @@
 //
 
 #import "PersonSettingViewController.h"
+#import "PersonView.h"
 @interface PersonSettingViewController ()
 
 @end
@@ -16,6 +17,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    _mainView = [[PersonView alloc] init];
+    _mainView.frame = CGRectMake(0, self.navigationController.navigationBar.frame.size.height, self.view.frame.size.width, self.view.frame.size.height - self.navigationController.navigationBar.frame.size.height);
+    [self.view addSubview:_mainView];
+    self.navigationController.navigationItem.leftBarButtonItem.enabled = NO;
+    [_mainView setUI];
     
 }
 

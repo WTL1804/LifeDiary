@@ -14,8 +14,10 @@
 #import "AllItemsViewController.h"
 #import "AllItemsView.h"
 #import "GoodsViewModel.h"
+#import "PersonSettingViewController.h"
+#import <QuartzCore/QuartzCore.h>
 
-@interface GoodsViewController () <clickAllBtnDeleage, clickTheHeadCell>
+@interface GoodsViewController () <clickAllBtnDeleage, clickTheHeadCell, clickPersonDelegate>
 
 @end
 
@@ -38,6 +40,7 @@
     _headView = [[GoodsHeadView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 100)];
     [self.view addSubview:_headView];
     _headView.deleagate = self;
+    _headView.personBtnDelegate = self;
     [_headView setUI];
     
     self.tabBarController.tabBar.tintColor = [UIColor greenColor];
@@ -72,6 +75,21 @@
     _goodsModel = [[GoodsViewModel alloc] init];
 }
 
+- (void)clickPersonBtn {
+    PersonSettingViewController *personViewController = [[PersonSettingViewController alloc] init];
+    //UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:personViewController];
+   CATransition* transition = [CATransition animation];
+
+    transition.type = kCATransitionPush;//可更改为其他方式
+
+    transition.subtype = kCATransitionFromLeft;//可更改为其他方式
+
+    [self.navigationController.view.layer addAnimation:transition forKey:kCATransition];
+
+    [self.navigationController pushViewController:personViewController animated:NO];
+    
+    
+}
 - (void)clickButton {
    
     AddItemsViewController *addViewController = [[AddItemsViewController alloc] init];
