@@ -12,6 +12,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface PersonSettingViewController : UIViewController
 @property (nonatomic, strong) PersonView *mainView;
+
+
+
 @end
 
 NS_ASSUME_NONNULL_END

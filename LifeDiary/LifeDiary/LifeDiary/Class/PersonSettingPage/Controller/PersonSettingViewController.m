@@ -8,7 +8,7 @@
 
 #import "PersonSettingViewController.h"
 #import "PersonView.h"
-@interface PersonSettingViewController ()
+@interface PersonSettingViewController () <swipeLeftGestureDelegate>
 
 @end
 
@@ -18,11 +18,25 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     _mainView = [[PersonView alloc] init];
-    _mainView.frame = CGRectMake(0, self.navigationController.navigationBar.frame.size.height, self.view.frame.size.width, self.view.frame.size.height - self.navigationController.navigationBar.frame.size.height);
+    _mainView.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
     [self.view addSubview:_mainView];
-    self.navigationController.navigationItem.leftBarButtonItem.enabled = NO;
+    _mainView.swipeLeftDelegate = self;
     [_mainView setUI];
     
+   
+}
+- (void)viewWillAppear:(BOOL)animated {
+    //阻止滑动返回的手势
+//    if([self.navigationController respondsToSelector:@selector(interactivePopGestureRecognizer)]) {
+//
+//        self.navigationController.interactivePopGestureRecognizer.enabled = NO;
+//
+//    }
+    self.navigationItem.hidesBackButton = YES;
+    self.navigationController.navigationBar.hidden = YES;
+}
+- (void)swipLeft {
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 /*

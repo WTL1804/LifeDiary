@@ -22,6 +22,8 @@
     UITabBarController *tabBarController = [[UITabBarController alloc] init];
     NSArray *array = [NSArray arrayWithObjects:goodsNav, discoveryNav, nil];
     tabBarController.viewControllers = array;
+    
+    
     self.window.rootViewController = tabBarController;
     
    
