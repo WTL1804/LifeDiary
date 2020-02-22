@@ -45,13 +45,14 @@
     _cell = [_moreTableView dequeueReusableCellWithIdentifier:stringOfCell];
     if (_cell == nil) {
         _cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:stringOfCell];
-    }
-    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, _cell.frame.size.width, _cell.frame.size.height)];
-    [_cell.contentView addSubview:label];
-   
-    _cell.contentView.alpha = 1;
-    label.text = _optionsArray[indexPath.section];
-    
+        UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, _cell.frame.size.width, _cell.frame.size.height)];
+        [_cell.contentView addSubview:label];
+        
+        _cell.contentView.alpha = 1;
+        label.text = _optionsArray[indexPath.section];
+        label.textAlignment = NSTextAlignmentNatural;
+        
+        }
     return _cell;
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {

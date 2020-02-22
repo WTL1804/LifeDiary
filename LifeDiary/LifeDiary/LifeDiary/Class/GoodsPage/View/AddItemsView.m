@@ -79,7 +79,9 @@
     
     _addItems = [[Items alloc] init];
     
-    
+    _photoImageView = [[UIImageView alloc] init];
+    [self addSubview:_photoImageView];
+    _photoImageView.layer.masksToBounds = YES;
     
 }
 - (void)layoutSubviews {
@@ -90,6 +92,13 @@
         make.left.equalTo(self.mas_left).offset(15);
         make.right.equalTo(self.mas_left).offset(self.frame.size.width/3.5+15);
     }];
+    [_photoImageView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.mas_top).offset(20);
+        make.bottom.equalTo(self.mas_top).offset(self.frame.size.height/5);
+        make.left.equalTo(self.mas_left).offset(15);
+        make.right.equalTo(self.mas_left).offset(self.frame.size.width/3.5+15);
+    }];
+    
     
     [_itemNameTextField mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self.mas_top).offset(20);

@@ -10,6 +10,7 @@
 #import "LifeDiaryManage.h"
 #import "Access_tokenModel.h"
 #import "PhotoIdentificationModel.h"
+#import <SOZOChromoplast.h>
 @interface AddItemsViewController () <ClickCamera>
 
 @end
@@ -78,8 +79,26 @@
     NSString *imageBase64 = [data base64EncodedStringWithOptions:NSDataBase64Encoding64CharacterLineLength];
     self.image = [imageBase64 mutableCopy];
     
-    [self.addItemsView.photoBtn setBackgroundImage:image forState:UIControlStateNormal];
+   // [self.addItemsView.photoBtn setBackgroundImage:image forState:UIControlStateNormal];
+    [self.addItemsView.photoImageView setImage:image];
     [self photoIdentification];
+    
+    SOZOChromoplast *color = [[SOZOChromoplast alloc] initWithImage:image];
+    self.addItemsView.backgroundColor = color.secondHighlight;
+//    //获取图片
+//    NSString *urlString = [NSString stringWithFormat:@"%@",_smallModel.images.medium];
+//    NSData *data = [NSData dataWithContentsOfURL:[NSURL  URLWithString:urlString]];
+//    UIImage *image = [UIImage imageWithData:data];
+//    //实例化颜色
+//    SOZOChromoplast *color = [[SOZOChromoplast alloc] initWithImage:image];
+//    //设置背景颜色
+//    _smallView.backgroundColor = color.firstHighlight;
+
+
+    
+    
+    
+    
     
     self.addItemsView.addItems.imageData = [data copy];
 }

@@ -48,8 +48,11 @@
     _cell = [_mainTableView dequeueReusableCellWithIdentifier:modelName];
     
     if (_cell == nil) {
+        
         _cell = [BaseTableViewCell initWithModel:baseModel];
+        
     }
+    
     [_cell setLayOutInSubclass:baseModel];
     return _cell;
 }

@@ -18,6 +18,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (void)setUI;
 @property (nonatomic, strong) UIButton *photoBtn;
+@property (nonatomic, strong) UIImageView *photoImageView;
 @property (nonatomic) CGRect navigationFrame;
 
 @property (nonatomic, strong) UIImagePickerController *imagePicker;
