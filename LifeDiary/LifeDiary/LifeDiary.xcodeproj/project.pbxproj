@@ -36,6 +36,7 @@
 		84A93D0423FC025F00EAFDA2 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84A93D0323FC025F00EAFDA2 /* QuartzCore.framework */; };
 		84A93D1C23FE8B1A00EAFDA2 /* backGround.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 84A93D1B23FE8B1A00EAFDA2 /* backGround.jpeg */; };
 		84A93D2023FF78A800EAFDA2 /* head.png in Resources */ = {isa = PBXBuildFile; fileRef = 84A93D1F23FF78A800EAFDA2 /* head.png */; };
+		84A93D4824029D2E00EAFDA2 /* sousuo-2.png in Resources */ = {isa = PBXBuildFile; fileRef = 84A93D4724029D2E00EAFDA2 /* sousuo-2.png */; };
 		84AA2CF123A5A4C4008B38E8 /* GoodsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84AA2CF023A5A4C4008B38E8 /* GoodsViewController.m */; };
 		84C5B18223F6426E0026569E /* PersonSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84C5B18123F6426E0026569E /* PersonSettingViewController.m */; };
 		84C5B18523F642980026569E /* PersonView.m in Sources */ = {isa = PBXBuildFile; fileRef = 84C5B18423F642980026569E /* PersonView.m */; };
@@ -120,6 +121,7 @@
 		84A93D0323FC025F00EAFDA2 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		84A93D1B23FE8B1A00EAFDA2 /* backGround.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = backGround.jpeg; sourceTree = "<group>"; };
 		84A93D1F23FF78A800EAFDA2 /* head.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = head.png; sourceTree = "<group>"; };
+		84A93D4724029D2E00EAFDA2 /* sousuo-2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "sousuo-2.png"; sourceTree = "<group>"; };
 		84AA2CEF23A5A4C4008B38E8 /* GoodsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GoodsViewController.h; sourceTree = "<group>"; };
 		84AA2CF023A5A4C4008B38E8 /* GoodsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GoodsViewController.m; sourceTree = "<group>"; };
 		84C5B18023F6426E0026569E /* PersonSettingViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PersonSettingViewController.h; sourceTree = "<group>"; };
@@ -343,6 +345,7 @@
 				845E1CEF23CC07DE005E4960 /* welcome.png */,
 				8446021823EB0A980077227C /* person.png */,
 				84C9A81123ED397C002EA55D /* quanbu.png */,
+				84A93D4724029D2E00EAFDA2 /* sousuo-2.png */,
 				84A93D1F23FF78A800EAFDA2 /* head.png */,
 			);
 			path = Sourse;
@@ -586,6 +589,7 @@
 			files = (
 				84DD17492395383B00B10515 /* LaunchScreen.storyboard in Resources */,
 				845E1CF023CC07DE005E4960 /* welcome.png in Resources */,
+				84A93D4824029D2E00EAFDA2 /* sousuo-2.png in Resources */,
 				84A93D2023FF78A800EAFDA2 /* head.png in Resources */,
 				84762B9323A5C68700713ECA /* wupinguanli.png in Resources */,
 				84A93D1C23FE8B1A00EAFDA2 /* backGround.jpeg in Resources */,

@@ -32,12 +32,12 @@
     
     
     
-    _goodsView = [[GoodsView alloc] initWithFrame:CGRectMake(0, 100, self.view.frame.size.width, self.view.frame.size.height - 100 - self.tabBarController.tabBar.frame.size.height)];
+    _goodsView = [[GoodsView alloc] initWithFrame:CGRectMake(0, 135, self.view.frame.size.width, self.view.frame.size.height - 135 - self.tabBarController.tabBar.frame.size.height)];
     [self.view addSubview:_goodsView];
     [_goodsView setUI];
     //_goodsView.cell.numberChangeDelegate = self;
     
-    _headView = [[GoodsHeadView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 100)];
+    _headView = [[GoodsHeadView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 135)];
     [self.view addSubview:_headView];
     _headView.deleagate = self;
     _headView.personBtnDelegate = self;

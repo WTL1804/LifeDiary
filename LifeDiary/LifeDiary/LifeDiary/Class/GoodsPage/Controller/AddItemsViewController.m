@@ -33,8 +33,12 @@
     [self addObserver:[LifeDiaryManage sharedLeton] forKeyPath:@"image" options:NSKeyValueObservingOptionNew context:nil];
     
     UIBarButtonItem *rightBarButton = [[UIBarButtonItem alloc] initWithTitle:@"完成" style:UIBarButtonItemStyleDone target:self action:@selector(addDone)];
+    [rightBarButton setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor whiteColor]} forState:UIControlStateNormal];
     self.navigationItem.rightBarButtonItem = rightBarButton;
     
+    self.navigationController.navigationBar.barTintColor = [UIColor colorWithRed:0.133333 green:0.1647 blue:0.2549 alpha:1];
+    [self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor whiteColor]}];
+    self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
     
 }
 - (void)viewWillAppear:(BOOL)animated {
@@ -70,6 +74,8 @@
     [alert addAction:photo];
     [alert addAction:cancel];
     [self presentViewController:alert animated:YES completion:nil];
+    
+    
 }
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<UIImagePickerControllerInfoKey,id> *)info {
     [picker dismissViewControllerAnimated:YES completion:nil];

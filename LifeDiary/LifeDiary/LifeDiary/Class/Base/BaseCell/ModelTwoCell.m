@@ -10,10 +10,20 @@
 #import "ModelTwo.h"
 #import <Masonry.h>
 #import "UIBezierPath+GetAllPoints.h"
+#import <SOZOChromoplast.h>
 @implementation ModelTwoCell
 
 - (void)setLayOutInSubclass:(BaseModel *)baseModel {
+    
+    
+    
+    
+    
+    
     _modelTwo = (ModelTwo *)baseModel;
+    
+   
+    
     if (!_imageViewOfItems) {
     _imageViewOfItems = [[UIImageView alloc] initWithImage:[UIImage imageWithData:_modelTwo.imageData]];
       
@@ -67,7 +77,7 @@
     [self addSubview:_increaseStepper];
   
     CAShapeLayer * shapeLayer = [CAShapeLayer layer];
-      shapeLayer.frame = CGRectMake(320, 380, 30, 30);
+      shapeLayer.frame = CGRectMake(320, 360, 30, 30);
       shapeLayer.fillColor = [UIColor whiteColor].CGColor;
       shapeLayer.lineWidth = 1.0f;
       shapeLayer.strokeColor = [UIColor redColor].CGColor;
@@ -76,7 +86,7 @@
       [self.layer addSublayer:shapeLayer];
       
        CAShapeLayer * _shapeLayer = [CAShapeLayer layer];
-          _shapeLayer.frame = CGRectMake(320, 380, 30, 30);
+          _shapeLayer.frame = CGRectMake(320, 360, 30, 30);
           _shapeLayer.fillColor = [UIColor greenColor].CGColor;
           _shapeLayer.lineWidth = 1.0f;
           _shapeLayer.strokeColor = [UIColor redColor].CGColor;

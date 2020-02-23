@@ -20,7 +20,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)clickPersonBtn;
 
 @end
-@interface GoodsHeadView : UIView
+@interface GoodsHeadView : UIView <UITextFieldDelegate>
 - (void)setUI;
 
 @property (nonatomic, strong) UITextField *searchField;
@@ -29,7 +29,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) UIButton *allBtn;
 @property (nonatomic, weak) id <clickAllBtnDeleage>deleagate;
 @property (nonatomic, weak) id <clickPersonDelegate>personBtnDelegate;
-
+@property (nonatomic, strong) UILabel *titleLabel;
 
 
 @end
