@@ -14,15 +14,16 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)swipLeft;
 
 @end
-@interface PersonView : UIView <UITableViewDelegate, UITableViewDataSource>
+@interface PersonView : UIView 
 
 @property (nonatomic, strong) UISwipeGestureRecognizer * backRecognizer;
 @property (nonatomic, weak) id<swipeLeftGestureDelegate>swipeLeftDelegate;
 
-@property (nonatomic, strong) UIImageView *topImageView;
+@property (nonatomic, strong) UIImageView *backGroundImageView;
 @property (nonatomic, strong) UIImageView *headImageView;
 @property (nonatomic, strong) UILabel *signatureLabel;
-@property (nonatomic, strong) UITableView *tableView;
+
+@property (nonatomic, strong) UILabel *welcomeLabel;
 
 - (void)setUI;
 @end

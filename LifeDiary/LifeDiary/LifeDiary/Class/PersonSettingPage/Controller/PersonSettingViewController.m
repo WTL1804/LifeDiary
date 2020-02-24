@@ -23,7 +23,13 @@
     _mainView.swipeLeftDelegate = self;
     [_mainView setUI];
     
-   
+ 
+    
+    [self.navigationController.navigationBar setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
+    [self.navigationController.navigationBar setShadowImage:[UIImage new]];
+    
+    self.navigationItem.title = @"主页";
+    [self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor whiteColor]}];
 }
 - (void)viewWillAppear:(BOOL)animated {
     //阻止滑动返回的手势
@@ -33,7 +39,7 @@
 //
 //    }
     self.navigationItem.hidesBackButton = YES;
-    self.navigationController.navigationBar.hidden = YES;
+    self.navigationController.navigationBar.hidden = NO;
 }
 - (void)swipLeft {
     [self.navigationController popViewControllerAnimated:YES];

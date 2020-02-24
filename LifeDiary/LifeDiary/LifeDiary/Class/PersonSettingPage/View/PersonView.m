@@ -23,11 +23,19 @@
     [_backRecognizer setDirection:UISwipeGestureRecognizerDirectionLeft];
     [self  addGestureRecognizer:_backRecognizer];
     
-    _topImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"backGround.jpeg"]];
-    _topImageView.clipsToBounds = YES;
-    [self addSubview:_topImageView];
+    _backGroundImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)];
+    [_backGroundImageView setImage:[UIImage imageNamed:@"backGround.jpg"]];
+    [self addSubview:_backGroundImageView];
     
-    _headImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"head.png"]];
+    UIImage *image = [UIImage imageNamed:@"head2.jpeg"];
+    _headImageView = [[UIImageView alloc] initWithImage:image];
+    [_headImageView setFrame:CGRectMake(45, 125, 45, 45)];
+    _headImageView.layer.shadowColor = [UIColor blackColor].CGColor;
+    _headImageView.layer.shadowOffset = CGSizeMake(0, 0);
+    _headImageView.layer.shadowOpacity = 1;
+    _headImageView.layer.shadowRadius = 3;
+    _headImageView.backgroundColor = [UIColor whiteColor];
+    
     _headImageView.clipsToBounds = YES;
     _headImageView.layer.borderWidth = 0.5;
     _headImageView.layer.borderColor = [UIColor blackColor].CGColor;
@@ -35,30 +43,11 @@
     [self addSubview:_headImageView];
     
     
-    _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, self.frame.size.height* (1-0.618), self.frame.size.width, self.frame.size.height - self.frame.size.height* (1-0.618)) style:UITableViewStyleGrouped];
-    _tableView.delegate = self;
-    _tableView.dataSource = self;
-    
     
 }
 - (void)swipeBack {
     [self.swipeLeftDelegate swipLeft];
 }
-- (void)layoutSubviews {
-    [_topImageView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(self.mas_top);
-        make.bottom.equalTo(self.mas_top).offset(self.frame.size.height* (1-0.618));
-        make.left.equalTo(self.mas_left);
-        make.right.equalTo(self.mas_right);
-    }];
-    
-    [_headImageView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(self.mas_top).offset(self.frame.size.height * (1 - 0.618) - 100);
-        make.bottom.equalTo(self.mas_top).offset(self.frame.size.height * (1-0.618) - 35);
-        make.left.equalTo(self.mas_left).offset(35);
-        make.right.equalTo(self.mas_left).offset(100);
-    }];
-    
-}
+
 
 @end
