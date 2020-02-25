@@ -24,6 +24,9 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) UILabel *signatureLabel;
 
 @property (nonatomic, strong) UILabel *welcomeLabel;
+@property (nonatomic, strong) UILabel *describeLabel;
+
+@property (nonatomic, strong) NSMutableArray *itemsMutArray;
 
 - (void)setUI;
 @end

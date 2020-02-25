@@ -38,6 +38,7 @@
 		84A93D4C2403AB3300EAFDA2 /* head2.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 84A93D4B2403AB3300EAFDA2 /* head2.jpeg */; };
 		84A93D4E2403B15200EAFDA2 /* backGround.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 84A93D4D2403B15200EAFDA2 /* backGround.jpg */; };
 		84AA2CF123A5A4C4008B38E8 /* GoodsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84AA2CF023A5A4C4008B38E8 /* GoodsViewController.m */; };
+		84BB929E2405566D00FC8183 /* PersonSettingModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 84BB929D2405566D00FC8183 /* PersonSettingModel.m */; };
 		84C5B18223F6426E0026569E /* PersonSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84C5B18123F6426E0026569E /* PersonSettingViewController.m */; };
 		84C5B18523F642980026569E /* PersonView.m in Sources */ = {isa = PBXBuildFile; fileRef = 84C5B18423F642980026569E /* PersonView.m */; };
 		84C9A81223ED397C002EA55D /* quanbu.png in Resources */ = {isa = PBXBuildFile; fileRef = 84C9A81123ED397C002EA55D /* quanbu.png */; };
@@ -124,6 +125,8 @@
 		84A93D4D2403B15200EAFDA2 /* backGround.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = backGround.jpg; sourceTree = "<group>"; };
 		84AA2CEF23A5A4C4008B38E8 /* GoodsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GoodsViewController.h; sourceTree = "<group>"; };
 		84AA2CF023A5A4C4008B38E8 /* GoodsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GoodsViewController.m; sourceTree = "<group>"; };
+		84BB929C2405566D00FC8183 /* PersonSettingModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PersonSettingModel.h; sourceTree = "<group>"; };
+		84BB929D2405566D00FC8183 /* PersonSettingModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PersonSettingModel.m; sourceTree = "<group>"; };
 		84C5B18023F6426E0026569E /* PersonSettingViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PersonSettingViewController.h; sourceTree = "<group>"; };
 		84C5B18123F6426E0026569E /* PersonSettingViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PersonSettingViewController.m; sourceTree = "<group>"; };
 		84C5B18323F642980026569E /* PersonView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PersonView.h; sourceTree = "<group>"; };
@@ -404,9 +407,19 @@
 			path = Main;
 			sourceTree = "<group>";
 		};
+		84BB929F2405567300FC8183 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				84BB929C2405566D00FC8183 /* PersonSettingModel.h */,
+				84BB929D2405566D00FC8183 /* PersonSettingModel.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		84C5B17F23F6420A0026569E /* PersonSettingPage */ = {
 			isa = PBXGroup;
 			children = (
+				84BB929F2405567300FC8183 /* Model */,
 				84C5B18723F642B20026569E /* Controller */,
 				84C5B18623F642A00026569E /* View */,
 			);
@@ -671,6 +684,7 @@
 				8446020723E8406A0077227C /* ModelTwo.m in Sources */,
 				846BD36923DEAD7B00133FF7 /* Items.m in Sources */,
 				84DD173E2395383900B10515 /* SceneDelegate.m in Sources */,
+				84BB929E2405566D00FC8183 /* PersonSettingModel.m in Sources */,
 				84C5B18223F6426E0026569E /* PersonSettingViewController.m in Sources */,
 				8446020023E8401A0077227C /* BaseModel.m in Sources */,
 				84AA2CF123A5A4C4008B38E8 /* GoodsViewController.m in Sources */,

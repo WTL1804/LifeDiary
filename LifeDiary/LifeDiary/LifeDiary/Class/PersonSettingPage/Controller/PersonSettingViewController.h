@@ -8,12 +8,14 @@
 
 #import <UIKit/UIKit.h>
 @class PersonView;
+@class PersonSettingModel;
 NS_ASSUME_NONNULL_BEGIN
 
 @interface PersonSettingViewController : UIViewController
 @property (nonatomic, strong) PersonView *mainView;
+@property (nonatomic, strong) NSMutableArray *itemsMutArray;
 
-
+@property (nonatomic, strong) PersonSettingModel *personModel;
 
 @end
 

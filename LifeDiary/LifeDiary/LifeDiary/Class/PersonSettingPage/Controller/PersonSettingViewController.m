@@ -8,6 +8,7 @@
 
 #import "PersonSettingViewController.h"
 #import "PersonView.h"
+#import "PersonSettingModel.h"
 @interface PersonSettingViewController () <swipeLeftGestureDelegate>
 
 @end
@@ -17,14 +18,16 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    _personModel = [[PersonSettingModel alloc] init];
+   
     _mainView = [[PersonView alloc] init];
     _mainView.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
     [self.view addSubview:_mainView];
     _mainView.swipeLeftDelegate = self;
+    
+    _mainView.itemsMutArray = [_personModel itemsArrayDealWithModle:_itemsMutArray];
+    
     [_mainView setUI];
-    
- 
-    
     [self.navigationController.navigationBar setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
     [self.navigationController.navigationBar setShadowImage:[UIImage new]];
     

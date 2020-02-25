@@ -16,7 +16,6 @@
 #import "GoodsViewModel.h"
 #import "PersonSettingViewController.h"
 #import <QuartzCore/QuartzCore.h>
-
 @interface GoodsViewController () <clickAllBtnDeleage, clickTheHeadCell, clickPersonDelegate>
 
 @end
@@ -77,6 +76,8 @@
 
 - (void)clickPersonBtn {
     PersonSettingViewController *personViewController = [[PersonSettingViewController alloc] init];
+    personViewController.itemsMutArray = [[NSMutableArray alloc] init];
+    personViewController.itemsMutArray = [self.goodsView.itemsArray mutableCopy];
     //UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:personViewController];
    CATransition* transition = [CATransition animation];
 
