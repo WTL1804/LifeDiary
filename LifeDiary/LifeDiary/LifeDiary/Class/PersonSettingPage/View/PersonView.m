@@ -8,6 +8,7 @@
 
 #import "PersonView.h"
 #import <Masonry.h>
+#import "ItemsShowsView.h"
 @implementation PersonView
 
 /*
@@ -68,7 +69,29 @@
     _describeLabel = [[UILabel alloc] init];
     [self addSubview:_describeLabel];
     _describeLabel.textColor = [UIColor grayColor];
-    _describeLabel.font = [UIFont systemFontOfSize:20];
+    _describeLabel.font = [UIFont systemFontOfSize:15];
+    string = [NSString stringWithFormat:@"你近期有%ld个物品将要过期，尽快使用吧",_itemsMutArray.count];
+    _describeLabel.text = string;
+    _describeLabel.numberOfLines = 1;
+    
+    _describeTempLabel = [[UILabel alloc] init];
+    [self addSubview:_describeTempLabel];
+    _describeTempLabel.textColor = [UIColor grayColor];
+    _describeTempLabel.font = [UIFont systemFontOfSize:15];
+    string = @"Looks like feel good";
+    _describeTempLabel.text = string;
+    _describeTempLabel.numberOfLines = 1;
+    
+    _scrollView = [[UIScrollView alloc] init];
+    [self addSubview:_scrollView];
+    _scrollView.backgroundColor = [UIColor clearColor];
+    _scrollView.showsHorizontalScrollIndicator = NO;
+    for (int i = 0; i < _itemsMutArray.count; i++) {
+        ItemsShowsView *itemsView = [[ItemsShowsView alloc] init];
+        itemsView.tag = i+500;
+        [_scrollView addSubview:itemsView];
+        itemsView.backgroundColor = [UIColor whiteColor];
+    }
     
     
 }
@@ -89,6 +112,45 @@
         make.left.equalTo(_headImageView.mas_left);
         make.right.equalTo(_headImageView.mas_left).offset(self.frame.size.width/2+100);
     }];
+    
+    [_describeTempLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(_welcomeLabel.mas_bottom). offset(-15);
+        make.bottom.equalTo(_welcomeLabel.mas_bottom).offset(-15 + self.frame.size.height * 1/20);
+        make.left.equalTo(_welcomeLabel.mas_left);
+        make.right.equalTo(_welcomeLabel.mas_right);
+    }];
+    
+    [_describeLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(_describeTempLabel.mas_bottom).offset(-10);
+        make.bottom.equalTo(_describeTempLabel.mas_bottom).offset(-10 + self.frame.size.height * 1/20);
+        make.left.equalTo(_welcomeLabel.mas_left);
+        make.right.equalTo(_welcomeLabel.mas_right);
+    }];
+    
+    [_scrollView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(_describeLabel.mas_bottom).offset(self.frame.size.height/10);
+        make.bottom.equalTo(self.mas_bottom).offset(-self.frame.size.height/13);
+        make.left.equalTo(self.mas_left);
+        make.right.equalTo(self.mas_right);
+    }];
+    [self layoutIfNeeded];
+    _scrollView.contentSize = CGSizeMake(_itemsMutArray.count *(self.frame.size.width * 2/3 + 45) + 10, 0);
+    for (int i = 0; i < _itemsMutArray.count; i++) {
+        ItemsShowsView *view = [self viewWithTag:500 + i];
+        if (i == 0) {
+        view.frame =CGRectMake(10, 0, self.frame.size.width *2/3 + 5, _scrollView.frame.size.height - 2);
+            view.layer.cornerRadius = 5;
+            continue;
+        }
+        view.frame = CGRectMake(i * (self.frame.size.width *2/3 + 5) + i * 40 + 10, 0, _scrollView.frame.size.width *2/3, _scrollView.frame.size.height - 2);
+        view.layer.cornerRadius = 5;
+        [view setUI];
+    }
+}
+
+- (void)layoutIfNeeded {
+    [super layoutIfNeeded];
+        
 }
 
 @end

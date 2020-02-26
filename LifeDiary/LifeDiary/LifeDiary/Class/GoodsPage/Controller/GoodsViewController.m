@@ -42,7 +42,7 @@
     _headView.personBtnDelegate = self;
     [_headView setUI];
     
-    self.tabBarController.tabBar.tintColor = [UIColor greenColor];
+   // self.tabBarController.tabBar.tintColor = [UIColor colorWithRed:0.133333 green:0.1647 blue:0.2549 alpha:1];
     self.tabBarController.tabBar.backgroundImage = [UIImage new];
     
     UIImageView *tabBarbackGroundImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, -1, self.tabBarController.tabBar.frame.size.width, 1)];

@@ -28,8 +28,6 @@
     _mainView.itemsMutArray = [_personModel itemsArrayDealWithModle:_itemsMutArray];
     
     [_mainView setUI];
-    [self.navigationController.navigationBar setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
-    [self.navigationController.navigationBar setShadowImage:[UIImage new]];
     
     self.navigationItem.title = @"主页";
     [self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor whiteColor]}];
@@ -42,7 +40,8 @@
 //
 //    }
     self.navigationItem.hidesBackButton = YES;
-    self.navigationController.navigationBar.hidden = NO;
+    [self.navigationController.navigationBar setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
+    [self.navigationController.navigationBar setShadowImage:[UIImage new]];
 }
 - (void)swipLeft {
     [self.navigationController popViewControllerAnimated:YES];

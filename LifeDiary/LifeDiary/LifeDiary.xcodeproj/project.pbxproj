@@ -39,6 +39,7 @@
 		84A93D4E2403B15200EAFDA2 /* backGround.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 84A93D4D2403B15200EAFDA2 /* backGround.jpg */; };
 		84AA2CF123A5A4C4008B38E8 /* GoodsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84AA2CF023A5A4C4008B38E8 /* GoodsViewController.m */; };
 		84BB929E2405566D00FC8183 /* PersonSettingModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 84BB929D2405566D00FC8183 /* PersonSettingModel.m */; };
+		84BB92A224066BCB00FC8183 /* ItemsShowsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 84BB92A124066BCB00FC8183 /* ItemsShowsView.m */; };
 		84C5B18223F6426E0026569E /* PersonSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84C5B18123F6426E0026569E /* PersonSettingViewController.m */; };
 		84C5B18523F642980026569E /* PersonView.m in Sources */ = {isa = PBXBuildFile; fileRef = 84C5B18423F642980026569E /* PersonView.m */; };
 		84C9A81223ED397C002EA55D /* quanbu.png in Resources */ = {isa = PBXBuildFile; fileRef = 84C9A81123ED397C002EA55D /* quanbu.png */; };
@@ -127,6 +128,8 @@
 		84AA2CF023A5A4C4008B38E8 /* GoodsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GoodsViewController.m; sourceTree = "<group>"; };
 		84BB929C2405566D00FC8183 /* PersonSettingModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PersonSettingModel.h; sourceTree = "<group>"; };
 		84BB929D2405566D00FC8183 /* PersonSettingModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PersonSettingModel.m; sourceTree = "<group>"; };
+		84BB92A024066BCB00FC8183 /* ItemsShowsView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ItemsShowsView.h; sourceTree = "<group>"; };
+		84BB92A124066BCB00FC8183 /* ItemsShowsView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ItemsShowsView.m; sourceTree = "<group>"; };
 		84C5B18023F6426E0026569E /* PersonSettingViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PersonSettingViewController.h; sourceTree = "<group>"; };
 		84C5B18123F6426E0026569E /* PersonSettingViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PersonSettingViewController.m; sourceTree = "<group>"; };
 		84C5B18323F642980026569E /* PersonView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PersonView.h; sourceTree = "<group>"; };
@@ -431,6 +434,8 @@
 			children = (
 				84C5B18323F642980026569E /* PersonView.h */,
 				84C5B18423F642980026569E /* PersonView.m */,
+				84BB92A024066BCB00FC8183 /* ItemsShowsView.h */,
+				84BB92A124066BCB00FC8183 /* ItemsShowsView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -673,6 +678,7 @@
 				84C9A82723F2D461002EA55D /* UIBezierPath+GetAllPoints.m in Sources */,
 				84762BA723A632A300713ECA /* WelcomeViewController.m in Sources */,
 				84544FE223D09AB100639E34 /* AddItemsView.m in Sources */,
+				84BB92A224066BCB00FC8183 /* ItemsShowsView.m in Sources */,
 				846BD31F23D3F0A100133FF7 /* PhotoIdentificationModel.m in Sources */,
 				8446021723E8480C0077227C /* ModelTwoCell.m in Sources */,
 				84544FDC23D0962900639E34 /* BaseTableViewCell.m in Sources */,
