@@ -26,6 +26,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) UILabel *welcomeLabel;
 @property (nonatomic, strong) UILabel *describeLabel;
 @property (nonatomic, strong) UILabel *describeTempLabel;
+@property (nonatomic, strong) UILabel *todayLabel;
 
 @property (nonatomic, strong) UIScrollView *scrollView;
 

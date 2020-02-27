@@ -11,6 +11,13 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface ItemsShowsView : UIView
+
+@property (nonatomic, strong) NSMutableDictionary *itemsDict;
+@property (nonatomic, strong) UIImageView *itemsImageView;
+@property (nonatomic, strong) UILabel *nameLabel;
+@property (nonatomic, strong) UILabel *numberLabel;
+@property (nonatomic, strong) UIProgressView *progressView;
+
 - (void)setUI;
 @end
 

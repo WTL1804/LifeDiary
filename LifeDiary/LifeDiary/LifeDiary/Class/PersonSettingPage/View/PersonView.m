@@ -91,7 +91,40 @@
         itemsView.tag = i+500;
         [_scrollView addSubview:itemsView];
         itemsView.backgroundColor = [UIColor whiteColor];
+        itemsView.itemsDict = [_itemsMutArray[i] mutableCopy];
+        //[itemsView setUI];
     }
+    [self layoutIfNeeded];
+    _scrollView.contentSize = CGSizeMake(_itemsMutArray.count *(self.frame.size.width * 2/3 + 40) + 10, 0);
+    for (int i = 0; i < _itemsMutArray.count; i++) {
+        ItemsShowsView *view = [self viewWithTag:500 + i];
+        if (i == 0) {
+        view.frame = CGRectMake(10, 0, self.frame.size.width *2/3 + 5, _scrollView.frame.size.height - 2);
+            view.layer.cornerRadius = 5;
+            
+            [view setUI];
+            continue;
+        }
+        view.frame = CGRectMake(i * (self.frame.size.width *2/3 + 5) + i * 35 + 10, 0, _scrollView.frame.size.width *2/3, _scrollView.frame.size.height - 2);
+        view.layer.cornerRadius = 5;
+        [view setUI];
+    }
+    
+    
+    _todayLabel = [[UILabel alloc] init];
+    [self addSubview:_todayLabel];
+    _todayLabel.textColor = [UIColor whiteColor];
+    _todayLabel.font = [UIFont systemFontOfSize:18];
+     NSDate *now = [NSDate date];
+    NSDateFormatter *matter = [[NSDateFormatter alloc] init];
+    [matter setDateFormat:@" yyyy - MM - dd"];
+    NSString *nowString = [matter stringFromDate:now];
+    NSString *tempString = @"TODAY:";
+    tempString = [tempString stringByAppendingString:nowString];
+    _todayLabel.text = tempString;
+    
+    
+    
     
     
 }
@@ -133,24 +166,30 @@
         make.left.equalTo(self.mas_left);
         make.right.equalTo(self.mas_right);
     }];
-    [self layoutIfNeeded];
-    _scrollView.contentSize = CGSizeMake(_itemsMutArray.count *(self.frame.size.width * 2/3 + 45) + 10, 0);
-    for (int i = 0; i < _itemsMutArray.count; i++) {
-        ItemsShowsView *view = [self viewWithTag:500 + i];
-        if (i == 0) {
-        view.frame =CGRectMake(10, 0, self.frame.size.width *2/3 + 5, _scrollView.frame.size.height - 2);
-            view.layer.cornerRadius = 5;
-            continue;
-        }
-        view.frame = CGRectMake(i * (self.frame.size.width *2/3 + 5) + i * 40 + 10, 0, _scrollView.frame.size.width *2/3, _scrollView.frame.size.height - 2);
-        view.layer.cornerRadius = 5;
-        [view setUI];
-    }
+    
+    [_todayLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+    make.top.equalTo(_scrollView.mas_top).offset(-self.frame.size.height/15);
+        make.bottom.equalTo(_scrollView.mas_top);
+        make.left.equalTo(_describeLabel.mas_left);
+        make.right.equalTo(_describeLabel.mas_right);
+    }];
+    
+//    [self layoutIfNeeded];
+//    _scrollView.contentSize = CGSizeMake(_itemsMutArray.count *(self.frame.size.width * 2/3 + 45) + 10, 0);
+//    for (int i = 0; i < _itemsMutArray.count; i++) {
+//        ItemsShowsView *view = [self viewWithTag:500 + i];
+//        if (i == 0) {
+//        view.frame = CGRectMake(10, 0, self.frame.size.width *2/3 + 5, _scrollView.frame.size.height - 2);
+//            view.layer.cornerRadius = 5;
+//
+//            [view setUI];
+//            continue;
+//        }
+//        view.frame = CGRectMake(i * (self.frame.size.width *2/3 + 5) + i * 40 + 10, 0, _scrollView.frame.size.width *2/3, _scrollView.frame.size.height - 2);
+//        view.layer.cornerRadius = 5;
+//        [view setUI];
+//    }
 }
 
-- (void)layoutIfNeeded {
-    [super layoutIfNeeded];
-        
-}
 
 @end

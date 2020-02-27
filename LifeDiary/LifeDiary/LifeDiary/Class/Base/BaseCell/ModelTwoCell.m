@@ -96,7 +96,7 @@
           NSNumber *number = [NSNumber numberWithInteger:comp.day];
           CGFloat percentage = [number doubleValue] / [_modelTwo.shelfLifeNumber doubleValue];
           UIBezierPath *bezierPath = [UIBezierPath bezierPathWithArcCenter:CGPointMake(15, 15) radius:15 startAngle:((270-180*(1-percentage))/180)*3.1415926 endAngle:((270+180*(1-percentage))/180)*3.1415926 clockwise:NO];
-          NSLog(@"%f",((270-270*(percentage))/180));
+         // NSLog(@"%f",((270-270*(percentage))/180));
          [bezierPath moveToPoint:bezierPath.currentPoint];
 
           bezierPath.lineCapStyle  = kCGLineCapRound;
