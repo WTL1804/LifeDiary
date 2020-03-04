@@ -1,6 +1,7 @@
 #import "SceneDelegate.h"
 #import "DiscoveryViewController.h"
 #import "GoodsViewController.h"
+#import "LoginViewViewController.h"
 @interface SceneDelegate ()
 
 @end
@@ -12,30 +13,41 @@
     // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
     // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
     // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
-    self.window = [[UIWindow alloc] initWithWindowScene:scene];
-    GoodsViewController *goodViewController = [[GoodsViewController alloc] init];
-    UINavigationController *goodsNav = [[UINavigationController alloc] initWithRootViewController:goodViewController];
     
-    DiscoveryViewController *discoveryController = [[DiscoveryViewController alloc] init];
-    UINavigationController *discoveryNav = [[UINavigationController alloc] initWithRootViewController:discoveryController];
+    UIWindowScene *windowScene = (UIWindowScene *)scene;
+    self.window = [[UIWindow alloc] initWithWindowScene:windowScene];
     
-    UITabBarController *tabBarController = [[UITabBarController alloc] init];
-    NSArray *array = [NSArray arrayWithObjects:goodsNav, discoveryNav, nil];
-    tabBarController.viewControllers = array;
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     
-    
-    self.window.rootViewController = tabBarController;
-    
-   
-    
-    goodsNav.title = @"物品";
-    UIImage *tempImageOne = [[UIImage imageNamed:@"wupinguanli.png"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
-    [goodsNav.tabBarItem  setImage:tempImageOne];
-   
-    
-    discoveryNav.title = @"发现";
-    UIImage *tempImageTwo = [[UIImage imageNamed:@"faxian.png"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
-    [discoveryNav.tabBarItem setImage:tempImageTwo];
+//    [userDefaults removeObjectForKey:@"userName"];
+//    [userDefaults removeObjectForKey:@"passWord"];
+   // NSString *string = [userDefaults objectForKey:@"userName"];
+    if ([userDefaults objectForKey:@"userName"]) {
+        GoodsViewController *goodViewController = [[GoodsViewController alloc] init];
+        UINavigationController *goodsNav = [[UINavigationController alloc] initWithRootViewController:goodViewController];
+        
+        DiscoveryViewController *discoveryController = [[DiscoveryViewController alloc] init];
+        UINavigationController *discoveryNav = [[UINavigationController alloc] initWithRootViewController:discoveryController];
+        
+        _tabBarController = [[UITabBarController alloc] init];
+        NSArray *array = [NSArray arrayWithObjects:goodsNav, discoveryNav, nil];
+        _tabBarController.viewControllers = array;
+        
+        goodsNav.title = @"物品";
+        UIImage *tempImageOne = [[UIImage imageNamed:@"wupinguanli.png"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+        [goodsNav.tabBarItem  setImage:tempImageOne];
+       
+        
+        discoveryNav.title = @"发现";
+        UIImage *tempImageTwo = [[UIImage imageNamed:@"faxian.png"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+        [discoveryNav.tabBarItem setImage:tempImageTwo];
+        self.window.rootViewController = _tabBarController;
+    } else {
+        LoginViewViewController *log = [[LoginViewViewController alloc] init];
+        UINavigationController *navTemp = [[UINavigationController alloc] initWithRootViewController:log];
+        
+        self.window.rootViewController = navTemp;
+    }
     
     [self.window makeKeyAndVisible];
 }

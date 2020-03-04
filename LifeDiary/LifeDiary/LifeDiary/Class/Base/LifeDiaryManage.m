@@ -10,6 +10,8 @@
 #import "Access_tokenModel.h"
 #import <AFNetworking.h>
 #import "PhotoIdentificationModel.h"
+#import "RegisterJSONModel.h"
+#import "LoginJSONModel.h"
 static LifeDiaryManage *manageCustom;
 @implementation LifeDiaryManage
 + (instancetype) sharedLeton {
@@ -56,6 +58,29 @@ static LifeDiaryManage *manageCustom;
     }];
         
 }
+
+- (void)regisetUserToBackGround:(RegisterHandle)successBlock error:(ErrorHandle)errorBlock {
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    NSDictionary *paramDict = @{@"username":_userNameRegister,@"password":_passWordRegister, @"Content-Type":@"application/x-www-form-urlencoded"};
+    NSString *url =@"http://116.62.179.174:8080/mmall/user/register.do";
+    [manager POST:url parameters:paramDict progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        RegisterJSONModel *registerJSONModel = [[RegisterJSONModel alloc] initWithDictionary:responseObject error:nil];
+        successBlock(registerJSONModel);
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+    }];
+}
+- (void)loginUserToBackGround:(LoginHandle)successBlock error:(ErrorHandle)errorBlock {
+    AFHTTPSessionManager *manage = [AFHTTPSessionManager manager];
+    NSDictionary *dict = @{@"username":_userNameLogin, @"password":_passWordLogin};
+    NSString *url = @"http://116.62.179.174:8080/mmall/user/login.do";
+    [manage POST:url parameters:dict progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        LoginJSONModel *loginJSONModel = [[LoginJSONModel alloc] initWithDictionary:responseObject error:nil];
+        successBlock(loginJSONModel);
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+    }];
+    
+}
+
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context {
     //NSLog(@"change:%@", change);
     if ([keyPath  isEqual: @"access_token"]) {

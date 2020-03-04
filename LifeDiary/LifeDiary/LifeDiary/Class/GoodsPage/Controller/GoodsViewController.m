@@ -7,7 +7,6 @@
 //
 
 #import "GoodsViewController.h"
-#import "WelcomeViewController.h"
 #import "GoodsView.h"
 #import "GoodsHeadView.h"
 #import "MoreViewController.h"
@@ -25,9 +24,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    WelcomeViewController *welcomeViewController = [[WelcomeViewController alloc] init];
-    welcomeViewController.modalPresentationStyle = 0;
-    //[self presentViewController:welcomeViewController animated:NO completion:nil];
     
     
     

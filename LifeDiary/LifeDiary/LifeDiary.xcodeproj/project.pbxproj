@@ -40,6 +40,15 @@
 		84AA2CF123A5A4C4008B38E8 /* GoodsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84AA2CF023A5A4C4008B38E8 /* GoodsViewController.m */; };
 		84BB929E2405566D00FC8183 /* PersonSettingModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 84BB929D2405566D00FC8183 /* PersonSettingModel.m */; };
 		84BB92A224066BCB00FC8183 /* ItemsShowsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 84BB92A124066BCB00FC8183 /* ItemsShowsView.m */; };
+		84BB92CB240F38FF00FC8183 /* LoginViewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84BB92CA240F38FF00FC8183 /* LoginViewViewController.m */; };
+		84BB92CF240F3B9800FC8183 /* icon-test.png in Resources */ = {isa = PBXBuildFile; fileRef = 84BB92CC240F3B9800FC8183 /* icon-test.png */; };
+		84BB92D0240F3B9800FC8183 /* icon-test-2.png in Resources */ = {isa = PBXBuildFile; fileRef = 84BB92CD240F3B9800FC8183 /* icon-test-2.png */; };
+		84BB92D1240F3B9800FC8183 /* IMG_3251.JPG in Resources */ = {isa = PBXBuildFile; fileRef = 84BB92CE240F3B9800FC8183 /* IMG_3251.JPG */; };
+		84BB92D4240F3D0800FC8183 /* LoginView.m in Sources */ = {isa = PBXBuildFile; fileRef = 84BB92D3240F3D0800FC8183 /* LoginView.m */; };
+		84BB92D7240FCACC00FC8183 /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84BB92D6240FCACC00FC8183 /* RegisterViewController.m */; };
+		84BB92DA240FCAED00FC8183 /* RegisterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 84BB92D9240FCAED00FC8183 /* RegisterView.m */; };
+		84BB92E1240FDA5F00FC8183 /* RegisterJSONModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 84BB92E0240FDA5F00FC8183 /* RegisterJSONModel.m */; };
+		84BB92E4240FE4C900FC8183 /* LoginJSONModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 84BB92E3240FE4C900FC8183 /* LoginJSONModel.m */; };
 		84C5B18223F6426E0026569E /* PersonSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84C5B18123F6426E0026569E /* PersonSettingViewController.m */; };
 		84C5B18523F642980026569E /* PersonView.m in Sources */ = {isa = PBXBuildFile; fileRef = 84C5B18423F642980026569E /* PersonView.m */; };
 		84C9A81223ED397C002EA55D /* quanbu.png in Resources */ = {isa = PBXBuildFile; fileRef = 84C9A81123ED397C002EA55D /* quanbu.png */; };
@@ -130,6 +139,21 @@
 		84BB929D2405566D00FC8183 /* PersonSettingModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PersonSettingModel.m; sourceTree = "<group>"; };
 		84BB92A024066BCB00FC8183 /* ItemsShowsView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ItemsShowsView.h; sourceTree = "<group>"; };
 		84BB92A124066BCB00FC8183 /* ItemsShowsView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ItemsShowsView.m; sourceTree = "<group>"; };
+		84BB92C9240F38FF00FC8183 /* LoginViewViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LoginViewViewController.h; sourceTree = "<group>"; };
+		84BB92CA240F38FF00FC8183 /* LoginViewViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LoginViewViewController.m; sourceTree = "<group>"; };
+		84BB92CC240F3B9800FC8183 /* icon-test.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-test.png"; sourceTree = "<group>"; };
+		84BB92CD240F3B9800FC8183 /* icon-test-2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-test-2.png"; sourceTree = "<group>"; };
+		84BB92CE240F3B9800FC8183 /* IMG_3251.JPG */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = IMG_3251.JPG; sourceTree = "<group>"; };
+		84BB92D2240F3D0800FC8183 /* LoginView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LoginView.h; sourceTree = "<group>"; };
+		84BB92D3240F3D0800FC8183 /* LoginView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LoginView.m; sourceTree = "<group>"; };
+		84BB92D5240FCACC00FC8183 /* RegisterViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RegisterViewController.h; sourceTree = "<group>"; };
+		84BB92D6240FCACC00FC8183 /* RegisterViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RegisterViewController.m; sourceTree = "<group>"; };
+		84BB92D8240FCAED00FC8183 /* RegisterView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RegisterView.h; sourceTree = "<group>"; };
+		84BB92D9240FCAED00FC8183 /* RegisterView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RegisterView.m; sourceTree = "<group>"; };
+		84BB92DF240FDA5F00FC8183 /* RegisterJSONModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RegisterJSONModel.h; sourceTree = "<group>"; };
+		84BB92E0240FDA5F00FC8183 /* RegisterJSONModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RegisterJSONModel.m; sourceTree = "<group>"; };
+		84BB92E2240FE4C900FC8183 /* LoginJSONModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LoginJSONModel.h; sourceTree = "<group>"; };
+		84BB92E3240FE4C900FC8183 /* LoginJSONModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LoginJSONModel.m; sourceTree = "<group>"; };
 		84C5B18023F6426E0026569E /* PersonSettingViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PersonSettingViewController.h; sourceTree = "<group>"; };
 		84C5B18123F6426E0026569E /* PersonSettingViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PersonSettingViewController.m; sourceTree = "<group>"; };
 		84C5B18323F642980026569E /* PersonView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PersonView.h; sourceTree = "<group>"; };
@@ -353,6 +377,9 @@
 				84A93D4724029D2E00EAFDA2 /* sousuo-2.png */,
 				84A93D4B2403AB3300EAFDA2 /* head2.jpeg */,
 				84A93D4D2403B15200EAFDA2 /* backGround.jpg */,
+				84BB92CD240F3B9800FC8183 /* icon-test-2.png */,
+				84BB92CC240F3B9800FC8183 /* icon-test.png */,
+				84BB92CE240F3B9800FC8183 /* IMG_3251.JPG */,
 			);
 			path = Sourse;
 			sourceTree = "<group>";
@@ -360,6 +387,7 @@
 		84762B9F23A6314400713ECA /* WelcomePage */ = {
 			isa = PBXGroup;
 			children = (
+				84BB92DB240FCAF400FC8183 /* Model */,
 				84762BA123A631CF00713ECA /* Controller */,
 				84762BA023A631BE00713ECA /* View */,
 			);
@@ -371,6 +399,10 @@
 			children = (
 				84762BA223A6328100713ECA /* WelComeView.h */,
 				84762BA323A6328100713ECA /* WelComeView.m */,
+				84BB92D2240F3D0800FC8183 /* LoginView.h */,
+				84BB92D3240F3D0800FC8183 /* LoginView.m */,
+				84BB92D8240FCAED00FC8183 /* RegisterView.h */,
+				84BB92D9240FCAED00FC8183 /* RegisterView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -380,6 +412,10 @@
 			children = (
 				84762BA523A632A300713ECA /* WelcomeViewController.h */,
 				84762BA623A632A300713ECA /* WelcomeViewController.m */,
+				84BB92C9240F38FF00FC8183 /* LoginViewViewController.h */,
+				84BB92CA240F38FF00FC8183 /* LoginViewViewController.m */,
+				84BB92D5240FCACC00FC8183 /* RegisterViewController.h */,
+				84BB92D6240FCACC00FC8183 /* RegisterViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -415,6 +451,17 @@
 			children = (
 				84BB929C2405566D00FC8183 /* PersonSettingModel.h */,
 				84BB929D2405566D00FC8183 /* PersonSettingModel.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		84BB92DB240FCAF400FC8183 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				84BB92DF240FDA5F00FC8183 /* RegisterJSONModel.h */,
+				84BB92E0240FDA5F00FC8183 /* RegisterJSONModel.m */,
+				84BB92E2240FE4C900FC8183 /* LoginJSONModel.h */,
+				84BB92E3240FE4C900FC8183 /* LoginJSONModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -610,7 +657,10 @@
 				84A93D4824029D2E00EAFDA2 /* sousuo-2.png in Resources */,
 				84A93D4E2403B15200EAFDA2 /* backGround.jpg in Resources */,
 				84762B9323A5C68700713ECA /* wupinguanli.png in Resources */,
+				84BB92CF240F3B9800FC8183 /* icon-test.png in Resources */,
 				84762B9723A5C7C200713ECA /* faxian.png in Resources */,
+				84BB92D0240F3B9800FC8183 /* icon-test-2.png in Resources */,
+				84BB92D1240F3B9800FC8183 /* IMG_3251.JPG in Resources */,
 				8446021923EB0A980077227C /* person.png in Resources */,
 				84C9A81223ED397C002EA55D /* quanbu.png in Resources */,
 				84A93D4C2403AB3300EAFDA2 /* head2.jpeg in Resources */,
@@ -669,12 +719,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				84C9A81B23EEE525002EA55D /* AllItemsViewController.m in Sources */,
+				84BB92D7240FCACC00FC8183 /* RegisterViewController.m in Sources */,
 				84C9A81823ED40AA002EA55D /* MoreViewController.m in Sources */,
 				84544FED23D3E40900639E34 /* Access_tokenModel.m in Sources */,
 				8462477223A5A4F50022EF97 /* GoodsView.m in Sources */,
 				84544FDF23D0998100639E34 /* AddItemsViewController.m in Sources */,
+				84BB92E1240FDA5F00FC8183 /* RegisterJSONModel.m in Sources */,
 				84DD173B2395383900B10515 /* AppDelegate.m in Sources */,
 				84C9A81E23EFDEB9002EA55D /* AllItemsView.m in Sources */,
+				84BB92CB240F38FF00FC8183 /* LoginViewViewController.m in Sources */,
 				84C9A82723F2D461002EA55D /* UIBezierPath+GetAllPoints.m in Sources */,
 				84762BA723A632A300713ECA /* WelcomeViewController.m in Sources */,
 				84544FE223D09AB100639E34 /* AddItemsView.m in Sources */,
@@ -689,16 +742,19 @@
 				84C5B18523F642980026569E /* PersonView.m in Sources */,
 				8446020723E8406A0077227C /* ModelTwo.m in Sources */,
 				846BD36923DEAD7B00133FF7 /* Items.m in Sources */,
+				84BB92E4240FE4C900FC8183 /* LoginJSONModel.m in Sources */,
 				84DD173E2395383900B10515 /* SceneDelegate.m in Sources */,
 				84BB929E2405566D00FC8183 /* PersonSettingModel.m in Sources */,
 				84C5B18223F6426E0026569E /* PersonSettingViewController.m in Sources */,
 				8446020023E8401A0077227C /* BaseModel.m in Sources */,
 				84AA2CF123A5A4C4008B38E8 /* GoodsViewController.m in Sources */,
+				84BB92D4240F3D0800FC8183 /* LoginView.m in Sources */,
 				84C9A82123F0063A002EA55D /* GoodsViewModel.m in Sources */,
 				8446021423E847F00077227C /* ModelOneCell.m in Sources */,
 				8462477D23A5ADE00022EF97 /* DiscoveryView.m in Sources */,
 				84762BA423A6328100713ECA /* WelComeView.m in Sources */,
 				845E1CF323CFF0FD005E4960 /* GoodsHeadView.m in Sources */,
+				84BB92DA240FCAED00FC8183 /* RegisterView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
