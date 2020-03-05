@@ -21,6 +21,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic) NSNumber *numberOfItem;
 @property (nonatomic, copy) NSDate *overDue;
 @property (nonatomic, copy) NSString *dataType;
+@property (nonatomic, copy) NSString *itemsState;
+@property (nonatomic, copy) NSString *describeString;
 
 - (void)setAttribute:(NSString * _Nonnull)attribute;
 @end

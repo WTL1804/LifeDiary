@@ -23,6 +23,8 @@
         _numberOfItem = [NSNumber numberWithInt:1];
         _overDue = now;
         _dataType = @"ModelOne";
+        _itemsState = @"正常";
+        _describeString = @"";
     }
     return self;
 }
@@ -37,6 +39,8 @@
     items.shelfLifeNumber = _shelfLifeNumber;
     items.overDue = [_overDue copy];
     items.dataType = [_dataType mutableCopy];
+    items.describeString = [_describeString mutableCopy];
+    items.itemsState = [_itemsState mutableCopy];
     return items;
 }
 - (id)copyWithZone:(NSZone *)zone {
@@ -50,6 +54,8 @@
     items.shelfLifeNumber = _shelfLifeNumber;
     items.overDue = _overDue;
     items.dataType = _dataType;
+    items.describeString = _describeString;
+    items.itemsState = _itemsState;
     return items;
      // return self;
 }
