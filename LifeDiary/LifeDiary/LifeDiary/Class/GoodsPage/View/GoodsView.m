@@ -22,6 +22,8 @@
     self.backgroundColor = [UIColor whiteColor];
     self.mainTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height) style:UITableViewStyleGrouped];
     _itemsArray = [[NSMutableArray alloc] init];
+    _itemsDeletedMutArray = [[NSMutableArray alloc] init];
+    _itemsOverDueMutArray = [[NSMutableArray alloc] init];
     self.mainTableView.dataSource = self;
     self.mainTableView.delegate = self;
     self.mainTableView.backgroundColor = [UIColor whiteColor];

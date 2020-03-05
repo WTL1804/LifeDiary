@@ -133,6 +133,7 @@
     more.delegate = self;
     [self presentViewController:nav animated:NO completion:nil];
 }
+//物品过期或者耗尽
 - (void)clickHeadCell {
     AllItemsViewController *all = [[AllItemsViewController alloc] init];
     all.itemsTempMutArray = [[NSMutableArray alloc] init];

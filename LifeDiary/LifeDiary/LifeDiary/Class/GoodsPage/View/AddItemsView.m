@@ -25,9 +25,13 @@
     [_photoBtn setTitle:@"照片" forState:UIControlStateNormal];
     [_photoBtn setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
     [_photoBtn setImage:[UIImage imageNamed:@"照相机.png"] forState:UIControlStateNormal];
-    [_photoBtn setTitleEdgeInsets:UIEdgeInsetsMake(55, -24, 0, 42)];
-    [_photoBtn setImageEdgeInsets:UIEdgeInsetsMake(0, 10, 0, 0)];
+//    [_photoBtn setTitleEdgeInsets:UIEdgeInsetsMake(55, -24, 0, 42)];
+//    [_photoBtn setImageEdgeInsets:UIEdgeInsetsMake(0, 10, 0, 0)];
+//    [_photoBtn setTitleEdgeInsets:UIEdgeInsetsMake(55, -24, 0, 42)];
+//    [_photoBtn setImageEdgeInsets:UIEdgeInsetsMake(0, 10, 0, 0)];
     [_photoBtn addTarget:self action:@selector(clickBtn) forControlEvents:UIControlEventTouchUpInside];
+//    _photoBtn.layer.borderWidth  = 0.1;
+//    _photoBtn.layer.borderColor = [UIColor blackColor].CGColor;
     
     _itemNameTextField = [[UITextField alloc] init];
     [self addSubview:_itemNameTextField];
@@ -65,7 +69,7 @@
     [self addSubview: _numberTextField];
     _numberTextField.borderStyle = UITextBorderStyleRoundedRect;
     _numberTextField.delegate = self;
-    _numberTextField.placeholder =@"数量/个默认为1";
+    _numberTextField.placeholder =@"数量/个";
     _numberTextField.keyboardType = UIKeyboardTypeDefault;
     
     
@@ -82,56 +86,123 @@
     _photoImageView = [[UIImageView alloc] init];
     [self addSubview:_photoImageView];
     _photoImageView.layer.masksToBounds = YES;
+    _photoImageView.layer.borderWidth  = 1;
+    _photoImageView.layer.borderColor = [UIColor blackColor].CGColor;
     
+    _describeTextField = [[UITextField alloc] init];
+    [self addSubview: _describeTextField];
+    _describeTextField.placeholder = @"留下一些物品描述吧";
+    _describeTextField.delegate = self;
+    _describeTextField.borderStyle = UITextBorderStyleRoundedRect;
+    _describeTextField.keyboardType = UIKeyboardTypeDefault;
 }
+//- (void)layoutSubviews {
+//
+//    [_photoBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.top.equalTo(self.mas_top);
+//        make.bottom.equalTo(self.mas_top).offset(self.frame.size.height/5);
+//        make.left.equalTo(self.mas_left).offset(15);
+//        make.right.equalTo(self.mas_left).offset(self.frame.size.width/3.5+15);
+//    }];
+//    [_photoImageView mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.top.equalTo(self.mas_top).offset(20);
+//        make.bottom.equalTo(self.mas_top).offset(self.frame.size.height/5);
+//        make.left.equalTo(self.mas_left).offset(15);
+//        make.right.equalTo(self.mas_left).offset(self.frame.size.width/3.5+15);
+//    }];
+//
+//
+//    [_itemNameTextField mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.top.equalTo(self.mas_top).offset(20);
+//        make.bottom.equalTo (self.mas_top).offset(60);
+//        make.left.equalTo(_photoBtn.mas_right).offset(10);
+//        make.right.equalTo(self.mas_right).offset(-40);
+//    }];
+//
+//
+//    [_itemNamePropertiesTextField mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.top.equalTo(_itemNameTextField.mas_bottom).offset(10);
+//        make.bottom.equalTo (_itemNameTextField.mas_bottom).offset(50);
+//        make.left.equalTo(_photoBtn.mas_right).offset(10);
+//        make.right.equalTo(self.mas_right).offset(-40);
+//    }];
+//    [_dateTextField mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.top.equalTo(_photoBtn.mas_bottom).offset(10);
+//        make.bottom.equalTo(_photoBtn.mas_bottom).offset(50);
+//        make.left.equalTo(_itemNameTextField.mas_left);
+//        make.right.equalTo(_itemNameTextField.mas_right);
+//    }];
+//    [_ShelfLifeTextField mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.top.equalTo(_dateTextField.mas_bottom).offset(10);
+//        make.bottom.equalTo(_dateTextField.mas_bottom).offset(50);
+//        make.left.equalTo(_dateTextField.mas_left);
+//        make.right.equalTo(_dateTextField.mas_right);
+//    }];
+//    [_numberTextField mas_makeConstraints:^(MASConstraintMaker *make) {
+//       make.top.equalTo(_ShelfLifeTextField.mas_bottom).offset(10);
+//       make.bottom.equalTo(_ShelfLifeTextField.mas_bottom).offset(50);
+//       make.left.equalTo(_ShelfLifeTextField.mas_left);
+//       make.right.equalTo(_ShelfLifeTextField.mas_right);
+//    }];
+//}
 - (void)layoutSubviews {
-  
+    CGFloat height = self.frame.size.height;
+    CGFloat width = self.frame.size.width;
     [_photoBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(self.mas_top);
-        make.bottom.equalTo(self.mas_top).offset(self.frame.size.height/5);
-        make.left.equalTo(self.mas_left).offset(15);
-        make.right.equalTo(self.mas_left).offset(self.frame.size.width/3.5+15);
+        make.top.equalTo(self.mas_top).offset(height / 20);
+        make.bottom.equalTo(self.mas_top).offset(height * 5 / 20);
+        make.left.equalTo(self.mas_left).offset(width / 2 - height / 8);
+        make.right.equalTo(self.mas_left).offset(width / 2 + height / 8);
     }];
     [_photoImageView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(self.mas_top).offset(20);
-        make.bottom.equalTo(self.mas_top).offset(self.frame.size.height/5);
-        make.left.equalTo(self.mas_left).offset(15);
-        make.right.equalTo(self.mas_left).offset(self.frame.size.width/3.5+15);
+        make.top.equalTo(self.mas_top).offset(height / 20);
+        make.bottom.equalTo(self.mas_top).offset(height * 5 / 20);
+        make.left.equalTo(self.mas_left).offset(width / 2 - height / 8);
+        make.right.equalTo(self.mas_left).offset(width / 2 + height / 8);
     }];
-    
     
     [_itemNameTextField mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(self.mas_top).offset(20);
-        make.bottom.equalTo (self.mas_top).offset(60);
-        make.left.equalTo(_photoBtn.mas_right).offset(10);
-        make.right.equalTo(self.mas_right).offset(-40);
+        make.top.equalTo(_photoBtn.mas_bottom).offset(height / 30);
+        make.bottom.equalTo(_photoBtn.mas_bottom).offset(height * 7 / 60);
+        make.left.equalTo(self.mas_left).offset(height / 20);
+        make.right.equalTo(self.mas_left).offset(height / 20 + width * 3 / 10);
     }];
-    
     
     [_itemNamePropertiesTextField mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(_itemNameTextField.mas_bottom).offset(10);
-        make.bottom.equalTo (_itemNameTextField.mas_bottom).offset(50);
-        make.left.equalTo(_photoBtn.mas_right).offset(10);
-        make.right.equalTo(self.mas_right).offset(-40);
+        make.top.equalTo(_photoBtn.mas_bottom).offset(height / 30);
+        make.bottom.equalTo(_photoBtn.mas_bottom).offset(height * 7 / 60);
+        make.left.equalTo(_itemNameTextField.mas_right).offset(height / 30);
+        make.right.equalTo(_itemNameTextField.mas_right).offset(height / 30 + width / 2);
     }];
+    
     [_dateTextField mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(_photoBtn.mas_bottom).offset(10);
-        make.bottom.equalTo(_photoBtn.mas_bottom).offset(50);
-        make.left.equalTo(_itemNameTextField.mas_left);
-        make.right.equalTo(_itemNameTextField.mas_right);
+        make.top.equalTo(_itemNameTextField.mas_bottom).offset(height / 30);
+        make.bottom.equalTo(_itemNameTextField.mas_bottom).offset(height * 7 / 60);
+        make.left.equalTo(self.mas_left).offset(height / 20);
+        make.right.equalTo(self.mas_left).offset(height / 20 + width / 2);
     }];
+    
     [_ShelfLifeTextField mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(_dateTextField.mas_bottom).offset(10);
-        make.bottom.equalTo(_dateTextField.mas_bottom).offset(50);
-        make.left.equalTo(_dateTextField.mas_left);
-        make.right.equalTo(_dateTextField.mas_right);
+        make.top.equalTo(_itemNameTextField.mas_bottom).offset(height / 30);
+        make.bottom.equalTo(_itemNameTextField.mas_bottom).offset(height * 7 / 60);
+        make.left.equalTo(_dateTextField.mas_right).offset(height / 30);
+        make.right.equalTo(_dateTextField.mas_right).offset(height / 30 + width * 3 / 10);
     }];
+    
+    [_describeTextField mas_makeConstraints:^(MASConstraintMaker *make) {
+       make.top.equalTo(_ShelfLifeTextField.mas_bottom).offset(height / 30);
+       make.bottom.equalTo(_ShelfLifeTextField.mas_bottom).offset(height * 14 / 60);
+       make.left.equalTo(self.mas_left).offset(height / 30);
+       make.right.equalTo(_ShelfLifeTextField.mas_right);
+    }];
+    
     [_numberTextField mas_makeConstraints:^(MASConstraintMaker *make) {
-       make.top.equalTo(_ShelfLifeTextField.mas_bottom).offset(10);
-       make.bottom.equalTo(_ShelfLifeTextField.mas_bottom).offset(50);
+       make.top.equalTo(_describeTextField.mas_bottom).offset(height / 30);
+       make.bottom.equalTo(_describeTextField.mas_bottom).offset(height * 7 / 60);
        make.left.equalTo(_ShelfLifeTextField.mas_left);
        make.right.equalTo(_ShelfLifeTextField.mas_right);
     }];
+    
 }
 - (void)clickBtn {
     [self.delegateClickCamera clickCamera];
@@ -151,6 +222,9 @@
     if (textField == _ShelfLifeTextField) {
         self.addItems.shelfLifeNumber = [NSNumber numberWithInt: [_ShelfLifeTextField.text intValue]];
     }
+    if (textField == _describeTextField) {
+        self.addItems.describeString = [textField.text copy];
+    }
 }
 - (void)dateUpdate {
     NSDateFormatter *myDateFormatter = [[NSDateFormatter alloc] init];
@@ -166,5 +240,6 @@
     [_itemNamePropertiesTextField resignFirstResponder];
     [_itemNameTextField resignFirstResponder];
     [_ShelfLifeTextField resignFirstResponder];
+    [_describeTextField resignFirstResponder];
 }
 @end

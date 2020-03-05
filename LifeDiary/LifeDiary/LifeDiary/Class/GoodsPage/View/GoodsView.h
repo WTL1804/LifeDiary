@@ -17,6 +17,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) UITableView *mainTableView;
 
 @property (nonatomic, strong) NSMutableArray *itemsArray;
+@property (nonatomic, strong) NSMutableArray *itemsOverDueMutArray;
+@property (nonatomic, strong) NSMutableArray *itemsDeletedMutArray;
 
 @property (nonatomic, strong) BaseTableViewCell *cell;
 

@@ -30,6 +30,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) UITextField *dateTextField;
 @property (nonatomic, strong) UITextField *ShelfLifeTextField;
 @property (nonatomic, strong) UITextField *numberTextField;
+@property (nonatomic, strong) UITextField *describeTextField;
 
 @property (nonatomic, strong) UIDatePicker *datePicker;
 

@@ -25,8 +25,8 @@
     //_allView.frame = CGRectMake(0, self.navigationController.navigationBar.frame.size.height, self.view.frame.size.width, self.view.frame.size.height - self.tabBarController.tabBar.frame.size.height);
 
     [self.view addSubview:_allView];
-    _allView.itemsMutArray = [[NSMutableArray alloc] init];
-    _allView.itemsMutArray = _itemsTempMutArray;
+    _allView.itemsOverDueMutArray = [[NSMutableArray alloc] init];
+    _allView.itemsOverDueMutArray = _itemsTempMutArray;
     [_allView setUI];
 }
 - (void)clickLeftBarButton {

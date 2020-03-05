@@ -27,7 +27,7 @@
     
 }
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return _itemsMutArray.count;
+    return _itemsOverDueMutArray.count;
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return 1;
@@ -36,7 +36,7 @@
     return self.frame.size.height*1.5/6;
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    BaseModel *model = [BaseModel initWithDictionary:_itemsMutArray[indexPath.section]];
+    BaseModel *model = [BaseModel initWithDictionary:_itemsOverDueMutArray[indexPath.section]];
     NSString *string = [NSString stringWithUTF8String:object_getClassName(model)];
     string = [string stringByAppendingString:@"Cell"];
     _baseCell = [_mainTableView dequeueReusableCellWithIdentifier:string];
