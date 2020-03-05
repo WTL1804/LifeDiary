@@ -33,7 +33,7 @@
     return 1;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return self.frame.size.height*1.5/6;
+    return self.frame.size.height * 1.5 / 6;
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     BaseModel *model = [BaseModel initWithDictionary:_itemsOverDueMutArray[indexPath.section]];

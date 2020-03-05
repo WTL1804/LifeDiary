@@ -68,6 +68,7 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(numberChange:) name:@"numberChange" object:nil];
     
     _goodsModel = [[GoodsViewModel alloc] init];
+    
 }
 
 - (void)clickPersonBtn {
@@ -107,6 +108,7 @@
     _temp.dataType = @"ModelTwo";
     NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithObjects:@[_temp.addDate,_temp.attribute,_temp.imageData,_temp.name,_temp.numberOfItem,_temp.overDue,_temp.productionDate,_temp.shelfLifeNumber,_temp.dataType,_temp.itemsState, _temp.describeString] forKeys:@[@"addDate",@"attribute",@"imageData",@"name",@"numberOfItem",@"overDue",@"productionDate",@"shelfLifeNumber",@"dataType",@"itemsState", @"describeString"]];
     [_goodsView.itemsArray addObject:dict];
+    [_goodsModel goodsInspection:_goodsView.itemsArray overDueMutArray:_goodsView.itemsOverDueMutArray];
     [_goodsView.mainTableView reloadData];
 }
 

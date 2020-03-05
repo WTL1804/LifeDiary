@@ -24,7 +24,8 @@
     [self addSubview:_photoBtn];
     [_photoBtn setTitle:@"照片" forState:UIControlStateNormal];
     [_photoBtn setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
-    [_photoBtn setImage:[UIImage imageNamed:@"照相机.png"] forState:UIControlStateNormal];
+    UIImage *image = [[UIImage imageNamed:@"照相机.png"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    [_photoBtn setImage:image forState:UIControlStateNormal];
 //    [_photoBtn setTitleEdgeInsets:UIEdgeInsetsMake(55, -24, 0, 42)];
 //    [_photoBtn setImageEdgeInsets:UIEdgeInsetsMake(0, 10, 0, 0)];
 //    [_photoBtn setTitleEdgeInsets:UIEdgeInsetsMake(55, -24, 0, 42)];
@@ -35,25 +36,46 @@
     
     _itemNameTextField = [[UITextField alloc] init];
     [self addSubview:_itemNameTextField];
-    _itemNameTextField.placeholder  = @"物品名称";
+    _itemNameTextField.placeholder  = @"名称";
     _itemNameTextField.delegate = self;
    // _itemNameTextField.layer.borderWidth = 0.1;
     //_itemNameTextField.layer.borderColor = [UIColor blueColor].CGColor;
     _itemNameTextField.borderStyle = UITextBorderStyleRoundedRect;
     _itemNameTextField.keyboardType = UIKeyboardTypeDefault;
     
+    UIImageView *nameLeftImageView = [[UIImageView alloc] initWithFrame:CGRectMake(5, 5, 40, 40)];
+    [nameLeftImageView setImage:[[UIImage imageNamed:@"biaoqian.png"]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
+    [_itemNameTextField setLeftView:nameLeftImageView];
+    _itemNameTextField.leftViewMode = UITextFieldViewModeAlways;
+    
+    
+    
+    
     _itemNamePropertiesTextField = [[UITextField alloc] init];
     [self addSubview: _itemNamePropertiesTextField];
-    _itemNamePropertiesTextField.placeholder = @"物品属性(可手动归类)";
+    _itemNamePropertiesTextField.placeholder = @"属性(自动识别)";
     _itemNamePropertiesTextField.delegate = self;
     _itemNamePropertiesTextField.borderStyle = UITextBorderStyleRoundedRect;
     _itemNamePropertiesTextField.keyboardType = UIKeyboardTypeDefault;
+    
+    UIImageView *propertyLeftImageView = [[UIImageView alloc] initWithFrame:CGRectMake(5, 5, 40, 40)];
+       [propertyLeftImageView setImage:[[UIImage imageNamed:@"shuxing.png"]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
+       [_itemNamePropertiesTextField setLeftView:propertyLeftImageView];
+       _itemNamePropertiesTextField.leftViewMode = UITextFieldViewModeAlways;
+    
+    
     
     _dateTextField = [[UITextField alloc] init];
     [self addSubview: _dateTextField];
     _dateTextField.borderStyle = UITextBorderStyleRoundedRect;
     _dateTextField.delegate = self;
     _dateTextField.placeholder =@"生产日期";
+    UIImageView *dateLeftImageView = [[UIImageView alloc] initWithFrame:CGRectMake(5, 5, 40, 40)];
+    [dateLeftImageView setImage:[[UIImage imageNamed:@"riqi.png"]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
+    [_dateTextField setLeftView:dateLeftImageView];
+    _dateTextField.leftViewMode = UITextFieldViewModeAlways;
+    
+    
     
     
     //ShelfLifeTextField
@@ -71,7 +93,10 @@
     _numberTextField.delegate = self;
     _numberTextField.placeholder =@"数量/个";
     _numberTextField.keyboardType = UIKeyboardTypeDefault;
-    
+    UIImageView *numberLeftImageView = [[UIImageView alloc] initWithFrame:CGRectMake(10, 5, 40, 40)];
+    [numberLeftImageView setImage:[[UIImage imageNamed:@"shuliang.png"]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
+    [_numberTextField setLeftView:numberLeftImageView];
+    _numberTextField.leftViewMode = UITextFieldViewModeAlways;
     
     
     self.datePicker = [[UIDatePicker alloc] init];
@@ -95,6 +120,12 @@
     _describeTextField.delegate = self;
     _describeTextField.borderStyle = UITextBorderStyleRoundedRect;
     _describeTextField.keyboardType = UIKeyboardTypeDefault;
+    UIImageView *describeLeftImageView = [[UIImageView alloc] initWithFrame:CGRectMake(10, 5, 40, 40)];
+    [describeLeftImageView setImage:[[UIImage imageNamed:@"miaoshu.png"]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
+    [_describeTextField setLeftView:describeLeftImageView];
+    _describeTextField.leftViewMode = UITextFieldViewModeAlways;
+    
+
 }
 //- (void)layoutSubviews {
 //
