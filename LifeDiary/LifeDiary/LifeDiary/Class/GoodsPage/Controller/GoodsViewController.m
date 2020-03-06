@@ -70,7 +70,7 @@
     _goodsModel = [[GoodsViewModel alloc] init];
     
 }
-
+//进入消息和个人中心
 - (void)clickPersonBtn {
     PersonSettingViewController *personViewController = [[PersonSettingViewController alloc] init];
     personViewController.itemsMutArray = [[NSMutableArray alloc] init];
@@ -88,6 +88,7 @@
     
     
 }
+//进入添加物品的界面
 - (void)clickButton {
    
     AddItemsViewController *addViewController = [[AddItemsViewController alloc] init];
@@ -103,6 +104,8 @@
     self.navigationController.navigationBar.hidden = NO;
     self.tabBarController.tabBar.hidden = YES;
 }
+
+//添加物品界面确定按钮的方法实现
 - (void)passItem:(Items *)items {
     _temp = [items copy];
     _temp.dataType = @"ModelTwo";
@@ -112,6 +115,7 @@
     [_goodsView.mainTableView reloadData];
 }
 
+//goodsView cell中物品增减方法实现 通过通知
 - (void)numberChange:(NSNotification *)noti {
     NSDictionary *dict = [noti userInfo];
     UIStepper *sc = [dict valueForKey:@"stepper"];
@@ -124,6 +128,7 @@
             }
         }
 }
+//模态推出右上角的选项
 - (void)clickAllBtn {
     MoreViewController *more = [[MoreViewController alloc] init];
     

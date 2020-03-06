@@ -55,6 +55,7 @@
     self.tabBarController.tabBar.hidden = NO;
     self.navigationController.navigationBar.hidden = YES;
 }
+//添加照片
 - (void)clickCamera {
     self.imagePicker = [[UIImagePickerController alloc] init];
     _imagePicker.editing = YES;

@@ -12,6 +12,8 @@
 #import "PhotoIdentificationModel.h"
 #import "RegisterJSONModel.h"
 #import "LoginJSONModel.h"
+#import "itemsGoodsViewModel.h"
+#import "Items.h"
 static LifeDiaryManage *manageCustom;
 @implementation LifeDiaryManage
 + (instancetype) sharedLeton {
@@ -59,9 +61,9 @@ static LifeDiaryManage *manageCustom;
         
 }
 
-- (void)regisetUserToBackGround:(RegisterHandle)successBlock error:(ErrorHandle)errorBlock {
+- (void)regisetUserToBackGroundWithUser:(NSString *)username pass:(NSString *)password success:(RegisterHandle)successBlock error:(ErrorHandle)errorBlock {
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-    NSDictionary *paramDict = @{@"username":_userNameRegister,@"password":_passWordRegister, @"Content-Type":@"application/x-www-form-urlencoded"};
+    NSDictionary *paramDict = @{@"username":username,@"password":password, @"Content-Type":@"application/x-www-form-urlencoded"};
     NSString *url =@"http://116.62.179.174:8080/mmall/user/register.do";
     [manager POST:url parameters:paramDict progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         RegisterJSONModel *registerJSONModel = [[RegisterJSONModel alloc] initWithDictionary:responseObject error:nil];
@@ -69,9 +71,9 @@ static LifeDiaryManage *manageCustom;
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
     }];
 }
-- (void)loginUserToBackGround:(LoginHandle)successBlock error:(ErrorHandle)errorBlock {
+- (void)loginUserToBackGroundWithUser:(NSString *)username pass:(NSString *)password success:(LoginHandle)successBlock error:(ErrorHandle)errorBlock {
     AFHTTPSessionManager *manage = [AFHTTPSessionManager manager];
-    NSDictionary *dict = @{@"username":_userNameLogin, @"password":_passWordLogin};
+    NSDictionary *dict = @{@"username":username, @"password":password};
     NSString *url = @"http://116.62.179.174:8080/mmall/user/login.do";
     [manage POST:url parameters:dict progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         LoginJSONModel *loginJSONModel = [[LoginJSONModel alloc] initWithDictionary:responseObject error:nil];
@@ -79,6 +81,23 @@ static LifeDiaryManage *manageCustom;
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
     }];
     
+}
+
+- (void)itemsStoredAllWithUserID:(NSString *)ID Items:(Items *)items success:(itemsRequestHandle)successBlock error:(ErrorHandle)errorBlock{
+        AFHTTPSessionManager *manage = [AFHTTPSessionManager manager];
+      //  NSUserDefaults *user = [NSUserDefaults standardUserDefaults];
+        NSDateFormatter *matter = [[NSDateFormatter alloc] init];
+            [matter setDateFormat:@"yyyy-MM-dd"];
+//            NSString *nowString = [matter stringFromDate:now];
+//     NSString *imageBase64 = [items.imageData base64EncodedStringWithOptions:NSDataBase64Encoding64CharacterLineLength];
+    NSString *imageBaseUTF8 = [[NSString alloc] initWithData:items.imageData encoding:NSUTF8StringEncoding];
+    NSDictionary *paramDict = @{@"id":ID, @"proname":items.name, @"production_date":[matter stringFromDate:items.productionDate], @"expiration_date":[matter stringFromDate:items.overDue], @"exptime":[items.shelfLifeNumber stringValue], @"add_date":items.addDate, @"product_image":imageBaseUTF8, @"sign":items.itemsState, @"property":items.attribute, @"detail":items.describeString};
+        NSString *url = @"";
+        [manage POST:url parameters:paramDict progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        ItemsGoodsViewModel *itemsGoodsViewModel = [[ItemsGoodsViewModel alloc] initWithDictionary:responseObject error:nil];
+        successBlock(itemsGoodsViewModel);
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+    }];
 }
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context {

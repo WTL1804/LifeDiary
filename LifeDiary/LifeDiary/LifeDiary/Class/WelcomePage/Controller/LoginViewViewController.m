@@ -51,10 +51,8 @@
 //            [user synchronize];
         [self defaultPassWord];
     } else {
-        [LifeDiaryManage sharedLeton].userNameLogin = array[0];
-        [LifeDiaryManage sharedLeton].passWordLogin = array[1];
-        [[LifeDiaryManage sharedLeton] loginUserToBackGround:^(LoginJSONModel * _Nonnull loginJSONModel) {
-            if ([loginJSONModel.msg isEqualToString:@"密码错误"]) {
+        [[LifeDiaryManage sharedLeton] loginUserToBackGroundWithUser:array[0] pass:array[1] success:^(LoginJSONModel * _Nonnull loginJSONModel) {
+           if ([loginJSONModel.msg isEqualToString:@"密码错误"]) {
                 UILabel *tempLabel = [[UILabel alloc] initWithFrame:CGRectMake(self.view.frame.size.width/2 - 75, self.view.frame.size.height * 7/10, 150, 150)];
                  tempLabel.text = @"账号或密码错误";
                  tempLabel.textAlignment = NSTextAlignmentCenter;
@@ -75,6 +73,7 @@
                 NSUserDefaults *user = [NSUserDefaults standardUserDefaults];
                 [user setObject:array[0] forKey:@"userName"];
                 [user setObject:array[1] forKey:@"passWord"];
+                [user setObject:loginJSONModel.ID forKey:@"ID"];
                 [user synchronize];
                 GoodsViewController *goodViewController = [[GoodsViewController alloc] init];
                 UINavigationController *goodsNav = [[UINavigationController alloc] initWithRootViewController:goodViewController];
@@ -97,7 +96,7 @@
                 window.rootViewController = tabBarController;
             }
         } error:^(NSError * _Nonnull error) {
-            NSLog(@"请求出错");
+            
         }];
     }
     

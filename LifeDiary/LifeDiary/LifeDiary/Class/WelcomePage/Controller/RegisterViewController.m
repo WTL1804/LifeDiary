@@ -26,23 +26,21 @@
     
 }
 - (void)registerUser:(NSArray *)array {
-    [LifeDiaryManage sharedLeton].userNameRegister = array[0];
-    [LifeDiaryManage sharedLeton].passWordRegister = array[1];
-    [[LifeDiaryManage sharedLeton] regisetUserToBackGround:^(RegisterJSONModel * _Nonnull registerJSONModel) {
+    [[LifeDiaryManage sharedLeton] regisetUserToBackGroundWithUser:array[0] pass:array[1] success:^(RegisterJSONModel * _Nonnull registerJSONModel) {
         if ([registerJSONModel.msg isEqualToString:@"注册成功"]) {
             [self.navigationController popViewControllerAnimated:NO];
         } else if ([registerJSONModel.msg isEqualToString:@"用户名已存在"]){
             UILabel *tempLabel = [[UILabel alloc] initWithFrame:CGRectMake(self.view.frame.size.width/2 - 75, self.view.frame.size.height * 7/10, 150, 150)];
             tempLabel.text = @"用户名已存在";
             tempLabel.textAlignment = NSTextAlignmentCenter;
-           
-
+            
+            
             tempLabel.alpha = 0;
             [self.view addSubview:tempLabel];
             tempLabel.textColor = [UIColor blackColor];
             tempLabel.font = [UIFont systemFontOfSize:20];
             [UIView animateWithDuration:3 animations:^{
-               tempLabel.alpha = 1;
+                tempLabel.alpha = 1;
             }];
             [UIView animateWithDuration:3 animations:^{
                 tempLabel.alpha = 0;
@@ -56,6 +54,7 @@
 - (void)viewWillAppear:(BOOL)animated {
     self.navigationController.navigationBar.hidden = NO;
 }
+
 
 /*
 #pragma mark - Navigation

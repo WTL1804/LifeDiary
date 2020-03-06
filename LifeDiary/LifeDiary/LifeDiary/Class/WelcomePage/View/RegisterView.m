@@ -81,4 +81,8 @@
         make.right.equalTo(self.mas_left).offset(self.frame.size.width/2 + self.frame.size.height / 20 + 10);
     }];
 }
+- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+    [_userTextField resignFirstResponder];
+    [_passTextField resignFirstResponder];
+}
 @end

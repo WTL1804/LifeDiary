@@ -21,6 +21,7 @@
     
 //    [userDefaults removeObjectForKey:@"userName"];
 //    [userDefaults removeObjectForKey:@"passWord"];
+//    [userDefaults synchronize];
    // NSString *string = [userDefaults objectForKey:@"userName"];
     if ([userDefaults objectForKey:@"userName"]) {
         GoodsViewController *goodViewController = [[GoodsViewController alloc] init];

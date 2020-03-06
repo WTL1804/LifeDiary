@@ -11,12 +11,15 @@
 @class PhotoIdentificationModel;
 @class RegisterJSONModel;
 @class LoginJSONModel;
+@class ItemsGoodsViewModel;
+@class Items;
 NS_ASSUME_NONNULL_BEGIN
 typedef void (^AccessTokenHandle)(Access_tokenModel *accessTokenModel);
 typedef void(^ErrorHandle)(NSError *error);
 typedef void (^PhotoIdentificationHandle)(PhotoIdentificationModel *identificationModel);
 typedef void (^RegisterHandle)(RegisterJSONModel *registerJSONModel);
 typedef void (^LoginHandle)(LoginJSONModel *loginJSONModel);
+typedef void (^itemsRequestHandle)(ItemsGoodsViewModel *itemsGoods);
 @interface LifeDiaryManage : NSObject
 
 //获取百度ai开放能力的key
@@ -28,18 +31,18 @@ typedef void (^LoginHandle)(LoginJSONModel *loginJSONModel);
 - (void)identification:(PhotoIdentificationHandle)successBlock error:(ErrorHandle)errorBlock;
 
 //注册请求
-- (void)regisetUserToBackGround:(RegisterHandle)successBlock error:(ErrorHandle)errorBlock;
+- (void)regisetUserToBackGroundWithUser:(NSString *)username pass:(NSString *)password success:(RegisterHandle)successBlock error:(ErrorHandle)errorBlock;
 
 //登录请求
-- (void)loginUserToBackGround:(LoginHandle)successBlock error:(ErrorHandle)errorBlock;
+- (void)loginUserToBackGroundWithUser:(NSString *)username pass:(NSString *)password success:(LoginHandle)successBlock error:(ErrorHandle)errorBlock;
+//请求存储物品
+- (void)itemsStoredAllWithUserID:(NSString *)ID Items:(Items *)items success:(itemsRequestHandle)successBlock error:(ErrorHandle)errorBlock;
+//请求全部物品
+//- (void)itemsAllWithUserID:
 
 
 @property (nonatomic, copy) NSString *access_token;
 @property (nonatomic, copy) NSString *image;
-@property (nonatomic, copy) NSString *userNameRegister;
-@property (nonatomic, copy) NSString *passWordRegister;
-@property (nonatomic, copy) NSString *userNameLogin;
-@property (nonatomic, copy) NSString *passWordLogin;
 
 @end
 

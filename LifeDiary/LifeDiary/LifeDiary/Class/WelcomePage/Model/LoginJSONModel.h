@@ -12,6 +12,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface LoginJSONModel : JSONModel
 @property (nonatomic, copy) NSString *msg;
+@property (nonatomic, copy) NSString *ID;
 @end
 
 NS_ASSUME_NONNULL_END
