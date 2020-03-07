@@ -36,7 +36,7 @@ typedef void (^itemsRequestHandle)(ItemsGoodsViewModel *itemsGoods);
 //登录请求
 - (void)loginUserToBackGroundWithUser:(NSString *)username pass:(NSString *)password success:(LoginHandle)successBlock error:(ErrorHandle)errorBlock;
 //请求存储物品
-- (void)itemsStoredAllWithUserID:(NSString *)ID Items:(Items *)items success:(itemsRequestHandle)successBlock error:(ErrorHandle)errorBlock;
+- (void)itemsStoredWithUserID:(NSString *)ID Items:(Items *)items success:(itemsRequestHandle)successBlock error:(ErrorHandle)errorBlock;
 //请求全部物品
 //- (void)itemsAllWithUserID:
 

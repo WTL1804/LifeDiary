@@ -83,7 +83,7 @@ static LifeDiaryManage *manageCustom;
     
 }
 
-- (void)itemsStoredAllWithUserID:(NSString *)ID Items:(Items *)items success:(itemsRequestHandle)successBlock error:(ErrorHandle)errorBlock{
+- (void)itemsStoredWithUserID:(NSString *)ID Items:(Items *)items success:(itemsRequestHandle)successBlock error:(ErrorHandle)errorBlock{
         AFHTTPSessionManager *manage = [AFHTTPSessionManager manager];
       //  NSUserDefaults *user = [NSUserDefaults standardUserDefaults];
         NSDateFormatter *matter = [[NSDateFormatter alloc] init];
