@@ -53,7 +53,7 @@
     
     _itemNamePropertiesTextField = [[UITextField alloc] init];
     [self addSubview: _itemNamePropertiesTextField];
-    _itemNamePropertiesTextField.placeholder = @"属性(自动识别)";
+    _itemNamePropertiesTextField.placeholder = @"类型(自动识别)";
     _itemNamePropertiesTextField.delegate = self;
     _itemNamePropertiesTextField.borderStyle = UITextBorderStyleRoundedRect;
     _itemNamePropertiesTextField.keyboardType = UIKeyboardTypeDefault;

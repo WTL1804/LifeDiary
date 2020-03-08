@@ -125,6 +125,9 @@
 - (void)registerApp {
     RegisterViewController *registerViewController = [[RegisterViewController alloc] init];
     [self.navigationController pushViewController:registerViewController animated:NO];
+    registerViewController.returnUserName = ^(NSString * _Nonnull userName) {
+        self.loginView.userTextField.text = userName;
+    };
 }
 /*
 #pragma mark - Navigation

@@ -96,8 +96,10 @@
     [self.addItemsView.photoImageView setImage:image];
     [self photoIdentification];
     
-    SOZOChromoplast *color = [[SOZOChromoplast alloc] initWithImage:image];
-    self.addItemsView.backgroundColor = color.secondHighlight;
+    
+    //设置背景颜色
+//    SOZOChromoplast *color = [[SOZOChromoplast alloc] initWithImage:image];
+//    self.addItemsView.backgroundColor = color.secondHighlight;
 //    //获取图片
 //    NSString *urlString = [NSString stringWithFormat:@"%@",_smallModel.images.medium];
 //    NSData *data = [NSData dataWithContentsOfURL:[NSURL  URLWithString:urlString]];
@@ -139,23 +141,127 @@
     }];
 }
 - (void)addDone {
-    if (self.addItemsView.addItems.imageData != nil) {
-        if (self.addItemsView.addItems.name != nil) {
-            if (self.addItemsView.addItems.productionDate != nil) {
-                if (self.addItemsView.addItems.shelfLifeNumber != nil) {
-                    //计算过期日。
-                    int days = [self.addItemsView.addItems.shelfLifeNumber intValue];
-                    NSDate *date;
-                    NSTimeInterval  oneDay = 24*60*60;
-                    date = [self.addItemsView.addItems.productionDate initWithTimeInterval:oneDay *days sinceDate:self.addItemsView.addItems.productionDate];
-                    self.addItemsView.addItems.overDue = [date copy];
-                    [self.delegateItems passItem:self.addItemsView.addItems];
-                    [self.navigationController popViewControllerAnimated:YES];
-                }
-            }
-            
-        }
+    
+    
+    //添加照片
+    if (self.addItemsView.imageView == nil) {
+        UILabel *tempLabel = [[UILabel alloc] initWithFrame:CGRectMake(self.view.frame.size.width / 3 - 100, self.view.frame.size.height * 1.5 / 2, 200, 100)];
+        tempLabel.text = @"请添加照片";
+        tempLabel.textAlignment = NSTextAlignmentCenter;
+        tempLabel.alpha = 0;
+        [self.view addSubview:tempLabel];
+        tempLabel.textColor = [UIColor blackColor];
+        tempLabel.font = [UIFont systemFontOfSize:20];
+        [UIView animateWithDuration:3 animations:^{
+            tempLabel.alpha = 1;
+        }];
+        
+        [UIView animateWithDuration:3 animations:^{
+            tempLabel.alpha = 0;
+        }];
+        return ;
     }
+   //添加属性
+    if ([self.addItemsView.itemNamePropertiesTextField.text isEqualToString:@""]) {
+        UILabel *tempLabel = [[UILabel alloc] initWithFrame:CGRectMake(self.view.frame.size.width / 3 - 100, self.view.frame.size.height * 1.5 / 2, 200, 100)];
+        tempLabel.text = @"没有设置物品类型哦";
+        tempLabel.textAlignment = NSTextAlignmentCenter;
+        tempLabel.alpha = 0;
+        [self.view addSubview:tempLabel];
+        tempLabel.textColor = [UIColor blackColor];
+        tempLabel.font = [UIFont systemFontOfSize:20];
+        [UIView animateWithDuration:3 animations:^{
+            tempLabel.alpha = 1;
+        }];
+        
+        [UIView animateWithDuration:3 animations:^{
+            tempLabel.alpha = 0;
+        }];
+        return ;
+    }
+    if ([self.addItemsView.dateTextField.text isEqualToString:@""]) {
+        UILabel *tempLabel = [[UILabel alloc] initWithFrame:CGRectMake(self.view.frame.size.width / 3 - 100, self.view.frame.size.height * 1.5 / 2, 150, 100)];
+        tempLabel.text = @"请添加生产日期";
+        tempLabel.textAlignment = NSTextAlignmentCenter;
+        tempLabel.alpha = 0;
+        [self.view addSubview:tempLabel];
+        tempLabel.textColor = [UIColor blackColor];
+        tempLabel.font = [UIFont systemFontOfSize:20];
+        [UIView animateWithDuration:3 animations:^{
+                tempLabel.alpha = 1;
+            }];
+        
+            [UIView animateWithDuration:3 animations:^{
+                tempLabel.alpha = 0;
+            }];
+        return ;
+    }
+    if ([self.addItemsView.ShelfLifeTextField.text isEqualToString:@""]) {
+        UILabel *tempLabel = [[UILabel alloc] initWithFrame:CGRectMake(self.view.frame.size.width / 3 - 100, self.view.frame.size.height * 1.5 / 2, 150, 100)];
+        tempLabel.text = @"请添加保质期";
+        tempLabel.textAlignment = NSTextAlignmentCenter;
+        tempLabel.layer.cornerRadius = 5;
+        tempLabel.alpha = 0;
+        [self.view addSubview:tempLabel];
+        tempLabel.textColor = [UIColor blackColor];
+        tempLabel.font = [UIFont systemFontOfSize:20];
+        [UIView animateWithDuration:3 animations:^{
+            tempLabel.alpha = 1;
+        }];
+    
+        [UIView animateWithDuration:3 animations:^{
+            tempLabel.alpha = 0;
+        }];
+        return ;
+    }
+    if ([self.addItemsView.itemNameTextField.text isEqualToString:@""]) {
+        UILabel *tempLabel = [[UILabel alloc] initWithFrame:CGRectMake(self.view.frame.size.width / 3 - 100, self.view.frame.size.height * 1.5 / 2, 150, 100)];
+        tempLabel.text = @"请设置物品名称";
+        tempLabel.textAlignment = NSTextAlignmentCenter;
+        tempLabel.layer.cornerRadius = 5;
+        tempLabel.alpha = 0;
+        [self.view addSubview:tempLabel];
+        tempLabel.textColor = [UIColor blackColor];
+        tempLabel.font = [UIFont systemFontOfSize:20];
+        [UIView animateWithDuration:3 animations:^{
+            tempLabel.alpha = 1;
+        }];
+    
+        [UIView animateWithDuration:3 animations:^{
+            tempLabel.alpha = 0;
+        }];
+        return ;
+    }
+
+    //计算过期日。
+    int days = [self.addItemsView.addItems.shelfLifeNumber intValue];
+    NSDate *date;
+    NSTimeInterval  oneDay = 24*60*60;
+    date = [self.addItemsView.addItems.productionDate initWithTimeInterval:oneDay *days sinceDate:self.addItemsView.addItems.productionDate];
+    self.addItemsView.addItems.overDue = [date copy];
+    //  防止添加过期物品
+    NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
+    NSDateComponents *comp = [calendar components:NSCalendarUnitDay fromDate:[NSDate date] toDate:self.addItemsView.addItems.overDue options:NSCalendarWrapComponents];
+    NSNumber *number = [NSNumber numberWithInteger:comp.day];
+    if ([number intValue] <= 0) {
+        UILabel *tempLabel = [[UILabel alloc] initWithFrame:CGRectMake(self.view.frame.size.width / 3 - 75, self.view.frame.size.height * 1.5 / 2, 150, 100)];
+        tempLabel.text = @"该物品已过期";
+        tempLabel.textAlignment = NSTextAlignmentCenter;
+        tempLabel.alpha = 0;
+        [self.view addSubview:tempLabel];
+        tempLabel.textColor = [UIColor blackColor];
+        tempLabel.font = [UIFont systemFontOfSize:20];
+        [UIView animateWithDuration:3 animations:^{
+            tempLabel.alpha = 1;
+        }];
+                    
+        [UIView animateWithDuration:3 animations:^{
+            tempLabel.alpha = 0;
+        }];
+        return ;
+    }
+    [self.delegateItems passItem:self.addItemsView.addItems];
+    [self.navigationController popViewControllerAnimated:YES];
 }
 - (void)dealloc {
     [self removeObserver:[LifeDiaryManage sharedLeton] forKeyPath:@"access_token"];

@@ -14,6 +14,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, strong) RegisterView *registerView;
 
+@property (nonatomic, copy) void (^returnUserName)(NSString *userName);
 @end
+
 
 NS_ASSUME_NONNULL_END

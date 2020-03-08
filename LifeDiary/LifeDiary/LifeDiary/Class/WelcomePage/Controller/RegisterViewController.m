@@ -29,6 +29,7 @@
     [[LifeDiaryManage sharedLeton] regisetUserToBackGroundWithUser:array[0] pass:array[1] success:^(RegisterJSONModel * _Nonnull registerJSONModel) {
         if ([registerJSONModel.msg isEqualToString:@"注册成功"]) {
             [self.navigationController popViewControllerAnimated:NO];
+            self.returnUserName(array[0]);
         } else if ([registerJSONModel.msg isEqualToString:@"用户名已存在"]){
             UILabel *tempLabel = [[UILabel alloc] initWithFrame:CGRectMake(self.view.frame.size.width/2 - 75, self.view.frame.size.height * 7/10, 150, 150)];
             tempLabel.text = @"用户名已存在";

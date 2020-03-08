@@ -98,6 +98,8 @@ static LifeDiaryManage *manageCustom;
         successBlock(itemsGoodsViewModel);
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
     }];
+    
+    
 }
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context {

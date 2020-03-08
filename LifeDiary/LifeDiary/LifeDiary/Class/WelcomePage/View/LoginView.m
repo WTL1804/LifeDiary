@@ -33,6 +33,7 @@
         
         self.passTextField = [[UITextField alloc] init];
         [self addSubview:self.passTextField];
+        _passTextField.secureTextEntry = YES;
         
         self.userTextField.borderStyle = UITextBorderStyleRoundedRect;
         self.passTextField.borderStyle = UITextBorderStyleRoundedRect;
