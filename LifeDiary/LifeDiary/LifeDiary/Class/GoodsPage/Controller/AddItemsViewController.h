@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "AddItemsView.h"
 NS_ASSUME_NONNULL_BEGIN
-
+@class AdditemsModel;
 @protocol addItemDelegate <NSObject>
 
 - (void)passItem:(Items *)items;
@@ -23,6 +23,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) NSString *image;
 @property (nonatomic, copy) NSString *access_token;
 @property (nonatomic, weak) id <addItemDelegate> delegateItems;
+@property (nonatomic, copy) NSArray *itemsNameArray;
+@property (nonatomic, strong) AdditemsModel *addItemsModel;
 @end
 
 NS_ASSUME_NONNULL_END

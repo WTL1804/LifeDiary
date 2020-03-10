@@ -13,6 +13,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface GoodsViewModel : NSObject
 - (void)changeNumberOfItem:(NSMutableDictionary *)itemsDict value:(double)value array:(NSMutableArray *)array number:(int)i;
 
+//检查物品过期
 - (void)goodsInspection:(NSMutableArray *)array overDueMutArray: (NSMutableArray *)overDueArray;
     
 @end

@@ -10,7 +10,8 @@
 #import "LifeDiaryManage.h"
 #import "Access_tokenModel.h"
 #import "PhotoIdentificationModel.h"
-#import <SOZOChromoplast.h>
+#import "AdditemsModel.h"
+
 @interface AddItemsViewController () <ClickCamera>
 
 @end
@@ -27,6 +28,8 @@
     [_addItemsView setUI];
     _addItemsView.delegateClickCamera = self;
     [self obtainAccess_token];
+    
+    _addItemsModel = [[AdditemsModel alloc] init];
     
     //将请求到的accesstoken返回给manage
     [self addObserver:[LifeDiaryManage sharedLeton] forKeyPath:@"access_token" options:NSKeyValueObservingOptionNew context:nil];
@@ -97,17 +100,6 @@
     [self photoIdentification];
     
     
-    //设置背景颜色
-//    SOZOChromoplast *color = [[SOZOChromoplast alloc] initWithImage:image];
-//    self.addItemsView.backgroundColor = color.secondHighlight;
-//    //获取图片
-//    NSString *urlString = [NSString stringWithFormat:@"%@",_smallModel.images.medium];
-//    NSData *data = [NSData dataWithContentsOfURL:[NSURL  URLWithString:urlString]];
-//    UIImage *image = [UIImage imageWithData:data];
-//    //实例化颜色
-//    SOZOChromoplast *color = [[SOZOChromoplast alloc] initWithImage:image];
-//    //设置背景颜色
-//    _smallView.backgroundColor = color.firstHighlight;
 
 
     
@@ -144,7 +136,7 @@
     
     
     //添加照片
-    if (self.addItemsView.imageView == nil) {
+    if (self.addItemsView.photoImageView == nil) {
         UILabel *tempLabel = [[UILabel alloc] initWithFrame:CGRectMake(self.view.frame.size.width / 3 - 100, self.view.frame.size.height * 1.5 / 2, 200, 100)];
         tempLabel.text = @"请添加照片";
         tempLabel.textAlignment = NSTextAlignmentCenter;
@@ -231,6 +223,27 @@
             tempLabel.alpha = 0;
         }];
         return ;
+    } else {
+    
+        if (![_addItemsModel goodsNameRechecking:_addItemsView.itemNameTextField.text itemsArray:_itemsNameArray]) {
+                UILabel *tempLabel = [[UILabel alloc] initWithFrame:CGRectMake(self.view.frame.size.width / 3 - 100, self.view.frame.size.height * 1.5 / 2, 150, 100)];
+                tempLabel.text = @"名称已经重复";
+                tempLabel.textAlignment = NSTextAlignmentCenter;
+                tempLabel.layer.cornerRadius = 5;
+                tempLabel.alpha = 0;
+                [self.view addSubview:tempLabel];
+                tempLabel.textColor = [UIColor blackColor];
+                tempLabel.font = [UIFont systemFontOfSize:20];
+                [UIView animateWithDuration:3 animations:^{
+                    tempLabel.alpha = 1;
+                }];
+            
+                [UIView animateWithDuration:3 animations:^{
+                    tempLabel.alpha = 0;
+                }];
+                return ;
+            
+        }
     }
 
     //计算过期日。
@@ -254,7 +267,7 @@
         [UIView animateWithDuration:3 animations:^{
             tempLabel.alpha = 1;
         }];
-                    
+
         [UIView animateWithDuration:3 animations:^{
             tempLabel.alpha = 0;
         }];

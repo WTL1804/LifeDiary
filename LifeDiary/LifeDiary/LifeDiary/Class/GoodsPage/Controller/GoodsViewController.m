@@ -95,6 +95,11 @@
     self.temp = [[Items alloc] init];
     addViewController.delegateItems = self;
     [self.navigationController pushViewController:addViewController animated:YES];
+    NSMutableArray *tempArray = [[NSMutableArray alloc] init];
+    for (NSDictionary *dict in self.goodsView.itemsArray) {
+        [tempArray addObject:[dict valueForKey:@"name"]];
+    }
+    addViewController.itemsNameArray = [tempArray copy];
 }
 - (void)viewWillAppear:(BOOL)animated {
     self.navigationController.navigationBar.hidden = YES;
@@ -144,8 +149,8 @@
 - (void)clickHeadCell {
     AllItemsViewController *all = [[AllItemsViewController alloc] init];
     all.itemsTempMutArray = [[NSMutableArray alloc] init];
-    for (int i = 0; i < self->_goodsView.itemsArray.count; i++) {
-        NSMutableDictionary *dict = [self->_goodsView.itemsArray[i] mutableCopy];
+    for (int i = 0; i < self->_goodsView.itemsOverDueMutArray.count; i++) {
+        NSMutableDictionary *dict = [self->_goodsView.itemsOverDueMutArray[i] mutableCopy];
         NSString *dataType = @"ModelOne";
         [dict removeObjectForKey:@"dataType"];
         [dict setValue:dataType forKey:@"dataType"];

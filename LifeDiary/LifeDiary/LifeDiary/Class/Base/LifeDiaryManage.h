@@ -13,6 +13,7 @@
 @class LoginJSONModel;
 @class ItemsGoodsViewModel;
 @class Items;
+@class UploadImageModel;
 NS_ASSUME_NONNULL_BEGIN
 typedef void (^AccessTokenHandle)(Access_tokenModel *accessTokenModel);
 typedef void(^ErrorHandle)(NSError *error);
@@ -20,6 +21,7 @@ typedef void (^PhotoIdentificationHandle)(PhotoIdentificationModel *identificati
 typedef void (^RegisterHandle)(RegisterJSONModel *registerJSONModel);
 typedef void (^LoginHandle)(LoginJSONModel *loginJSONModel);
 typedef void (^itemsRequestHandle)(ItemsGoodsViewModel *itemsGoods);
+typedef void (^uploadImageHandle)(UploadImageModel * uploadImageModel);
 @interface LifeDiaryManage : NSObject
 
 //获取百度ai开放能力的key
@@ -35,8 +37,12 @@ typedef void (^itemsRequestHandle)(ItemsGoodsViewModel *itemsGoods);
 
 //登录请求
 - (void)loginUserToBackGroundWithUser:(NSString *)username pass:(NSString *)password success:(LoginHandle)successBlock error:(ErrorHandle)errorBlock;
+
 //请求存储物品
 - (void)itemsStoredWithUserID:(NSString *)ID Items:(Items *)items success:(itemsRequestHandle)successBlock error:(ErrorHandle)errorBlock;
+
+//上传图片
+- (void)uploadImageWithItem:(Items *)items success:(uploadImageHandle)successBlock error: (ErrorHandle)errorBlock;
 //请求全部物品
 //- (void)itemsAllWithUserID:
 

@@ -21,6 +21,8 @@
 		8446021423E847F00077227C /* ModelOneCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8446021323E847F00077227C /* ModelOneCell.m */; };
 		8446021723E8480C0077227C /* ModelTwoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8446021623E8480C0077227C /* ModelTwoCell.m */; };
 		8446021923EB0A980077227C /* person.png in Resources */ = {isa = PBXBuildFile; fileRef = 8446021823EB0A980077227C /* person.png */; };
+		84468FDD241654D700A4C162 /* UploadImageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 84468FDC241654D700A4C162 /* UploadImageModel.m */; };
+		84468FE0241657F000A4C162 /* AdditemsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 84468FDF241657F000A4C162 /* AdditemsModel.m */; };
 		84544FDC23D0962900639E34 /* BaseTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 84544FDB23D0962900639E34 /* BaseTableViewCell.m */; };
 		84544FDF23D0998100639E34 /* AddItemsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84544FDE23D0998100639E34 /* AddItemsViewController.m */; };
 		84544FE223D09AB100639E34 /* AddItemsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 84544FE123D09AB100639E34 /* AddItemsView.m */; };
@@ -111,6 +113,10 @@
 		8446021523E8480C0077227C /* ModelTwoCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ModelTwoCell.h; sourceTree = "<group>"; };
 		8446021623E8480C0077227C /* ModelTwoCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ModelTwoCell.m; sourceTree = "<group>"; };
 		8446021823EB0A980077227C /* person.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = person.png; sourceTree = "<group>"; };
+		84468FDB241654D700A4C162 /* UploadImageModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UploadImageModel.h; sourceTree = "<group>"; };
+		84468FDC241654D700A4C162 /* UploadImageModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UploadImageModel.m; sourceTree = "<group>"; };
+		84468FDE241657F000A4C162 /* AdditemsModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AdditemsModel.h; sourceTree = "<group>"; };
+		84468FDF241657F000A4C162 /* AdditemsModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AdditemsModel.m; sourceTree = "<group>"; };
 		84544FDA23D0962900639E34 /* BaseTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BaseTableViewCell.h; sourceTree = "<group>"; };
 		84544FDB23D0962900639E34 /* BaseTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BaseTableViewCell.m; sourceTree = "<group>"; };
 		84544FDD23D0998100639E34 /* AddItemsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AddItemsViewController.h; sourceTree = "<group>"; };
@@ -329,6 +335,10 @@
 				84C9A82023F0063A002EA55D /* GoodsViewModel.m */,
 				8441DC97241230BB00851AEB /* ItemsGoodsViewModel.h */,
 				8441DC98241230BB00851AEB /* ItemsGoodsViewModel.m */,
+				84468FDB241654D700A4C162 /* UploadImageModel.h */,
+				84468FDC241654D700A4C162 /* UploadImageModel.m */,
+				84468FDE241657F000A4C162 /* AdditemsModel.h */,
+				84468FDF241657F000A4C162 /* AdditemsModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -755,6 +765,7 @@
 				84C9A81E23EFDEB9002EA55D /* AllItemsView.m in Sources */,
 				84BB92CB240F38FF00FC8183 /* LoginViewViewController.m in Sources */,
 				84C9A82723F2D461002EA55D /* UIBezierPath+GetAllPoints.m in Sources */,
+				84468FDD241654D700A4C162 /* UploadImageModel.m in Sources */,
 				84762BA723A632A300713ECA /* WelcomeViewController.m in Sources */,
 				84544FE223D09AB100639E34 /* AddItemsView.m in Sources */,
 				84BB92A224066BCB00FC8183 /* ItemsShowsView.m in Sources */,
@@ -772,6 +783,7 @@
 				84DD173E2395383900B10515 /* SceneDelegate.m in Sources */,
 				84BB929E2405566D00FC8183 /* PersonSettingModel.m in Sources */,
 				84C5B18223F6426E0026569E /* PersonSettingViewController.m in Sources */,
+				84468FE0241657F000A4C162 /* AdditemsModel.m in Sources */,
 				8446020023E8401A0077227C /* BaseModel.m in Sources */,
 				84AA2CF123A5A4C4008B38E8 /* GoodsViewController.m in Sources */,
 				84BB92D4240F3D0800FC8183 /* LoginView.m in Sources */,
