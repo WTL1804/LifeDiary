@@ -91,7 +91,7 @@
     [picker dismissViewControllerAnimated:YES completion:nil];
     UIImage *image = [info valueForKey:UIImagePickerControllerEditedImage];
     
-    NSData *data = UIImageJPEGRepresentation(image, 1.0f);
+    NSData *data = UIImageJPEGRepresentation(image, 0.7);
     NSString *imageBase64 = [data base64EncodedStringWithOptions:NSDataBase64Encoding64CharacterLineLength];
     self.image = [imageBase64 mutableCopy];
     
@@ -100,7 +100,13 @@
     [self photoIdentification];
     
     
-
+    Items *items = [[Items alloc] init];
+    items.imageData = [data mutableCopy];
+    [[LifeDiaryManage sharedLeton] uploadImageWithItem:items success:^(NSDictionary * _Nonnull dict) {
+        NSLog(@"\n\nupload:%@", dict);
+    } error:^(NSError * _Nonnull error) {
+        NSLog(@"uploadError:%@",error);
+    }];
 
     
     
@@ -255,6 +261,7 @@
     //  防止添加过期物品
     NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
     NSDateComponents *comp = [calendar components:NSCalendarUnitDay fromDate:[NSDate date] toDate:self.addItemsView.addItems.overDue options:NSCalendarWrapComponents];
+    
     NSNumber *number = [NSNumber numberWithInteger:comp.day];
     if ([number intValue] <= 0) {
         UILabel *tempLabel = [[UILabel alloc] initWithFrame:CGRectMake(self.view.frame.size.width / 3 - 75, self.view.frame.size.height * 1.5 / 2, 150, 100)];
