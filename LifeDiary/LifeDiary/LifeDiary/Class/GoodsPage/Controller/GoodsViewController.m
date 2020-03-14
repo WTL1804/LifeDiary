@@ -118,6 +118,8 @@
     [_goodsView.itemsArray addObject:dict];
     [_goodsModel goodsInspection:_goodsView.itemsArray overDueMutArray:_goodsView.itemsOverDueMutArray];
     [_goodsView.mainTableView reloadData];
+    //上传照片
+
 }
 
 //goodsView cell中物品增减方法实现 通过通知

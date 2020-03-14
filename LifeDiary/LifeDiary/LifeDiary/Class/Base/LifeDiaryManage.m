@@ -65,7 +65,7 @@ static LifeDiaryManage *manageCustom;
 - (void)regisetUserToBackGroundWithUser:(NSString *)username pass:(NSString *)password success:(RegisterHandle)successBlock error:(ErrorHandle)errorBlock {
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     NSDictionary *paramDict = @{@"username":username,@"password":password, @"Content-Type":@"application/x-www-form-urlencoded"};
-    NSString *url =@"http://116.62.179.174:8080/mmall/user/register.do";
+    NSString *url =@"http://116.62.179.174:8080/whpro/user/register.do";
     [manager POST:url parameters:paramDict progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         RegisterJSONModel *registerJSONModel = [[RegisterJSONModel alloc] initWithDictionary:responseObject error:nil];
         successBlock(registerJSONModel);
@@ -75,7 +75,7 @@ static LifeDiaryManage *manageCustom;
 - (void)loginUserToBackGroundWithUser:(NSString *)username pass:(NSString *)password success:(LoginHandle)successBlock error:(ErrorHandle)errorBlock {
     AFHTTPSessionManager *manage = [AFHTTPSessionManager manager];
     NSDictionary *dict = @{@"username":username, @"password":password};
-    NSString *url = @"http://116.62.179.174:8080/mmall/user/login.do";
+    NSString *url = @"http://116.62.179.174:8080/whpro/user/login.do";
     [manage POST:url parameters:dict progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         LoginJSONModel *loginJSONModel = [[LoginJSONModel alloc] initWithDictionary:responseObject error:nil];
         successBlock(loginJSONModel);
@@ -100,81 +100,85 @@ static LifeDiaryManage *manageCustom;
     
 }
 - (void)uploadImageWithItem:(Items *)items success:(uploadImageHandle)successBlock error:(ErrorHandle)errorBlock {
-//     AFHTTPSessionManager *manage = [AFHTTPSessionManager manager];
-//    manage.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json",@"text/html",@"text/json", @"text/javascript,multipart/form-data",nil];
-//    NSDictionary *paramDict = @{};
-//    NSString *url = @"http://116.62.179.174:8080/whpro/user/upload.do";
-//     //[manage.requestSerializer setValue:@"" forHTTPHeaderField:@"If-None-Match"];
-//    manage.responseSerializer = [AFHTTPResponseSerializer serializer];
-//    [manage POST:url parameters:paramDict constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
-//           // 在网络开发中，上传文件时，是文件不允许被覆盖，文件重名
-//           // 要解决此问题，
-//           // 可以在上传时使用当前的系统事件作为文件名
-//           NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-//           // 设置时间格式
-//           [formatter setDateFormat:@"yyyyMMddHHmm"];
-//           NSString *dateString = [formatter stringFromDate:[NSDate date]];
-//           dateString = [dateString stringByAppendingString:items.name];
-//           NSString *fileName = [NSString  stringWithFormat:@"%@.png", dateString];
-//           /*
-//            *该方法的参数
-//            1. appendPartWithFileData：要上传的照片[二进制流]
-//            2. name：对应网站上[upload.php中]处理文件的字段（比如upload）
-//            3. fileName：要保存在服务器上的文件名
-//            4. mimeType：上传的文件的类型
-//            */
-//           [formData appendPartWithFileData:items.imageData name:@"upload_file" fileName:fileName mimeType:@"image/png"];
+    
+     AFHTTPSessionManager *manage = [AFHTTPSessionManager manager];
+    manage.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json",@"text/html",@"text/json", @"text/javascript,multipart/form-data",nil];
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    
+    NSDictionary *paramDict = @{@"username":[defaults valueForKey:@"userName"], @"password":[defaults valueForKey:@"passWord"], @"Content-Type":@"application/x-www-form-urlencoded"};
+    NSString *url = @"http://116.62.179.174:8080/whpro/user/upload.do";
+     //[manage.requestSerializer setValue:@"" forHTTPHeaderField:@"If-None-Match"];
+    manage.responseSerializer = [AFHTTPResponseSerializer serializer];
+    manage.requestSerializer = [AFHTTPRequestSerializer serializer];
+    [manage POST:url parameters:paramDict constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
+           // 在网络开发中，上传文件时，是文件不允许被覆盖，文件重名
+           // 要解决此问题，
+           // 可以在上传时使用当前的系统事件作为文件名
+           NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+           // 设置时间格式
+           [formatter setDateFormat:@"yyyyMMddHHmm"];
+           NSString *dateString = [formatter stringFromDate:[NSDate date]];
+           dateString = [dateString stringByAppendingString:items.name];
+           NSString *fileName = [NSString  stringWithFormat:@"%@.png", dateString];
+           /*
+            *该方法的参数
+            1. appendPartWithFileData：要上传的照片[二进制流]
+            2. name：对应网站上[upload.php中]处理文件的字段（比如upload）
+            3. fileName：要保存在服务器上的文件名
+            4. mimeType：上传的文件的类型
+            */
+           [formData appendPartWithFileData:items.imageData name:@"upload_file" fileName:fileName mimeType:@"image/png"];
+
+    } progress:^(NSProgress * _Nonnull uploadProgress) {
+    }success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+           UploadImageModel *upLoadModel = [[UploadImageModel alloc] initWithData:responseObject error:nil];
+           successBlock(upLoadModel);
+       } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+           errorBlock(error);
+       }];
+
+    
+    
+    
+//    NSString *UploadImageBoundary = @"dadajdlajkcalkjkal";
+//    NSString *URLString = @"http://116.62.179.174:8080/whpro/user/upload.do";
+//    NSMutableURLRequest * request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:URLString]];
+//        [request setHTTPMethod:@"POST"];
+//        [request setCachePolicy:NSURLRequestReloadIgnoringCacheData];
+//        [request setTimeoutInterval:20];
+//        NSString* headerString = [NSString stringWithFormat:@"multipart/form-data; charset=utf-8; boundary=%@",UploadImageBoundary];
+//        [request setValue:headerString forHTTPHeaderField:@"Content-Type"];
 //
-//    } progress:^(NSProgress * _Nonnull uploadProgress) {
-//        NSLog(@"process:%@", uploadProgress);
-//    }success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-////           UploadImageModel *upLoadModel = [[UploadImageModel alloc] initWithDictionary:responseObject error:nil];
-////           NSDictionary *dict = [[NSDictionary alloc] initWithDictionary:responseObject];
-////           successBlock(dict);
-//        NSLog(@"responseObject:%@", responseObject);
-//           NSLog(@"发送成功");
-//       } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-//           NSLog(@"发送失败:%@",error);
-//       }];
+//        NSMutableData* requestMutableData = [NSMutableData data];
+//        NSMutableString* myString = [NSMutableString stringWithFormat:@"--%@\r\n",UploadImageBoundary];
+//        [myString appendString:@"Content-Disposition: form-data; name=\"upload_file\"\r\n\r\n"];/*这里要打两个回车*/
+//        [myString appendString:@"100118"];
+//        [myString appendString:[NSString stringWithFormat:@"\r\n--%@\r\n",UploadImageBoundary]];
+//        [myString appendString:[NSString stringWithFormat:@"Content-Disposition: form-data; name=\"upload_file\"; filename=\"%@\"\r\n",@"tempName"]];
+//        [myString appendString:@"Content-Type: image/jpeg\r\n\r\n"];
+//        /*转化为二进制数据*/
+//        [requestMutableData appendData:[myString dataUsingEncoding:NSUTF8StringEncoding]];
+//        /*文件数据部分，也是二进制*/
+//        [requestMutableData appendData:items.imageData];
+//        /*已--boundary结尾表明结束*/
+//        [requestMutableData appendData:[[NSString stringWithFormat:@"\r\n--%@--\r\n",UploadImageBoundary] dataUsingEncoding:NSUTF8StringEncoding] ];
 //
-    
-    
-    
-
-    NSURL *url = [[NSURL alloc] initWithString:@"http://116.62.179.174:8080/whpro/user/upload.do"];
-    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:url cachePolicy:NSURLRequestReloadIgnoringCacheData timeoutInterval:30];
-    request.HTTPMethod = @"POST";
-    NSString *boundary = @"胡程是傻子";
-  NSString *contentType = [NSString stringWithFormat:@"multipart/form-data; charset=utf-8;boundary=%@", boundary];
-    [request setValue:contentType forHTTPHeaderField:@"Content-Type"];
-
-    NSMutableData *postData = [[NSMutableData alloc]init];
-    NSMutableString* myString = [NSMutableString stringWithFormat:@"--%@\r\n",boundary];
-    NSString *key =@"upload_file";
-    [myString  appendFormat:@"Content-Disposition: form-data; name=\"%@\"\r\n\r\n",key];/*这里要打两个回车*/
-    [myString appendString:@"100118"];
-    [myString appendString:[NSString stringWithFormat:@"\r\n--%@\r\n",boundary]];
-    NSString *name= @"imageTest";
-    [myString appendString:[NSString stringWithFormat:@"Content-Disposition: form-data; name=\"file\"; filename=\"%@\"\r\n",name]];
-     [myString appendString:@"Content-Type: image/jpeg\r\n\r\n"];
-    [postData appendData:[myString dataUsingEncoding:NSUTF8StringEncoding]];
-
-    [postData appendData:items.imageData];
-    [postData appendData:[[NSString stringWithFormat:@"\r\n--%@--\r\n",boundary] dataUsingEncoding:NSUTF8StringEncoding] ];
-    request.HTTPBody = postData;
-    NSURLSessionConfiguration *sessionConfig = [NSURLSessionConfiguration defaultSessionConfiguration];
-    sessionConfig.timeoutIntervalForRequest = 30;
-    NSURLSession* session  = [NSURLSession sharedSession];
-    NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
-        if (error) {
-            errorBlock(error);
-        } else {
-        id dict = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:&error];
-        successBlock(dict);
-        }
-        
-    }];
-    [dataTask resume];
+//        request.HTTPBody = requestMutableData;
+//        NSURLSession* session  = [NSURLSession sharedSession];
+//            NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+//                if (error != nil) {
+//                    errorBlock(error);
+//                } else {
+//                    NSError *errorTemp = [[NSError alloc] init];
+//                    UploadImageModel *upload = [[UploadImageModel alloc] initWithData:data error:&errorTemp];
+//                    NSLog(@"errorTemp:%@", errorTemp);
+//                    successBlock(upload);
+//                }
+//
+//            }];
+//
+//
+//        [dataTask resume];
 
 }
 

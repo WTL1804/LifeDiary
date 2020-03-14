@@ -11,6 +11,7 @@
 #import "Access_tokenModel.h"
 #import "PhotoIdentificationModel.h"
 #import "AdditemsModel.h"
+#import "UploadImageModel.h"
 
 @interface AddItemsViewController () <ClickCamera>
 
@@ -98,19 +99,6 @@
    // [self.addItemsView.photoBtn setBackgroundImage:image forState:UIControlStateNormal];
     [self.addItemsView.photoImageView setImage:image];
     [self photoIdentification];
-    
-    
-    Items *items = [[Items alloc] init];
-    items.imageData = [data mutableCopy];
-    [[LifeDiaryManage sharedLeton] uploadImageWithItem:items success:^(NSDictionary * _Nonnull dict) {
-        NSLog(@"\n\nupload:%@", dict);
-    } error:^(NSError * _Nonnull error) {
-        NSLog(@"uploadError:%@",error);
-    }];
-
-    
-    
-    
     
     
     self.addItemsView.addItems.imageData = [data copy];
@@ -282,6 +270,14 @@
     }
     [self.delegateItems passItem:self.addItemsView.addItems];
     [self.navigationController popViewControllerAnimated:YES];
+    
+    //上传照片:
+    [[LifeDiaryManage sharedLeton] uploadImageWithItem:self.addItemsView.addItems success:^(UploadImageModel * _Nonnull uploadModel) {
+        NSLog(@"图片上传成功");
+        NSLog(@"%@", [uploadModel.data valueForKey:@"uri"]);
+    } error:^(NSError * _Nonnull error) {
+        NSLog(@"图片上传失败%@", error);
+    }];
 }
 - (void)dealloc {
     [self removeObserver:[LifeDiaryManage sharedLeton] forKeyPath:@"access_token"];

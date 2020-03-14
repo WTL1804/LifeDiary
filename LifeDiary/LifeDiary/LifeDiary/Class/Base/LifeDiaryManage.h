@@ -21,7 +21,7 @@ typedef void (^PhotoIdentificationHandle)(PhotoIdentificationModel *identificati
 typedef void (^RegisterHandle)(RegisterJSONModel *registerJSONModel);
 typedef void (^LoginHandle)(LoginJSONModel *loginJSONModel);
 typedef void (^itemsRequestHandle)(ItemsGoodsViewModel *itemsGoods);
-typedef void (^uploadImageHandle)(NSDictionary *dict);
+typedef void (^uploadImageHandle)(UploadImageModel *uploadModel);
 @interface LifeDiaryManage : NSObject
 
 //获取百度ai开放能力的key

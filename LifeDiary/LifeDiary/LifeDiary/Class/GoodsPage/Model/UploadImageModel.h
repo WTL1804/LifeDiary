@@ -10,8 +10,16 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface UploadImageModel : JSONModel
+@protocol DataModel
+@end
 
+@interface DataModel : JSONModel
+@property (nonatomic, copy) NSString *uri;
+@property (nonatomic, strong) NSString *url;
+@end
+
+@interface UploadImageModel : JSONModel
+@property (nonatomic, copy) DataModel *data;
 @end
 
 NS_ASSUME_NONNULL_END
