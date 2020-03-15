@@ -14,12 +14,19 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)registerUser:(NSArray *)array;
 
 @end
+@protocol ClickHeadButtonDelegate <NSObject>
+
+- (void)changeHeadImageView;
+
+@end
 @interface RegisterView : UIView
 @property (nonatomic, strong) UIButton *headImageButton;
 @property (nonatomic, strong) UITextField *userTextField;
 @property (nonatomic, strong) UITextField *passTextField;
 @property (nonatomic, strong) UIButton *registerButton;
+@property (nonatomic, strong) UIImage *headImage;
 @property (nonatomic, weak) id <RegisterUserDelegate> RegiserDelegate;
+@property (nonatomic, weak) id <ClickHeadButtonDelegate> clickHeadButtonDelegate;
 
 
 - (void)setUI;

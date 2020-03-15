@@ -20,19 +20,13 @@
     self.backgroundColor = [UIColor whiteColor];
     
     _photoBtn = [[UIButton alloc] init];
-   // _photoBtn.backgroundColor = [UIColor colorWithWhite:0.9 alpha:1];
     [self addSubview:_photoBtn];
     [_photoBtn setTitle:@"照片" forState:UIControlStateNormal];
     [_photoBtn setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
     UIImage *image = [[UIImage imageNamed:@"照相机.png"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     [_photoBtn setImage:image forState:UIControlStateNormal];
-//    [_photoBtn setTitleEdgeInsets:UIEdgeInsetsMake(55, -24, 0, 42)];
-//    [_photoBtn setImageEdgeInsets:UIEdgeInsetsMake(0, 10, 0, 0)];
-//    [_photoBtn setTitleEdgeInsets:UIEdgeInsetsMake(55, -24, 0, 42)];
-//    [_photoBtn setImageEdgeInsets:UIEdgeInsetsMake(0, 10, 0, 0)];
     [_photoBtn addTarget:self action:@selector(clickBtn) forControlEvents:UIControlEventTouchUpInside];
-//    _photoBtn.layer.borderWidth  = 0.1;
-//    _photoBtn.layer.borderColor = [UIColor blackColor].CGColor;
+
     
     _itemNameTextField = [[UITextField alloc] init];
     [self addSubview:_itemNameTextField];

@@ -20,15 +20,19 @@
 
 - (void)setUI {
     
+
+    _headImage = [[UIImage alloc] init];
     self.backgroundColor = [UIColor whiteColor];
     self.headImageButton = [[UIButton alloc] init];
     //[self.headImageButton setImage: ]
-    [self.headImageButton setTitle:@"空" forState:UIControlStateNormal];
     self.headImageButton.titleLabel.font = [UIFont systemFontOfSize:25];
+    UIImage *image = [[UIImage imageNamed:@"headRegisterImage.png"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    [_headImageButton setImage:image forState:UIControlStateNormal];
     [self.headImageButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     [self addSubview:_headImageButton];
     self.headImageButton.layer.cornerRadius = 81.2/2;
     self.headImageButton.clipsToBounds = YES;
+    [_headImageButton addTarget:self action:@selector(clickHeadButton) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview: self.headImageButton];
     
     self.userTextField = [[UITextField alloc] init];
@@ -48,7 +52,7 @@
     [_registerButton addTarget:self action:@selector(pressRegisterButton) forControlEvents:UIControlEventTouchUpInside];
 }
 - (void)pressRegisterButton {
-    NSArray *array = [NSArray arrayWithObjects:_userTextField.text, _passTextField.text, nil];
+    NSArray *array = [NSArray arrayWithObjects:_userTextField.text, _passTextField.text, _headImage,nil];
     [self.RegiserDelegate registerUser:array];
 }
 
@@ -80,6 +84,10 @@
         make.left.equalTo(self.mas_left).offset(self.frame.size.width/2 - self.frame.size.height / 20 - 10);
         make.right.equalTo(self.mas_left).offset(self.frame.size.width/2 + self.frame.size.height / 20 + 10);
     }];
+}
+
+- (void)clickHeadButton {
+    [self.clickHeadButtonDelegate changeHeadImageView];
 }
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
     [_userTextField resignFirstResponder];

@@ -10,11 +10,12 @@
 @class RegisterView;
 NS_ASSUME_NONNULL_BEGIN
 
-@interface RegisterViewController : UIViewController
+@interface RegisterViewController : UIViewController <UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 
 @property (nonatomic, strong) RegisterView *registerView;
+@property (nonatomic, strong) UIImagePickerController *imagePicker;
 
-@property (nonatomic, copy) void (^returnUserName)(NSString *userName);
+@property (nonatomic, copy) void (^returnUserName)(NSString *userName, UIImage *image);
 @end
 
 

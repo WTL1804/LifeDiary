@@ -63,9 +63,10 @@ static LifeDiaryManage *manageCustom;
 }
 
 - (void)regisetUserToBackGroundWithUser:(NSString *)username pass:(NSString *)password success:(RegisterHandle)successBlock error:(ErrorHandle)errorBlock {
+    
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     NSDictionary *paramDict = @{@"username":username,@"password":password, @"Content-Type":@"application/x-www-form-urlencoded"};
-    NSString *url =@"http://116.62.179.174:8080/whpro/user/register.do";
+    NSString *url = @"http://116.62.179.174:8080/whpro/user/register.do";
     [manager POST:url parameters:paramDict progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         RegisterJSONModel *registerJSONModel = [[RegisterJSONModel alloc] initWithDictionary:responseObject error:nil];
         successBlock(registerJSONModel);
@@ -99,13 +100,49 @@ static LifeDiaryManage *manageCustom;
     
     
 }
-- (void)uploadImageWithItem:(Items *)items success:(uploadImageHandle)successBlock error:(ErrorHandle)errorBlock {
+- (NSString *)ObtaionCookie {
+//    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSArray *cookiesArray = [[NSHTTPCookieStorage sharedHTTPCookieStorage] cookiesForURL:[NSURL URLWithString: @"http://116.62.179.174:8080/whpro/user/login.do"]];
+    NSString *JSESSIONID=@"";
+    for (NSHTTPCookie *cookie in cookiesArray) {
+        if ([cookie.name isEqualToString:@"JSESSIONID"]) {
+                JSESSIONID = cookie.value;
+                break;
+        }
+    }
+    return JSESSIONID;
+//    [defaults setObject:JSESSIONID forKey:@"data"];
+//    [defaults synchronize];
+}
+- (void)loginToObtaionCookie {
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+      //二次登录获取cookie
+      //登录方法
+      
+      [self loginUserToBackGroundWithUser:[defaults valueForKey:@"userName"] pass:[defaults valueForKey:@"passWord"] success:^(LoginJSONModel * _Nonnull loginJSONModel) {
+         if ([defaults objectForKey:@"userName"] && ![defaults objectForKey:@"data"]) {
+             NSArray *cookiesArray = [[NSHTTPCookieStorage sharedHTTPCookieStorage] cookiesForURL:[NSURL URLWithString: @"http://116.62.179.174:8080/whpro/user/login.do"]];
+             NSString *JSESSIONID=@"";
+             for (NSHTTPCookie *cookie in cookiesArray) {
+                 if ([cookie.name isEqualToString:@"JSESSIONID"]) {
+                         JSESSIONID = cookie.value;
+                         break;
+                 }
+             }
+             [defaults setObject:JSESSIONID forKey:@"data"];
+             [defaults synchronize];
+         }
+          NSLog(@"二次登录获取cookie");
+      } error:^(NSError * _Nonnull error) {
+          NSLog(@"二次登录失败");
+      }];
+}
+- (void)uploadImageWithImageData:(NSData *)imageData JSESSIONID:(NSString *)jseesionID success:(uploadImageHandle)successBlock error:(ErrorHandle)errorBlock{
     
      AFHTTPSessionManager *manage = [AFHTTPSessionManager manager];
     manage.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json",@"text/html",@"text/json", @"text/javascript,multipart/form-data",nil];
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    
-    NSDictionary *paramDict = @{@"username":[defaults valueForKey:@"userName"], @"password":[defaults valueForKey:@"passWord"], @"Content-Type":@"application/x-www-form-urlencoded"};
+    [manage.requestSerializer setValue:jseesionID forHTTPHeaderField:@"Cookie"];
+    NSDictionary *paramDict = @{};
     NSString *url = @"http://116.62.179.174:8080/whpro/user/upload.do";
      //[manage.requestSerializer setValue:@"" forHTTPHeaderField:@"If-None-Match"];
     manage.responseSerializer = [AFHTTPResponseSerializer serializer];
@@ -118,7 +155,6 @@ static LifeDiaryManage *manageCustom;
            // 设置时间格式
            [formatter setDateFormat:@"yyyyMMddHHmm"];
            NSString *dateString = [formatter stringFromDate:[NSDate date]];
-           dateString = [dateString stringByAppendingString:items.name];
            NSString *fileName = [NSString  stringWithFormat:@"%@.png", dateString];
            /*
             *该方法的参数
@@ -127,7 +163,7 @@ static LifeDiaryManage *manageCustom;
             3. fileName：要保存在服务器上的文件名
             4. mimeType：上传的文件的类型
             */
-           [formData appendPartWithFileData:items.imageData name:@"upload_file" fileName:fileName mimeType:@"image/png"];
+           [formData appendPartWithFileData:imageData name:@"upload_file" fileName:fileName mimeType:@"image/png"];
 
     } progress:^(NSProgress * _Nonnull uploadProgress) {
     }success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {

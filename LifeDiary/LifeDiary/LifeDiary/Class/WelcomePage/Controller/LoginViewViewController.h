@@ -13,7 +13,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface LoginViewViewController : UIViewController 
 @property (nonatomic, strong) LoginView *loginView;
-
+@property (nonatomic, strong) UIImage *headImage;
 
 @end
 

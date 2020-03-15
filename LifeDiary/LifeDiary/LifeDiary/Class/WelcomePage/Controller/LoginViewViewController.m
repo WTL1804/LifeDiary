@@ -16,6 +16,7 @@
 #import "RegisterViewController.h"
 #import "LifeDiaryManage.h"
 #import "LoginJSONModel.h"
+#import "UploadImageModel.h"
 @interface LoginViewViewController () <LoginDelegate, RegisterDelegate>
 
 @end
@@ -51,36 +52,45 @@
 //            [user synchronize];
         [self defaultPassWord];
     } else {
+        
         [[LifeDiaryManage sharedLeton] loginUserToBackGroundWithUser:array[0] pass:array[1] success:^(LoginJSONModel * _Nonnull loginJSONModel) {
-           if ([loginJSONModel.msg isEqualToString:@"密码错误"]) {
+            if ([loginJSONModel.msg isEqualToString:@"密码错误"]) {
                 UILabel *tempLabel = [[UILabel alloc] initWithFrame:CGRectMake(self.view.frame.size.width/2 - 75, self.view.frame.size.height * 7/10, 150, 150)];
-                 tempLabel.text = @"账号或密码错误";
-                 tempLabel.textAlignment = NSTextAlignmentCenter;
+                tempLabel.text = @"账号或密码错误";
+                tempLabel.textAlignment = NSTextAlignmentCenter;
 
 
-                 tempLabel.alpha = 0;
-                 [self.view addSubview:tempLabel];
-                 tempLabel.textColor = [UIColor blackColor];
-                 tempLabel.font = [UIFont systemFontOfSize:20];
-                 [UIView animateWithDuration:3 animations:^{
-                    tempLabel.alpha = 1;
-                 }];
-                 [UIView animateWithDuration:3 animations:^{
-                     tempLabel.alpha = 0;
-                 }];
+                tempLabel.alpha = 0;
+                [self.view addSubview:tempLabel];
+                tempLabel.textColor = [UIColor blackColor];
+                tempLabel.font = [UIFont systemFontOfSize:20];
+                [UIView animateWithDuration:3 animations:^{
+                tempLabel.alpha = 1;
+                }];
+                [UIView animateWithDuration:3 animations:^{
+                    tempLabel.alpha = 0;
+                }];
             } else {
-                //记录登录状态
+            //记录登录状态
                 NSUserDefaults *user = [NSUserDefaults standardUserDefaults];
                 [user setObject:array[0] forKey:@"userName"];
                 [user setObject:array[1] forKey:@"passWord"];
                 [user setObject:loginJSONModel.ID forKey:@"ID"];
                 [user synchronize];
+               NSString *cookieValue =  [[LifeDiaryManage sharedLeton] ObtaionCookie];
+                //上传头像
+                NSData *imageData= UIImageJPEGRepresentation(self->_headImage, 0.7);
+                [[LifeDiaryManage sharedLeton] uploadImageWithImageData:imageData JSESSIONID:cookieValue success:^(UploadImageModel * _Nonnull uploadModel) {
+                    NSLog(@"图片url:%@", [uploadModel.data valueForKey:@"url"]);
+                } error:^(NSError * _Nonnull error) {
+                    NSLog(@"头像上传失败");
+                }];
                 GoodsViewController *goodViewController = [[GoodsViewController alloc] init];
                 UINavigationController *goodsNav = [[UINavigationController alloc] initWithRootViewController:goodViewController];
-                
+            
                 DiscoveryViewController *discoveryController = [[DiscoveryViewController alloc] init];
                 UINavigationController *discoveryNav = [[UINavigationController alloc] initWithRootViewController:discoveryController];
-                
+            
                 UITabBarController * tabBarController = [[UITabBarController alloc] init];
                 NSArray *arrayTemp = [NSArray arrayWithObjects:goodsNav, discoveryNav, nil];
                 tabBarController.viewControllers = arrayTemp;
@@ -91,15 +101,13 @@
                 UIImage *tempImageTwo = [[UIImage imageNamed:@"faxian.png"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
                 [discoveryNav.tabBarItem setImage:tempImageTwo];
                 //    sceneDelegate.window.rootViewController = tabBarController;
-                UIWindow * window = [UIApplication sharedApplication].windows[1];
-                //  NSLog(@"%@", [UIApplication sharedApplication].windows);
+                UIWindow * window = [UIApplication  sharedApplication].windows[1];
+                //  NSLog(@"%@", [UIApplication     sharedApplication].windows);
                 window.rootViewController = tabBarController;
             }
         } error:^(NSError * _Nonnull error) {
-            
         }];
     }
-    
 }
 - (void)defaultPassWord {
     GoodsViewController *goodViewController = [[GoodsViewController alloc] init];
@@ -125,8 +133,10 @@
 - (void)registerApp {
     RegisterViewController *registerViewController = [[RegisterViewController alloc] init];
     [self.navigationController pushViewController:registerViewController animated:NO];
-    registerViewController.returnUserName = ^(NSString * _Nonnull userName) {
+    registerViewController.returnUserName = ^(NSString * _Nonnull userName, UIImage * _Nonnull image) {
         self.loginView.userTextField.text = userName;
+        [self.loginView.headImageView setImage:image];
+        self.headImage = image;
     };
 }
 /*

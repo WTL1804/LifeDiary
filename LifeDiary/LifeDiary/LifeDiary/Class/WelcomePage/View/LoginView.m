@@ -19,7 +19,7 @@
 */
 - (void)setUI {
         self.backgroundColor = [UIColor whiteColor];
-        self.headImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"IMG_3251.JPG"]];
+        self.headImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"headRegisterImage.png"]];
         [self addSubview:_headImageView];
         self.headImageView.layer.cornerRadius = 81.2/2;
         self.headImageView.clipsToBounds = YES;

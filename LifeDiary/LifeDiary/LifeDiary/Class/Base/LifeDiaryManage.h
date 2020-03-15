@@ -42,7 +42,9 @@ typedef void (^uploadImageHandle)(UploadImageModel *uploadModel);
 - (void)itemsStoredWithUserID:(NSString *)ID Items:(Items *)items success:(itemsRequestHandle)successBlock error:(ErrorHandle)errorBlock;
 
 //上传图片
-- (void)uploadImageWithItem:(Items *)items success:(uploadImageHandle)successBlock error: (ErrorHandle)errorBlock;
+- (void)uploadImageWithImageData:(NSData *)imageData JSESSIONID:(NSString *)jseesionID success:(uploadImageHandle)successBlock error: (ErrorHandle)errorBlock;
+//获取登录cookie.value
+- (NSString *)ObtaionCookie;
 //请求全部物品
 //- (void)itemsAllWithUserID:
 
