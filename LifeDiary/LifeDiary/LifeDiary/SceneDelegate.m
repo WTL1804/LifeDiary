@@ -19,10 +19,10 @@
     
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     
-//    [userDefaults removeObjectForKey:@"userName"];
-//    [userDefaults removeObjectForKey:@"passWord"];
-//    [userDefaults removeObjectForKey:@"ID"];
-//    [userDefaults synchronize];
+     [userDefaults removeObjectForKey:@"userName"];
+        [userDefaults removeObjectForKey:@"passWord"];
+        [userDefaults removeObjectForKey:@"ID"];
+        [userDefaults synchronize];
    // NSString *string = [userDefaults objectForKey:@"userName"];
     if ([userDefaults objectForKey:@"userName"]) {
         GoodsViewController *goodViewController = [[GoodsViewController alloc] init];

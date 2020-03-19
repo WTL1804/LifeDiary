@@ -75,16 +75,18 @@
                 NSUserDefaults *user = [NSUserDefaults standardUserDefaults];
                 [user setObject:array[0] forKey:@"userName"];
                 [user setObject:array[1] forKey:@"passWord"];
-                [user setObject:loginJSONModel.ID forKey:@"ID"];
+                [user setObject:[loginJSONModel.data valueForKey:@"ID"] forKey:@"ID"];
                 [user synchronize];
                NSString *cookieValue =  [[LifeDiaryManage sharedLeton] ObtaionCookie];
                 //上传头像
-                NSData *imageData= UIImageJPEGRepresentation(self->_headImage, 0.7);
-                [[LifeDiaryManage sharedLeton] uploadImageWithImageData:imageData JSESSIONID:cookieValue success:^(UploadImageModel * _Nonnull uploadModel) {
-                    NSLog(@"图片url:%@", [uploadModel.data valueForKey:@"url"]);
-                } error:^(NSError * _Nonnull error) {
-                    NSLog(@"头像上传失败");
-                }];
+                if (self.headImage != nil) {
+                    NSData *imageData= UIImageJPEGRepresentation(self->_headImage, 0.7);
+                    [[LifeDiaryManage sharedLeton] uploadImageWithImageData:imageData JSESSIONID:cookieValue success:^(UploadImageModel * _Nonnull uploadModel) {
+                        NSLog(@"图片url:%@", [uploadModel.data valueForKey:@"url"]);
+                    } error:^(NSError * _Nonnull error) {
+                        NSLog(@"头像上传失败");
+                    }];
+                }
                 GoodsViewController *goodViewController = [[GoodsViewController alloc] init];
                 UINavigationController *goodsNav = [[UINavigationController alloc] initWithRootViewController:goodViewController];
             

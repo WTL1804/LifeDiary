@@ -10,9 +10,18 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+@protocol DataJSONModel
+@end
+
+@interface DataJSONModel : JSONModel
+@property (nonatomic, copy) NSString *ID;
+@end
+
+
+
 @interface LoginJSONModel : JSONModel
 @property (nonatomic, copy) NSString *msg;
-@property (nonatomic, copy) NSString *ID;
+@property (nonatomic, copy) DataJSONModel *data;
 @end
 
 NS_ASSUME_NONNULL_END

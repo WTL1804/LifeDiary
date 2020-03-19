@@ -22,6 +22,7 @@ typedef void (^RegisterHandle)(RegisterJSONModel *registerJSONModel);
 typedef void (^LoginHandle)(LoginJSONModel *loginJSONModel);
 typedef void (^itemsRequestHandle)(ItemsGoodsViewModel *itemsGoods);
 typedef void (^uploadImageHandle)(UploadImageModel *uploadModel);
+typedef void (^acquireHeadImageHandle)(NSDictionary *dict);
 @interface LifeDiaryManage : NSObject
 
 //获取百度ai开放能力的key
@@ -45,6 +46,10 @@ typedef void (^uploadImageHandle)(UploadImageModel *uploadModel);
 - (void)uploadImageWithImageData:(NSData *)imageData JSESSIONID:(NSString *)jseesionID success:(uploadImageHandle)successBlock error: (ErrorHandle)errorBlock;
 //获取登录cookie.value
 - (NSString *)ObtaionCookie;
+
+
+//获取头像图片
+- (void)acquireHeadImageWithUserID:(NSString *)ID success:(acquireHeadImageHandle)successBlock error:(ErrorHandle)errorBlock;
 //请求全部物品
 //- (void)itemsAllWithUserID:
 

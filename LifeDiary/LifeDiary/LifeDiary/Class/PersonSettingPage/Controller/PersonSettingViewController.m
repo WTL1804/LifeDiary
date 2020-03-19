@@ -9,6 +9,8 @@
 #import "PersonSettingViewController.h"
 #import "PersonView.h"
 #import "PersonSettingModel.h"
+#import "LifeDiaryManage.h"
+#import <UIImageView+WebCache.h>
 @interface PersonSettingViewController () <swipeLeftGestureDelegate>
 
 @end
@@ -31,6 +33,16 @@
     
     self.navigationItem.title = @"主页";
     [self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor whiteColor]}];
+    [self acquireHeadImage];
+}
+- (void)acquireHeadImage {
+    NSUserDefaults *user = [NSUserDefaults standardUserDefaults];
+    [[LifeDiaryManage sharedLeton] acquireHeadImageWithUserID:[user valueForKey:@"ID"] success:^(NSDictionary * _Nonnull dict) {
+        [self->_mainView.headImageView sd_setImageWithURL:[dict valueForKey:@"data"]];
+        NSLog(@"头像请求成功");
+    } error:^(NSError * _Nonnull error) {
+        
+    }];
 }
 - (void)viewWillAppear:(BOOL)animated {
     //阻止滑动返回的手势

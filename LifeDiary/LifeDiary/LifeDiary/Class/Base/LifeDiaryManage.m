@@ -137,6 +137,18 @@ static LifeDiaryManage *manageCustom;
           NSLog(@"二次登录失败");
       }];
 }
+
+- (void)acquireHeadImageWithUserID:(NSString *)ID success:(acquireHeadImageHandle)successBlock error:(ErrorHandle)errorBlock {
+    AFHTTPSessionManager *manage = [AFHTTPSessionManager manager];
+    NSDictionary *paramDict = @{@"userId":ID};
+       NSString *url = @"http://116.62.179.174:8080/whpro/user/getPhoto.do";
+    [manage GET:url parameters:paramDict progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+       NSDictionary *dict = [[NSDictionary alloc] initWithDictionary:responseObject];
+        successBlock(dict);
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        
+    }];
+}
 - (void)uploadImageWithImageData:(NSData *)imageData JSESSIONID:(NSString *)jseesionID success:(uploadImageHandle)successBlock error:(ErrorHandle)errorBlock{
     
      AFHTTPSessionManager *manage = [AFHTTPSessionManager manager];

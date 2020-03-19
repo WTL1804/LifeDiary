@@ -12,6 +12,12 @@
 + (BOOL)propertyIsOptional:(NSString *)propertyName {
     return YES;
 }
+@end
+
+@implementation DataJSONModel
++ (BOOL)propertyIsOptional:(NSString *)propertyName {
+    return YES;
+}
 + (JSONKeyMapper *)keyMapper {
     return [[JSONKeyMapper alloc] initWithModelToJSONDictionary:@{@"ID":@"id"}];
 }
