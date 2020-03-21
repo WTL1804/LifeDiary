@@ -36,12 +36,12 @@
     //_itemNameTextField.layer.borderColor = [UIColor blueColor].CGColor;
     _itemNameTextField.borderStyle = UITextBorderStyleRoundedRect;
     _itemNameTextField.keyboardType = UIKeyboardTypeDefault;
+    _itemNameTextField.returnKeyType = UIReturnKeyNext;
     
     UIImageView *nameLeftImageView = [[UIImageView alloc] initWithFrame:CGRectMake(5, 5, 40, 40)];
     [nameLeftImageView setImage:[[UIImage imageNamed:@"biaoqian.png"]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
     [_itemNameTextField setLeftView:nameLeftImageView];
     _itemNameTextField.leftViewMode = UITextFieldViewModeAlways;
-    
     
     
     
@@ -51,6 +51,7 @@
     _itemNamePropertiesTextField.delegate = self;
     _itemNamePropertiesTextField.borderStyle = UITextBorderStyleRoundedRect;
     _itemNamePropertiesTextField.keyboardType = UIKeyboardTypeDefault;
+    _itemNamePropertiesTextField.returnKeyType = UIReturnKeyNext;
     
     UIImageView *propertyLeftImageView = [[UIImageView alloc] initWithFrame:CGRectMake(5, 5, 40, 40)];
        [propertyLeftImageView setImage:[[UIImage imageNamed:@"shuxing.png"]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
@@ -63,14 +64,17 @@
     [self addSubview: _dateTextField];
     _dateTextField.borderStyle = UITextBorderStyleRoundedRect;
     _dateTextField.delegate = self;
-    _dateTextField.placeholder =@"生产日期";
+    _dateTextField.placeholder = @"生产日期";
     UIImageView *dateLeftImageView = [[UIImageView alloc] initWithFrame:CGRectMake(5, 5, 40, 40)];
     [dateLeftImageView setImage:[[UIImage imageNamed:@"riqi.png"]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
     [_dateTextField setLeftView:dateLeftImageView];
     _dateTextField.leftViewMode = UITextFieldViewModeAlways;
-    
-    
-    
+//     NSDate *now = [NSDate date];
+//            NSDateFormatter *matter = [[NSDateFormatter alloc] init];
+//            [matter setDateFormat:@"yyyy年MM月dd日"];
+//            NSString *nowString = [matter stringFromDate:now];
+//    _dateTextField.text = nowString;
+//    self.addItems.productionDate = now;
     
     //ShelfLifeTextField
     _ShelfLifeTextField = [[UITextField alloc] init];
@@ -79,6 +83,7 @@
     _ShelfLifeTextField.delegate = self;
     _ShelfLifeTextField.placeholder =@"保质期/天";
     _ShelfLifeTextField.keyboardType = UIKeyboardTypeDefault;
+    _ShelfLifeTextField.returnKeyType = UIReturnKeyNext;
     
     //numberTextField
     _numberTextField = [[UITextField alloc] init];
@@ -91,6 +96,7 @@
     [numberLeftImageView setImage:[[UIImage imageNamed:@"shuliang.png"]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
     [_numberTextField setLeftView:numberLeftImageView];
     _numberTextField.leftViewMode = UITextFieldViewModeAlways;
+    _numberTextField.returnKeyType = UIReturnKeyDone;
     
     
     self.datePicker = [[UIDatePicker alloc] init];
@@ -258,6 +264,44 @@
     NSString *string = [myDateFormatter stringFromDate:data];
     self.dateTextField.text = string;
     self.addItems.productionDate = [self.datePicker date];
+}
+
+- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField{
+    if (textField == _describeTextField) {
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"keyboardPop" object:nil];
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"keyboardBack" object:nil];
+    }
+     if (textField == _numberTextField) {
+         [[NSNotificationCenter defaultCenter] postNotificationName:@"keyboardPop" object:nil];
+         [[NSNotificationCenter defaultCenter] postNotificationName:@"keyboardBack" object:nil];
+       }
+    return YES;
+}
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    if (textField == _itemNameTextField) {
+        if (_photoImageView == nil) {
+            [_itemNamePropertiesTextField becomeFirstResponder];
+        } else {
+            [_dateTextField becomeFirstResponder];
+        }
+    }
+    if (textField == _itemNamePropertiesTextField) {
+        [_dateTextField becomeFirstResponder];
+    }
+    if (textField == _ShelfLifeTextField) {
+        [_describeTextField becomeFirstResponder];
+    }
+    if (textField == _describeTextField) {
+        [_numberTextField becomeFirstResponder];
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"keyboardPop" object:nil];
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"keyboardBack" object:nil];
+    }
+    if (textField == _numberTextField) {
+        [self.sumbitClickDelegate numberOfItemsSumbit];
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"keyboardPop" object:nil];
+         [[NSNotificationCenter defaultCenter] postNotificationName:@"keyboardBack" object:nil];
+    }
+    return YES;
 }
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
     [_dateTextField resignFirstResponder];

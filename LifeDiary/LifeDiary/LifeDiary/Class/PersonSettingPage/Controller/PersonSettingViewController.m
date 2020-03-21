@@ -38,8 +38,7 @@
 - (void)acquireHeadImage {
     NSUserDefaults *user = [NSUserDefaults standardUserDefaults];
     [[LifeDiaryManage sharedLeton] acquireHeadImageWithUserID:[user valueForKey:@"ID"] success:^(NSDictionary * _Nonnull dict) {
-        [self->_mainView.headImageView sd_setImageWithURL:[dict valueForKey:@"data"]];
-        NSLog(@"头像请求成功");
+            [self->_mainView.headImageView sd_setImageWithURL:[dict valueForKey:@"data"]];
     } error:^(NSError * _Nonnull error) {
         
     }];

@@ -40,7 +40,7 @@ typedef void (^acquireHeadImageHandle)(NSDictionary *dict);
 - (void)loginUserToBackGroundWithUser:(NSString *)username pass:(NSString *)password success:(LoginHandle)successBlock error:(ErrorHandle)errorBlock;
 
 //请求存储物品
-- (void)itemsStoredWithUserID:(NSString *)ID Items:(Items *)items success:(itemsRequestHandle)successBlock error:(ErrorHandle)errorBlock;
+- (void)itemsStoredWithUserID:(NSString *)ID JSESSION:(NSString *)jsession Items:(Items *)items success:(itemsRequestHandle)successBlock error:(ErrorHandle)errorBlock;
 
 //上传图片
 - (void)uploadImageWithImageData:(NSData *)imageData JSESSIONID:(NSString *)jseesionID success:(uploadImageHandle)successBlock error: (ErrorHandle)errorBlock;

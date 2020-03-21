@@ -85,18 +85,42 @@ static LifeDiaryManage *manageCustom;
     
 }
 
-- (void)itemsStoredWithUserID:(NSString *)ID Items:(Items *)items success:(itemsRequestHandle)successBlock error:(ErrorHandle)errorBlock{
+- (void)itemsStoredWithUserID:(NSString *)ID JSESSION:(NSString *)jsession Items:(Items *)items success:(itemsRequestHandle)successBlock error:(ErrorHandle)errorBlock {
         AFHTTPSessionManager *manage = [AFHTTPSessionManager manager];
         NSDateFormatter *matter = [[NSDateFormatter alloc] init];
             [matter setDateFormat:@"yyyy-MM-dd"];
-    NSDictionary *paramDict = @{@"id":ID, @"proname":items.name, @"production_date":[matter stringFromDate:items.productionDate], @"expiration_date":[matter stringFromDate:items.overDue], @"exptime":[items.shelfLifeNumber stringValue], @"add_date":items.addDate, @"sign":items.itemsState, @"property":items.attribute, @"detail":items.describeString};
-        NSString *url = @"";
-    
-        [manage POST:url parameters:paramDict progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        ItemsGoodsViewModel *itemsGoodsViewModel = [[ItemsGoodsViewModel alloc] initWithDictionary:responseObject error:nil];
-        successBlock(itemsGoodsViewModel);
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-    }];
+    NSDictionary *paramDict = @{@"user_id":ID,@"proname":items.name, @"production_date":[matter stringFromDate:items.productionDate], @"expiration_date":[matter stringFromDate:items.overDue], @"exptime":items.shelfLifeNumber, @"add_date":[matter stringFromDate:items.addDate], @"status":items.itemsState, @"property":items.attribute, @"detail":items.describeString, @"stock":items.numberOfItem};
+        NSString *url = @"http://116.62.179.174:8080/whpro/product/list.do";
+     [manage.requestSerializer setValue:jsession forHTTPHeaderField:@"Cookie"];
+       manage.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json",@"text/html",@"text/json", @"text/javascript,multipart/form-data",nil];
+         //[manage.requestSerializer setValue:@"" forHTTPHeaderField:@"If-None-Match"];
+        manage.responseSerializer = [AFHTTPResponseSerializer serializer];
+        manage.requestSerializer = [AFHTTPRequestSerializer serializer];
+        [manage POST:url parameters:paramDict constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
+               // 在网络开发中，上传文件时，是文件不允许被覆盖，文件重名
+               // 要解决此问题，
+               // 可以在上传时使用当前的系统事件作为文件名
+               NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+               // 设置时间格式
+               [formatter setDateFormat:@"yyyyMMddHHmm"];
+               NSString *dateString = [formatter stringFromDate:[NSDate date]];
+               NSString *fileName = [NSString  stringWithFormat:@"%@.png", dateString];
+               /*
+                *该方法的参数
+                1. appendPartWithFileData：要上传的照片[二进制流]
+                2. name：对应网站上[upload.php中]处理文件的字段（比如upload）
+                3. fileName：要保存在服务器上的文件名
+                4. mimeType：上传的文件的类型
+                */
+               [formData appendPartWithFileData:items.imageData name:@"upload_file" fileName:fileName mimeType:@"image/png"];
+
+        } progress:^(NSProgress * _Nonnull uploadProgress) {
+        }success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+               ItemsGoodsViewModel *itemsGoodsView = [[ItemsGoodsViewModel alloc] initWithData:responseObject error:nil];
+               successBlock(itemsGoodsView);
+           } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+               errorBlock(error);
+           }];
     
     
 }

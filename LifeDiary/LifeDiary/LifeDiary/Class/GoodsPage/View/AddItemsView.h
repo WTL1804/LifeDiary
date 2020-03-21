@@ -14,6 +14,12 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)clickCamera;
 
 @end
+@protocol SumbitClickedDelegate <NSObject>
+
+- (void)numberOfItemsSumbit;
+
+@end
+
 @interface AddItemsView : UIView <UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate>
 
 - (void)setUI;
@@ -23,7 +29,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, strong) UIImagePickerController *imagePicker;
 @property (nonatomic, strong) UIImageView *imageView;
-@property (nonatomic, weak) id <ClickCamera>delegateClickCamera;
+@property (nonatomic, weak) id <ClickCamera> delegateClickCamera;
+@property (nonatomic, weak) id <SumbitClickedDelegate> sumbitClickDelegate;
 
 @property (nonatomic, strong) UITextField *itemNameTextField;
 @property (nonatomic, strong) UITextField *itemNamePropertiesTextField;

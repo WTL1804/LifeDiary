@@ -26,7 +26,7 @@
         NSDateComponents *comp = [calendar components:NSCalendarUnitDay fromDate:[NSDate date] toDate:tempItems.overDue options:NSCalendarWrapComponents];
         NSNumber *number = [NSNumber numberWithInteger:comp.day];
         if ([number intValue] <= 0) {
-            tempItems.itemsState = @"过期";
+            tempItems.itemsState = [NSNumber numberWithInt:1];
             NSMutableDictionary *dict2 = [NSMutableDictionary dictionaryWithObjects:@[tempItems.addDate,tempItems.attribute,tempItems.imageData,tempItems.name,tempItems.numberOfItem,tempItems.overDue,tempItems.productionDate,tempItems.shelfLifeNumber,tempItems.dataType, tempItems.itemsState, tempItems.describeString] forKeys:@[@"addDate",@"attribute",@"imageData",@"name",@"numberOfItem",@"overDue",@"productionDate",@"shelfLifeNumber",@"dataType", @"itemsState", @"decribeString"]];
             [overDueArray addObject:dict2];
             [array removeObjectAtIndex:i];

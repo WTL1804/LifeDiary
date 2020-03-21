@@ -2,6 +2,7 @@
 #import "DiscoveryViewController.h"
 #import "GoodsViewController.h"
 #import "LoginViewViewController.h"
+#import "LifeDiaryManage.h"
 @interface SceneDelegate ()
 
 @end
@@ -19,12 +20,21 @@
     
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     
-     [userDefaults removeObjectForKey:@"userName"];
-        [userDefaults removeObjectForKey:@"passWord"];
-        [userDefaults removeObjectForKey:@"ID"];
-        [userDefaults synchronize];
+//     [userDefaults removeObjectForKey:@"userName"];
+//        [userDefaults removeObjectForKey:@"passWord"];
+//        [userDefaults removeObjectForKey:@"ID"];
+    [userDefaults removeObjectForKey:@"jsession"];
+//        [userDefaults synchronize];
    // NSString *string = [userDefaults objectForKey:@"userName"];
     if ([userDefaults objectForKey:@"userName"]) {
+        
+        [[LifeDiaryManage sharedLeton] loginUserToBackGroundWithUser:[userDefaults valueForKey:@"userName"] pass:[userDefaults valueForKey:@"passWord"] success:^(LoginJSONModel * _Nonnull loginJSONModel) {
+            [userDefaults setObject:[[LifeDiaryManage sharedLeton] ObtaionCookie] forKey:@"jsession"];
+            NSLog(@"jession保存成功");
+        } error:^(NSError * _Nonnull error) {
+            
+        }];
+        
         GoodsViewController *goodViewController = [[GoodsViewController alloc] init];
         UINavigationController *goodsNav = [[UINavigationController alloc] initWithRootViewController:goodViewController];
         
@@ -50,7 +60,7 @@
         
         self.window.rootViewController = navTemp;
     }
-    
+     [userDefaults synchronize];
     [self.window makeKeyAndVisible];
 }
 

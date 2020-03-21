@@ -12,7 +12,7 @@
 #import "PhotoIdentificationModel.h"
 #import "AdditemsModel.h"
 
-@interface AddItemsViewController () <ClickCamera>
+@interface AddItemsViewController () <ClickCamera, SumbitClickedDelegate>
 
 @end
 
@@ -27,6 +27,7 @@
     _addItemsView.navigationFrame = self.navigationController.navigationBar.frame;
     [_addItemsView setUI];
     _addItemsView.delegateClickCamera = self;
+    _addItemsView.sumbitClickDelegate = self;
     [self obtainAccess_token];
     
     _addItemsModel = [[AdditemsModel alloc] init];
@@ -43,6 +44,25 @@
 //    [self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor whiteColor]}];
 //    self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
     
+    //发送消息键盘弹出
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(transformView) name:@"keyboardPop" object:nil];
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(transformViewBack) name:@"keyboardBack" object:nil];
+}
+
+-(void)transformViewBack {
+    
+    [UIView animateWithDuration:0.25f animations:^{
+        [self.addItemsView setFrame:CGRectMake(self.view.frame.origin.x, self.addItemsView.frame.origin.y-336, self.addItemsView.frame.size.width, self.view.frame.size.height)];
+    }];
+}
+-(void)transformView {
+    //在0.25s内完成self.view的Frame的变化，等于是给self.view添加一个向上移动deltaY的动画
+    [UIView animateWithDuration:0.25f animations:^{
+        [self.addItemsView setFrame:CGRectMake(self.view.frame.origin.x, self.addItemsView.frame.origin.y+336, self.addItemsView.frame.size.width, self.view.frame.size.height)];
+    }];
+}
+- (void)numberOfItemsSumbit {
+    [self addDone];
 }
 - (void)viewWillAppear:(BOOL)animated {
     self.tabBarController.tabBar.hidden = YES;
@@ -277,6 +297,12 @@
 //    } error:^(NSError * _Nonnull error) {
 //        NSLog(@"图片上传失败%@", error);
 //    }];
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [[LifeDiaryManage sharedLeton] itemsStoredWithUserID:[defaults valueForKey:@"ID"] JSESSION:[defaults valueForKey:@"jsession"] Items:self.addItemsView.addItems success:^(ItemsGoodsViewModel * _Nonnull itemsGoods) {
+        NSLog(@"成功");
+    } error:^(NSError * _Nonnull error) {
+        NSLog(@"物品上传失败%@", error);
+    }];
 }
 - (void)dealloc {
     [self removeObserver:[LifeDiaryManage sharedLeton] forKeyPath:@"access_token"];

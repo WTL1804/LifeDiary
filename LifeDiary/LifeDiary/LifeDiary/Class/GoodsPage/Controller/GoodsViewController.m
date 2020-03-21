@@ -119,6 +119,7 @@
     [_goodsModel goodsInspection:_goodsView.itemsArray overDueMutArray:_goodsView.itemsOverDueMutArray];
     [_goodsView.mainTableView reloadData];
     //上传照片
+    
 
 }
 

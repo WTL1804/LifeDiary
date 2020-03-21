@@ -23,8 +23,8 @@
         _numberOfItem = [NSNumber numberWithInt:1];
         _overDue = now;
         _dataType = @"ModelOne";
-        _itemsState = @"正常";
-        _describeString = @"";
+        _itemsState = [[NSNumber alloc] initWithInt:2];
+        _describeString = @"未留下描述";
     }
     return self;
 }
