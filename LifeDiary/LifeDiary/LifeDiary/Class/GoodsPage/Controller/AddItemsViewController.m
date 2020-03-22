@@ -45,8 +45,8 @@
 //    self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
     
     //发送消息键盘弹出
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(transformView) name:@"keyboardPop" object:nil];
-    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(transformViewBack) name:@"keyboardBack" object:nil];
+//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(transformView) name:@"keyboardPop" object:nil];
+//    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(transformViewBack) name:@"keyboardBack" object:nil];
 }
 
 -(void)transformViewBack {
@@ -298,10 +298,9 @@
 //        NSLog(@"图片上传失败%@", error);
 //    }];
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    [[LifeDiaryManage sharedLeton] itemsStoredWithUserID:[defaults valueForKey:@"ID"] JSESSION:[defaults valueForKey:@"jsession"] Items:self.addItemsView.addItems success:^(ItemsGoodsViewModel * _Nonnull itemsGoods) {
-        NSLog(@"成功");
+    [[LifeDiaryManage sharedLeton] itemsStoredWithUserID:[defaults valueForKey:@"ID"] JSESSION:[defaults valueForKey:@"jsession"] Items:self.addItemsView.addItems success:^(NSDictionary * _Nonnull dict) {
     } error:^(NSError * _Nonnull error) {
-        NSLog(@"物品上传失败%@", error);
+        
     }];
 }
 - (void)dealloc {

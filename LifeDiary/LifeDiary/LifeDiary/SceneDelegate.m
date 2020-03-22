@@ -24,7 +24,7 @@
 //        [userDefaults removeObjectForKey:@"passWord"];
 //        [userDefaults removeObjectForKey:@"ID"];
     [userDefaults removeObjectForKey:@"jsession"];
-//        [userDefaults synchronize];
+        [userDefaults synchronize];
    // NSString *string = [userDefaults objectForKey:@"userName"];
     if ([userDefaults objectForKey:@"userName"]) {
         

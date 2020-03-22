@@ -9,5 +9,18 @@
 #import "ItemsGoodsViewModel.h"
 
 @implementation ItemsGoodsViewModel
++ (BOOL)propertyIsOptional:(NSString *)propertyName {
+    return YES;
+}
+@end
+
+@implementation DataArrayModel
++ (BOOL)propertyIsOptional:(NSString *)propertyName {
+    return YES;
+}
++ (JSONKeyMapper *)keyMapper {
+    return [[JSONKeyMapper alloc] initWithModelToJSONDictionary:@{@"name": @"proname", @"attribute": @"property", @"overDueString": @"expirationDate", @"shelfLifeNumber": @"exptime", @"numberOfItem": @"stock", @"productionDateString": @"productionDate", @"addDateString": @"addDate", @"itemsState": @"status", @"describeString":@"detail"}];
+    
+}
 
 @end

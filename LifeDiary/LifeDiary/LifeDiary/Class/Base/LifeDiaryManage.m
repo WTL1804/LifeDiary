@@ -85,16 +85,16 @@ static LifeDiaryManage *manageCustom;
     
 }
 
-- (void)itemsStoredWithUserID:(NSString *)ID JSESSION:(NSString *)jsession Items:(Items *)items success:(itemsRequestHandle)successBlock error:(ErrorHandle)errorBlock {
+- (void)itemsStoredWithUserID:(NSString *)ID JSESSION:(NSString *)jsession Items:(Items *)items success:(ItemsRequestHandle)successBlock error:(ErrorHandle)errorBlock {
         AFHTTPSessionManager *manage = [AFHTTPSessionManager manager];
         NSDateFormatter *matter = [[NSDateFormatter alloc] init];
             [matter setDateFormat:@"yyyy-MM-dd"];
-    NSDictionary *paramDict = @{@"user_id":ID,@"proname":items.name, @"production_date":[matter stringFromDate:items.productionDate], @"expiration_date":[matter stringFromDate:items.overDue], @"exptime":items.shelfLifeNumber, @"add_date":[matter stringFromDate:items.addDate], @"status":items.itemsState, @"property":items.attribute, @"detail":items.describeString, @"stock":items.numberOfItem};
-        NSString *url = @"http://116.62.179.174:8080/whpro/product/list.do";
+    NSDictionary *paramDict = @{@"user_id":ID,@"proname":items.name, @"productionDate":[matter stringFromDate:items.productionDate], @"expirationDate":[matter stringFromDate:items.overDue], @"exptime":items.shelfLifeNumber, @"addDate":[matter stringFromDate:items.addDate], @"status":items.itemsState, @"property":items.attribute, @"detail":items.describeString, @"stock":items.numberOfItem};
+        NSString *url = @"http://116.62.179.174:8080/whpro/product/addProduct.do";
      [manage.requestSerializer setValue:jsession forHTTPHeaderField:@"Cookie"];
        manage.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json",@"text/html",@"text/json", @"text/javascript,multipart/form-data",nil];
          //[manage.requestSerializer setValue:@"" forHTTPHeaderField:@"If-None-Match"];
-        manage.responseSerializer = [AFHTTPResponseSerializer serializer];
+      //  manage.responseSerializer = [AFHTTPResponseSerializer serializer];
         manage.requestSerializer = [AFHTTPRequestSerializer serializer];
         [manage POST:url parameters:paramDict constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
                // 在网络开发中，上传文件时，是文件不允许被覆盖，文件重名
@@ -116,8 +116,8 @@ static LifeDiaryManage *manageCustom;
 
         } progress:^(NSProgress * _Nonnull uploadProgress) {
         }success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-               ItemsGoodsViewModel *itemsGoodsView = [[ItemsGoodsViewModel alloc] initWithData:responseObject error:nil];
-               successBlock(itemsGoodsView);
+            NSDictionary *dict = [[NSDictionary alloc] initWithDictionary:responseObject];
+               successBlock(dict);
            } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
                errorBlock(error);
            }];
@@ -162,7 +162,7 @@ static LifeDiaryManage *manageCustom;
       }];
 }
 
-- (void)acquireHeadImageWithUserID:(NSString *)ID success:(acquireHeadImageHandle)successBlock error:(ErrorHandle)errorBlock {
+- (void)acquireHeadImageWithUserID:(NSString *)ID success:(AcquireHeadImageHandle)successBlock error:(ErrorHandle)errorBlock {
     AFHTTPSessionManager *manage = [AFHTTPSessionManager manager];
     NSDictionary *paramDict = @{@"userId":ID};
        NSString *url = @"http://116.62.179.174:8080/whpro/user/getPhoto.do";
@@ -173,7 +173,7 @@ static LifeDiaryManage *manageCustom;
         
     }];
 }
-- (void)uploadImageWithImageData:(NSData *)imageData JSESSIONID:(NSString *)jseesionID success:(uploadImageHandle)successBlock error:(ErrorHandle)errorBlock{
+- (void)uploadImageWithImageData:(NSData *)imageData JSESSIONID:(NSString *)jseesionID success:(UploadImageHandle)successBlock error:(ErrorHandle)errorBlock{
     
      AFHTTPSessionManager *manage = [AFHTTPSessionManager manager];
     manage.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json",@"text/html",@"text/json", @"text/javascript,multipart/form-data",nil];
@@ -252,6 +252,22 @@ static LifeDiaryManage *manageCustom;
 //
 //        [dataTask resume];
 
+}
+
+- (void)itemsAllWithJsession:(NSString *)jsession success:(ALLItemsListHandle)successBlock error:(ErrorHandle)errorBlock {
+    AFHTTPSessionManager *manage = [AFHTTPSessionManager manager];
+     [manage.requestSerializer setValue:jsession forHTTPHeaderField:@"Cookie"];
+       // manage.responseSerializer = [AFHTTPResponseSerializer serializer];
+     //manage.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json",@"text/html",@"text/json", @"text/javascript,multipart/form-data",nil];
+       manage.requestSerializer = [AFHTTPRequestSerializer serializer];
+       NSDictionary *dict = @{};
+       NSString *url = @"http://116.62.179.174:8080/whpro/product/list.do";
+       [manage POST:url parameters:dict progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+           ItemsGoodsViewModel *itemsListViewModel = [[ItemsGoodsViewModel alloc] initWithDictionary:responseObject error:nil];
+           successBlock(itemsListViewModel);
+       } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+           errorBlock(error);
+       }];
 }
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context {

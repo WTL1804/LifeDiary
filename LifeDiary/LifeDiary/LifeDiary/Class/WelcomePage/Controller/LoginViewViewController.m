@@ -76,8 +76,10 @@
                 [user setObject:array[0] forKey:@"userName"];
                 [user setObject:array[1] forKey:@"passWord"];
                 [user setObject:[loginJSONModel.data valueForKey:@"ID"] forKey:@"ID"];
+                NSString *cookieValue =  [[LifeDiaryManage sharedLeton] ObtaionCookie];
+                [user setObject:cookieValue forKey:@"jsession"];
                 [user synchronize];
-               NSString *cookieValue =  [[LifeDiaryManage sharedLeton] ObtaionCookie];
+               
                 //上传头像
                 if (self.headImage != nil) {
                     NSData *imageData= UIImageJPEGRepresentation(self->_headImage, 0.7);

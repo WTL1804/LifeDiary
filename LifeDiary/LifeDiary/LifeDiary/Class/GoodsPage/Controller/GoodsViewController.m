@@ -15,6 +15,8 @@
 #import "GoodsViewModel.h"
 #import "PersonSettingViewController.h"
 #import <QuartzCore/QuartzCore.h>
+#import "LifeDiaryManage.h"
+#import "ItemsGoodsViewModel.h"
 @interface GoodsViewController () <clickAllBtnDeleage, clickTheHeadCell, clickPersonDelegate>
 
 @end
@@ -70,6 +72,20 @@
     _goodsModel = [[GoodsViewModel alloc] init];
     
 }
+- (void)AllItemsRequestWithJsession:(NSString *)jsession{
+    
+    [[LifeDiaryManage sharedLeton] itemsAllWithJsession:jsession  success:^(ItemsGoodsViewModel * _Nonnull itemsListViewModel) {
+        for (NSDictionary *dict in itemsListViewModel.data) {
+            //处理请求下来的数据
+            NSDictionary *dictTemp = [self->_goodsModel ProcessingNetworkRequestDataOfItems:dict];
+            [self->_goodsView.itemsArray addObject:dictTemp];
+        }
+        [self.goodsView.mainTableView reloadData];
+    } error:^(NSError * _Nonnull error) {
+        NSLog(@"%@", error);
+    }];
+}
+
 //进入消息和个人中心
 - (void)clickPersonBtn {
     PersonSettingViewController *personViewController = [[PersonSettingViewController alloc] init];
@@ -100,6 +116,10 @@
         [tempArray addObject:[dict valueForKey:@"name"]];
     }
     addViewController.itemsNameArray = [tempArray copy];
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    if ([defaults objectForKey:@"jsession"]) {
+              [self AllItemsRequestWithJsession:[defaults valueForKey:@"jsession"]];
+          }
 }
 - (void)viewWillAppear:(BOOL)animated {
     self.navigationController.navigationBar.hidden = YES;
@@ -171,5 +191,11 @@
     // Pass the selected object to the new view controller.
 }
 */
-
+- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+    NSLog(@"1234");
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+       if ([defaults objectForKey:@"jsession"]) {
+           [self AllItemsRequestWithJsession:[defaults valueForKey:@"jsession"]];
+       }
+}
 @end

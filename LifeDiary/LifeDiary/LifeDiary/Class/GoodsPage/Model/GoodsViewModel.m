@@ -8,6 +8,7 @@
 
 #import "GoodsViewModel.h"
 #import "Items.h"
+#import <SDImageCache.h>
 @implementation GoodsViewModel
 
 - (void)changeNumberOfItem:(NSMutableDictionary *)itemsDict value:(double)value array:(NSMutableArray *)array number:(int)i{
@@ -33,5 +34,29 @@
         }
     }
 }
-
+- (NSDictionary *)ProcessingNetworkRequestDataOfItems:(NSDictionary *)dict {
+    NSDate *addDate =  [self ProcessingDateFromString: [dict valueForKey:@"addDateString"]];
+    NSDate *productionDate = [self ProcessingDateFromString: [dict valueForKey:@"productionDateString"]];
+    NSDate *overDue = [self ProcessingDateFromString: [dict valueForKey:@"overDueString"]];
+    NSString *attribute = [dict valueForKey:@"attribute"];
+    NSString *name = [dict valueForKey:@"name"];
+    NSString *shelfLifeNumber = [dict valueForKey:@"shelfLifeNumber"];
+    NSString *itemsState = [dict valueForKey:@"itemsState"];
+    NSNumber *numberOfItem = [dict valueForKey:@"numberOfItem"];
+    NSString *dataType = @"ModelTwo";
+    NSString *describeString = [dict valueForKey:@"describeString"];
+    UIImage *image = [[SDImageCache sharedImageCache] imageFromDiskCacheForKey:[dict valueForKey:@"productImage"]];
+    NSURL *urlImage = [NSURL URLWithString:[dict valueForKey:@"productImage"]];
+    NSData *imageData = [NSData dataWithContentsOfURL:urlImage];
+    
+    NSMutableDictionary *dictTemp = [NSMutableDictionary dictionaryWithObjects:@[addDate,attribute,imageData,name,numberOfItem,overDue,productionDate,shelfLifeNumber,dataType,itemsState, describeString] forKeys:@[@"addDate",@"attribute",@"imageData",@"name",@"numberOfItem",@"overDue",@"productionDate",@"shelfLifeNumber",@"dataType",@"itemsState", @"describeString"]];
+    return dictTemp;
+}
+- (NSDate *)ProcessingDateFromString:(NSString *)string {
+     
+     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+     [dateFormatter setDateFormat:@"yyyy-MM-dd"];
+     NSDate *date = [dateFormatter dateFromString:string];
+    return date;
+}
 @end

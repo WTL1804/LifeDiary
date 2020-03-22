@@ -20,9 +20,10 @@ typedef void(^ErrorHandle)(NSError *error);
 typedef void (^PhotoIdentificationHandle)(PhotoIdentificationModel *identificationModel);
 typedef void (^RegisterHandle)(RegisterJSONModel *registerJSONModel);
 typedef void (^LoginHandle)(LoginJSONModel *loginJSONModel);
-typedef void (^itemsRequestHandle)(ItemsGoodsViewModel *itemsGoods);
-typedef void (^uploadImageHandle)(UploadImageModel *uploadModel);
-typedef void (^acquireHeadImageHandle)(NSDictionary *dict);
+typedef void (^ItemsRequestHandle)(NSDictionary *dict);
+typedef void (^UploadImageHandle)(UploadImageModel *uploadModel);
+typedef void (^AcquireHeadImageHandle)(NSDictionary *dict);
+typedef void (^ALLItemsListHandle)(ItemsGoodsViewModel *itemsListViewModel);
 @interface LifeDiaryManage : NSObject
 
 //获取百度ai开放能力的key
@@ -40,18 +41,18 @@ typedef void (^acquireHeadImageHandle)(NSDictionary *dict);
 - (void)loginUserToBackGroundWithUser:(NSString *)username pass:(NSString *)password success:(LoginHandle)successBlock error:(ErrorHandle)errorBlock;
 
 //请求存储物品
-- (void)itemsStoredWithUserID:(NSString *)ID JSESSION:(NSString *)jsession Items:(Items *)items success:(itemsRequestHandle)successBlock error:(ErrorHandle)errorBlock;
+- (void)itemsStoredWithUserID:(NSString *)ID JSESSION:(NSString *)jsession Items:(Items *)items success:(ItemsRequestHandle)successBlock error:(ErrorHandle)errorBlock;
 
 //上传图片
-- (void)uploadImageWithImageData:(NSData *)imageData JSESSIONID:(NSString *)jseesionID success:(uploadImageHandle)successBlock error: (ErrorHandle)errorBlock;
+- (void)uploadImageWithImageData:(NSData *)imageData JSESSIONID:(NSString *)jseesionID success:(UploadImageHandle)successBlock error: (ErrorHandle)errorBlock;
 //获取登录cookie.value
 - (NSString *)ObtaionCookie;
 
 
 //获取头像图片
-- (void)acquireHeadImageWithUserID:(NSString *)ID success:(acquireHeadImageHandle)successBlock error:(ErrorHandle)errorBlock;
+- (void)acquireHeadImageWithUserID:(NSString *)ID success:(AcquireHeadImageHandle)successBlock error:(ErrorHandle)errorBlock;
 //请求全部物品
-//- (void)itemsAllWithUserID:
+- (void)itemsAllWithJsession:(NSString *)jsession success:(ALLItemsListHandle)successBlock error:(ErrorHandle)errorBlock;
 
 
 @property (nonatomic, copy) NSString *access_token;

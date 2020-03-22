@@ -82,4 +82,5 @@
     [_itemsArray removeObject:dict];
     [_mainTableView reloadData];
 }
+
 @end
