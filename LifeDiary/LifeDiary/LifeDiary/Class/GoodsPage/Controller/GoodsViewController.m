@@ -72,10 +72,8 @@
     _goodsModel = [[GoodsViewModel alloc] init];
     
     //异步登录刷新session
-    dispatch_queue_t queue =  dispatch_queue_create("LifeDiaryConcurrentQueueTestOne", DISPATCH_QUEUE_CONCURRENT);
-    dispatch_async(queue, ^{
-        [self loginToAccessSession];
-    });
+    [self loginToAccessSession];
+
     
     //载入数据库缓存
     NSMutableArray *mutArray = [self->_goodsModel  ExtractDataFromTheLocalDatabase];
@@ -90,29 +88,26 @@
         NSLog(@"jession保存成功");
         [userDefaults synchronize];
         if ([userDefaults objectForKey:@"jsession"]) {
-            //异步请求数据
-            dispatch_queue_t queue =  dispatch_queue_create("LifeDiaryConcurrentQueueTestTwo", DISPATCH_QUEUE_CONCURRENT);
-               dispatch_async(queue, ^{
-                   [self AllItemsRequestWithJsession:[userDefaults valueForKey:@"jsession"]];
-                   
-               });
-
+            [self AllItemsRequestWithJsession:[userDefaults valueForKey:@"jsession"]];
         }
+       
     } error:^(NSError * _Nonnull error) {
     }];
 }
 - (void)AllItemsRequestWithJsession:(NSString *)jsession{
-    
     [[LifeDiaryManage sharedLeton] itemsAllWithJsession:jsession  success:^(ItemsGoodsViewModel * _Nonnull itemsListViewModel) {
-        for (NSDictionary *dict in itemsListViewModel.data) {
-            //处理请求下来的数据
-            NSDictionary *dictTemp = [self->_goodsModel ProcessingNetworkRequestDataOfItems:dict];
-            [self->_goodsView.itemsArray addObject:dictTemp];
-        }
-           //物品存入数据库
+        dispatch_queue_t queue = dispatch_queue_create("test", DISPATCH_QUEUE_CONCURRENT);
+        dispatch_async(queue, ^{
+            for (NSDictionary *dict in itemsListViewModel.data) {
+                //处理请求下来的数据
+                NSDictionary *dictTemp = [self->_goodsModel ProcessingNetworkRequestDataOfItems:dict];
+                [self->_goodsView.itemsArray addObject:dictTemp];
+            }
+            //物品存入数据库
             [self.goodsModel storeTheItemsIntoDataBase: self.goodsView.itemsArray];
-
             
+        });
+        //
         [self.goodsView.mainTableView reloadData];
     } error:^(NSError * _Nonnull error) {
     }];

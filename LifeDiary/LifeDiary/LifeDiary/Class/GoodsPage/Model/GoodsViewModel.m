@@ -73,19 +73,20 @@
     } else {
         NSLog(@"数据库打开成功");
     }
+    //删除旧数据
+//    NSString *sqlToDelete = @"DELETE from wh_items;";
+//    BOOL res = [db executeUpdate:sqlToDelete];
+//    if (!res) {
+//        NSLog(@"数据删除失败");
+//    } else {
+//        NSLog(@"数据删除成功");
+//    }
     NSString *sqlToCreat = @"create table if not exists wh_items('name' TEXT NOT NULL, 'attribute' TEXT NOT NULL, 'shelfLifeNumber' INTEGER, 'productionDate' TEXT NOT NULL, 'addDate' TEXT NOT NULL, 'imageData' BLOB, 'numberOfItem' INTEGER, 'overDue' TEXT NOT NULL, 'dataType' TEXT NOT NULL, 'itemsState' INTEGER, describeString TEXT NOT NULL)";
     BOOL resultToCreat = [db executeUpdate:sqlToCreat];
        if (resultToCreat) {
            NSLog(@"create table success");
        }
-    //删除旧数据
-    NSString *sqlToDelete = @"DELETE from wh_items";
-    BOOL res = [db executeUpdate:sqlToDelete];
-    if (!res) {
-        NSLog(@"数据删除失败");
-    } else {
-        NSLog(@"数据删除成功");
-    }
+    
     
     //插入新数据
     for (NSDictionary *dict in array) {
@@ -104,7 +105,7 @@
         //插入数据
         BOOL resultToInsert = [db executeUpdateWithFormat:@"insert into 'wh_items'(name, attribute, shelfLifeNumber, productionDate, addDate, imageData, numberOfItem, overDue, dataType, itemsState, describeString) values(%@, %@, %ld, %@, %@, %@, %ld, %@, %@, %ld, %@)", name, attribute, [shelfLifeNumber integerValue], productionDate, addDate, [dict valueForKey:@"imageData"], [numberOfItem integerValue], overDue, dataType, [itemsState integerValue], describeString];
         if (resultToInsert) {
-         //   NSLog(@"数据存入数据库成功");
+            NSLog(@"数据存入数据库成功");
         }
     }
     
