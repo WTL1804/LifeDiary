@@ -11,6 +11,7 @@
 #import <Masonry.h>
 #import "UIBezierPath+GetAllPoints.h"
 #import <SOZOChromoplast.h>
+#import <SDWebImage.h>
 @implementation ModelTwoCell
 
 - (void)setLayOutInSubclass:(BaseModel *)baseModel {

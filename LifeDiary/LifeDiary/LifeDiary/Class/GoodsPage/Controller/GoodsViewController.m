@@ -71,6 +71,35 @@
     
     _goodsModel = [[GoodsViewModel alloc] init];
     
+    //异步登录刷新session
+    dispatch_queue_t queue =  dispatch_queue_create("LifeDiaryConcurrentQueueTestOne", DISPATCH_QUEUE_CONCURRENT);
+    dispatch_async(queue, ^{
+        [self loginToAccessSession];
+    });
+    
+    //载入数据库缓存
+    NSMutableArray *mutArray = [self->_goodsModel  ExtractDataFromTheLocalDatabase];
+    self.goodsView.itemsArray = mutArray;
+    //[self.goodsView.mainTableView reloadData];
+    NSLog(@"%ld", mutArray.count);
+}
+- (void)loginToAccessSession {
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    [[LifeDiaryManage sharedLeton] loginUserToBackGroundWithUser:[userDefaults valueForKey:@"userName"] pass:[userDefaults valueForKey:@"passWord"] success:^(LoginJSONModel * _Nonnull loginJSONModel) {
+        [userDefaults setObject:[[LifeDiaryManage sharedLeton] ObtaionCookie] forKey:@"jsession"];
+        NSLog(@"jession保存成功");
+        [userDefaults synchronize];
+        if ([userDefaults objectForKey:@"jsession"]) {
+            //异步请求数据
+            dispatch_queue_t queue =  dispatch_queue_create("LifeDiaryConcurrentQueueTestTwo", DISPATCH_QUEUE_CONCURRENT);
+               dispatch_async(queue, ^{
+                   [self AllItemsRequestWithJsession:[userDefaults valueForKey:@"jsession"]];
+                   
+               });
+
+        }
+    } error:^(NSError * _Nonnull error) {
+    }];
 }
 - (void)AllItemsRequestWithJsession:(NSString *)jsession{
     
@@ -80,9 +109,12 @@
             NSDictionary *dictTemp = [self->_goodsModel ProcessingNetworkRequestDataOfItems:dict];
             [self->_goodsView.itemsArray addObject:dictTemp];
         }
+           //物品存入数据库
+            [self.goodsModel storeTheItemsIntoDataBase: self.goodsView.itemsArray];
+
+            
         [self.goodsView.mainTableView reloadData];
     } error:^(NSError * _Nonnull error) {
-        NSLog(@"%@", error);
     }];
 }
 
@@ -116,10 +148,6 @@
         [tempArray addObject:[dict valueForKey:@"name"]];
     }
     addViewController.itemsNameArray = [tempArray copy];
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    if ([defaults objectForKey:@"jsession"]) {
-              [self AllItemsRequestWithJsession:[defaults valueForKey:@"jsession"]];
-          }
 }
 - (void)viewWillAppear:(BOOL)animated {
     self.navigationController.navigationBar.hidden = YES;
@@ -138,7 +166,8 @@
     [_goodsView.itemsArray addObject:dict];
     [_goodsModel goodsInspection:_goodsView.itemsArray overDueMutArray:_goodsView.itemsOverDueMutArray];
     [_goodsView.mainTableView reloadData];
-    //上传照片
+//    //物品存入数据库
+//    [self.goodsModel storeTheItemsIntoDataBase: self.goodsView.itemsArray];
     
 
 }

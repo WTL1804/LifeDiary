@@ -14,6 +14,9 @@ PODS:
   - AFNetworking/Serialization (3.2.1)
   - AFNetworking/UIKit (3.2.1):
     - AFNetworking/NSURLSession
+  - FMDB (2.7.5):
+    - FMDB/standard (= 2.7.5)
+  - FMDB/standard (2.7.5)
   - JSONModel (1.8.0)
   - Masonry (1.1.0)
   - SDWebImage (5.2.3):
@@ -23,6 +26,7 @@ PODS:
 
 DEPENDENCIES:
   - AFNetworking
+  - FMDB
   - JSONModel
   - Masonry
   - SDWebImage
@@ -31,6 +35,7 @@ DEPENDENCIES:
 SPEC REPOS:
   trunk:
     - AFNetworking
+    - FMDB
     - JSONModel
     - Masonry
     - SDWebImage
@@ -38,11 +43,12 @@ SPEC REPOS:
 
 SPEC CHECKSUMS:
   AFNetworking: b6f891fdfaed196b46c7a83cf209e09697b94057
+  FMDB: 2ce00b547f966261cd18927a3ddb07cb6f3db82a
   JSONModel: 02ab723958366a3fd27da57ea2af2113658762e9
   Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
   SDWebImage: 46a7f73228f84ce80990c786e4372cf4db5875ce
   SOZOChromoplast: 8902f554d852844c2025b26558d3322f8fae668d
 
-PODFILE CHECKSUM: 534c722be4d3706daa26e9c0bfba09686a64c23e
+PODFILE CHECKSUM: ca65060313b8290d72db01c8d65d9ae6b8fc9509
 
 COCOAPODS: 1.8.4

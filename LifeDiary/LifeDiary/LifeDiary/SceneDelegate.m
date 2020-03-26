@@ -28,12 +28,7 @@
    // NSString *string = [userDefaults objectForKey:@"userName"];
     if ([userDefaults objectForKey:@"userName"]) {
         
-        [[LifeDiaryManage sharedLeton] loginUserToBackGroundWithUser:[userDefaults valueForKey:@"userName"] pass:[userDefaults valueForKey:@"passWord"] success:^(LoginJSONModel * _Nonnull loginJSONModel) {
-            [userDefaults setObject:[[LifeDiaryManage sharedLeton] ObtaionCookie] forKey:@"jsession"];
-            NSLog(@"jession保存成功");
-        } error:^(NSError * _Nonnull error) {
-            
-        }];
+        
         
         GoodsViewController *goodViewController = [[GoodsViewController alloc] init];
         UINavigationController *goodsNav = [[UINavigationController alloc] initWithRootViewController:goodViewController];

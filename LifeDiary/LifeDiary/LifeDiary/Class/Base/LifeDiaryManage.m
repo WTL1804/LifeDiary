@@ -81,6 +81,7 @@ static LifeDiaryManage *manageCustom;
         LoginJSONModel *loginJSONModel = [[LoginJSONModel alloc] initWithDictionary:responseObject error:nil];
         successBlock(loginJSONModel);
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        errorBlock(error);
     }];
     
 }
@@ -94,7 +95,7 @@ static LifeDiaryManage *manageCustom;
      [manage.requestSerializer setValue:jsession forHTTPHeaderField:@"Cookie"];
        manage.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json",@"text/html",@"text/json", @"text/javascript,multipart/form-data",nil];
          //[manage.requestSerializer setValue:@"" forHTTPHeaderField:@"If-None-Match"];
-      //  manage.responseSerializer = [AFHTTPResponseSerializer serializer];
+       manage.responseSerializer = [AFJSONResponseSerializer new];
         manage.requestSerializer = [AFHTTPRequestSerializer serializer];
         [manage POST:url parameters:paramDict constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
                // 在网络开发中，上传文件时，是文件不允许被覆盖，文件重名
@@ -260,7 +261,8 @@ static LifeDiaryManage *manageCustom;
        // manage.responseSerializer = [AFHTTPResponseSerializer serializer];
      //manage.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json",@"text/html",@"text/json", @"text/javascript,multipart/form-data",nil];
        manage.requestSerializer = [AFHTTPRequestSerializer serializer];
-       NSDictionary *dict = @{};
+      manage.responseSerializer = [AFJSONResponseSerializer new];
+    NSDictionary *dict = @{};
        NSString *url = @"http://116.62.179.174:8080/whpro/product/list.do";
        [manage POST:url parameters:dict progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
            ItemsGoodsViewModel *itemsListViewModel = [[ItemsGoodsViewModel alloc] initWithDictionary:responseObject error:nil];

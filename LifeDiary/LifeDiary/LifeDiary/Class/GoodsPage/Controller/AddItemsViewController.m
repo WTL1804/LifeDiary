@@ -299,6 +299,7 @@
 //    }];
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     [[LifeDiaryManage sharedLeton] itemsStoredWithUserID:[defaults valueForKey:@"ID"] JSESSION:[defaults valueForKey:@"jsession"] Items:self.addItemsView.addItems success:^(NSDictionary * _Nonnull dict) {
+        NSLog(@"%@", dict);
     } error:^(NSError * _Nonnull error) {
         
     }];
