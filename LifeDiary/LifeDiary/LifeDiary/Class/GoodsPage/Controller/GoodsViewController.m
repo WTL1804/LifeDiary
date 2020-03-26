@@ -98,14 +98,21 @@
     [[LifeDiaryManage sharedLeton] itemsAllWithJsession:jsession  success:^(ItemsGoodsViewModel * _Nonnull itemsListViewModel) {
         dispatch_queue_t queue = dispatch_queue_create("test", DISPATCH_QUEUE_CONCURRENT);
         dispatch_async(queue, ^{
+            NSMutableArray *databaseArray = [[NSMutableArray alloc] init];
             for (NSDictionary *dict in itemsListViewModel.data) {
                 //处理请求下来的数据
                 NSDictionary *dictTemp = [self->_goodsModel ProcessingNetworkRequestDataOfItems:dict];
                 [self->_goodsView.itemsArray addObject:dictTemp];
+                [databaseArray addObject:dictTemp];
             }
+
+            //清除旧数据
+            [self.goodsModel deleteAllItems];
             //物品存入数据库
-            [self.goodsModel storeTheItemsIntoDataBase: self.goodsView.itemsArray];
-            
+            [self.goodsModel storeTheItemsIntoDataBase:databaseArray];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [self.goodsView.mainTableView reloadData];
+            });
         });
         //
         [self.goodsView.mainTableView reloadData];

@@ -12,6 +12,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface GoodsViewModel : NSObject
 - (void)changeNumberOfItem:(NSMutableDictionary *)itemsDict value:(double)value array:(NSMutableArray *)array number:(int)i;
 
+@property (nonatomic, copy) NSString *doPath;
 //检查物品过期
 - (void)goodsInspection:(NSMutableArray *)array overDueMutArray: (NSMutableArray *)overDueArray;
 //处理网络请求下来的数据
@@ -26,6 +27,8 @@ NS_ASSUME_NONNULL_BEGIN
 - (NSMutableArray *)ExtractDataFromTheLocalDatabase;
 //处理数据库中的数据。
 - (NSDictionary *)ProcessingDatabaseResult:(NSDictionary *)dict;
+//删除数据中的数据
+- (void)deleteAllItems;
 @end
 
 NS_ASSUME_NONNULL_END

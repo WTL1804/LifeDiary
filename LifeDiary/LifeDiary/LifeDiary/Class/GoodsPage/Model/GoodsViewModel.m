@@ -63,31 +63,20 @@
     return date;
 }
 - (void)storeTheItemsIntoDataBase:(NSArray *)array {
-    NSString *docuPath = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)[0];
-    NSString *doPath = [docuPath stringByAppendingPathComponent:@"itemsArray"];
-    NSLog(@"%@", doPath);
-    FMDatabase *db = [FMDatabase databaseWithPath:doPath];
+    FMDatabase *db = [FMDatabase databaseWithPath:_doPath];
     [db open];
     if (![db open]) {
         NSLog(@"数据库打开失败");
     } else {
         NSLog(@"数据库打开成功");
     }
-    //删除旧数据
-//    NSString *sqlToDelete = @"DELETE from wh_items;";
-//    BOOL res = [db executeUpdate:sqlToDelete];
-//    if (!res) {
-//        NSLog(@"数据删除失败");
-//    } else {
-//        NSLog(@"数据删除成功");
-//    }
-    NSString *sqlToCreat = @"create table if not exists wh_items('name' TEXT NOT NULL, 'attribute' TEXT NOT NULL, 'shelfLifeNumber' INTEGER, 'productionDate' TEXT NOT NULL, 'addDate' TEXT NOT NULL, 'imageData' BLOB, 'numberOfItem' INTEGER, 'overDue' TEXT NOT NULL, 'dataType' TEXT NOT NULL, 'itemsState' INTEGER, describeString TEXT NOT NULL)";
+   
+    NSString *sqlToCreat = @"create table if not exists wh_items('name' TEXT NOT NULL, 'attribute' TEXT NOT NULL, 'shelfLifeNumber' INTEGER, 'productionDate' TEXT NOT NULL, 'addDate' TEXT NOT NULL, 'imageData' BLOB, 'numberOfItem' INTEGER, 'overDue' TEXT NOT NULL, 'dataType' TEXT NOT NULL, 'itemsState' INTEGER, describeString TEXT NOT NULL);";
     BOOL resultToCreat = [db executeUpdate:sqlToCreat];
        if (resultToCreat) {
            NSLog(@"create table success");
        }
-    
-    
+     
     //插入新数据
     for (NSDictionary *dict in array) {
         
@@ -103,9 +92,9 @@
          NSString *describeString = [dict valueForKey:@"describeString"];
         //NSData *imageData = [dict objectForKey:@"imageDate"];
         //插入数据
-        BOOL resultToInsert = [db executeUpdateWithFormat:@"insert into 'wh_items'(name, attribute, shelfLifeNumber, productionDate, addDate, imageData, numberOfItem, overDue, dataType, itemsState, describeString) values(%@, %@, %ld, %@, %@, %@, %ld, %@, %@, %ld, %@)", name, attribute, [shelfLifeNumber integerValue], productionDate, addDate, [dict valueForKey:@"imageData"], [numberOfItem integerValue], overDue, dataType, [itemsState integerValue], describeString];
+        BOOL resultToInsert = [db executeUpdateWithFormat:@"insert into wh_items(name, attribute, shelfLifeNumber, productionDate, addDate, imageData, numberOfItem, overDue, dataType, itemsState, describeString) values(%@, %@, %ld, %@, %@, %@, %ld, %@, %@, %ld, %@);", name, attribute, [shelfLifeNumber integerValue], productionDate, addDate, [dict valueForKey:@"imageData"], [numberOfItem integerValue], overDue, dataType, [itemsState integerValue], describeString];
         if (resultToInsert) {
-            NSLog(@"数据存入数据库成功");
+          //  NSLog(@"数据存入数据库成功");
         }
     }
     
@@ -121,17 +110,14 @@
     return string;
 }
 - (NSMutableArray *)ExtractDataFromTheLocalDatabase {
-    NSString *docuPath = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)[0];
-    NSString *doPath = [docuPath stringByAppendingPathComponent:@"itemsArray"];
-    NSLog(@"%@", doPath);
-    FMDatabase *db = [FMDatabase databaseWithPath:doPath];
+    FMDatabase *db = [FMDatabase databaseWithPath:_doPath];
     [db open];
     if (![db open]) {
         NSLog(@"数据库打开失败");
     } else {
         NSLog(@"数据库打开成功");
     }
-    NSString *querySql = @"select * from wh_items";
+    NSString *querySql = @"select * from wh_items;";
 
     NSMutableArray *arr = [[NSMutableArray alloc] init];
 
@@ -148,6 +134,7 @@
         NSDictionary * dictTemp =  [self ProcessingDatabaseResult:dict];
         [arryTemp addObject:dictTemp];
     }
+    [db close];
     return arryTemp;
 }
 - (NSDictionary *)ProcessingDatabaseResult:(NSDictionary *)dict {
@@ -165,5 +152,28 @@
      
      NSMutableDictionary *dictTemp = [NSMutableDictionary dictionaryWithObjects:@[addDate,attribute,[dict valueForKey:@"imageData"],name,numberOfItem,overDue,productionDate,shelfLifeNumber,dataType,itemsState, describeString] forKeys:@[@"addDate",@"attribute",@"imageData",@"name",@"numberOfItem",@"overDue",@"productionDate",@"shelfLifeNumber",@"dataType",@"itemsState", @"describeString"]];
      return dictTemp;
+}
+- (instancetype)init {
+     if (self = [super init]) {
+        NSString *docuPath = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)[0];
+        NSString *doPath = [docuPath stringByAppendingPathComponent:@"itemsArray.sqlite"];
+         self.doPath = doPath;
+         NSLog(@"%@",doPath);
+     }
+    return self;
+    
+}
+- (void)deleteAllItems {
+    FMDatabase *db = [FMDatabase databaseWithPath:self.doPath];
+        if ([db open]) {
+            NSString *sql = @"delete from wh_items";
+            BOOL res = [db executeUpdate:sql];
+            if (!res) {
+                NSLog(@"数据删除失败");
+            } else {
+                NSLog(@"数据删除成功");
+            }
+            [db close];
+        }
 }
 @end
