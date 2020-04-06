@@ -29,6 +29,7 @@
     [self addSubview: self.searchField];
     _searchField.backgroundColor = self.backgroundColor = [UIColor colorWithRed:0.20392 green:0.23137 blue:0.321 alpha:1];
     _searchField.delegate = self;
+    _searchField.keyboardType = UIKeyboardTypeDefault;
     
     self.personBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     [_personBtn setFrame:CGRectMake(12, 40, 33, 33)];

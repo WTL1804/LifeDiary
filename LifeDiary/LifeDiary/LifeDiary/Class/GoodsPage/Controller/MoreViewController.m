@@ -23,7 +23,7 @@
     _moreTableView.delegate = self;
     _moreTableView.dataSource = self;
     
-    _optionsArray = [[NSArray alloc] initWithObjects:@"全部",@"消息",@"分类",nil];
+    _optionsArray = [[NSArray alloc] initWithObjects:@"过期物品",@"删除物品",@"分类",nil];
 }
 
 

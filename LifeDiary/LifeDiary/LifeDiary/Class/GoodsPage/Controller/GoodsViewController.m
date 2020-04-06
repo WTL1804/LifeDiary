@@ -79,7 +79,7 @@
     NSMutableArray *mutArray = [self->_goodsModel  ExtractDataFromTheLocalDatabase];
     self.goodsView.itemsArray = mutArray;
     //[self.goodsView.mainTableView reloadData];
-    NSLog(@"%ld", mutArray.count);
+    [_goodsModel goodsInspection:_goodsView.itemsArray overDueMutArray:_goodsView.itemsOverDueMutArray];
 }
 - (void)loginToAccessSession {
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
@@ -102,14 +102,23 @@
             for (NSDictionary *dict in itemsListViewModel.data) {
                 //处理请求下来的数据
                 NSDictionary *dictTemp = [self->_goodsModel ProcessingNetworkRequestDataOfItems:dict];
-                [self->_goodsView.itemsArray addObject:dictTemp];
+                
                 [databaseArray addObject:dictTemp];
             }
-
             //清除旧数据
             [self.goodsModel deleteAllItems];
             //物品存入数据库
             [self.goodsModel storeTheItemsIntoDataBase:databaseArray];
+            //检查物品过期
+            //替换过期数组
+            NSMutableArray *arrayOver = [[NSMutableArray alloc] init];
+            
+            [self.goodsModel goodsInspection:databaseArray overDueMutArray:arrayOver];
+            
+            self.goodsView.itemsOverDueMutArray = arrayOver;
+            //替换物品数组
+            self.goodsView.itemsArray = databaseArray;
+           
             dispatch_async(dispatch_get_main_queue(), ^{
                 [self.goodsView.mainTableView reloadData];
             });

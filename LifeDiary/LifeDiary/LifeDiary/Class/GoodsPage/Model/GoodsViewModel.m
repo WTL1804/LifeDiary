@@ -97,7 +97,7 @@
           //  NSLog(@"数据存入数据库成功");
         }
     }
-    
+    NSLog(@"存入数据完成");
     [db close];
 }
 - (NSString *)ProcessionDateToString:(NSDate *)date {
