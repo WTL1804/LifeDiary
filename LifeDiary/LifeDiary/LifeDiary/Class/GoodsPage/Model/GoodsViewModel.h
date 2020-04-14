@@ -27,8 +27,10 @@ NS_ASSUME_NONNULL_BEGIN
 - (NSMutableArray *)ExtractDataFromTheLocalDatabase;
 //处理数据库中的数据。
 - (NSDictionary *)ProcessingDatabaseResult:(NSDictionary *)dict;
-//删除数据中的数据
+//删除数据库中的数据
 - (void)deleteAllItems;
+//删除过期15天的物品
+- (NSMutableArray *)itemsShouldDeleteFromBackGround:(NSMutableArray *)overDueArray;
 @end
 
 NS_ASSUME_NONNULL_END

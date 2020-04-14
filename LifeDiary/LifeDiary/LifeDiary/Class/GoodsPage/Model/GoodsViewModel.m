@@ -22,17 +22,19 @@
     [array insertObject:dict2 atIndex:i];
 }
 - (void)goodsInspection:(NSMutableArray *)array overDueMutArray:(nonnull NSMutableArray *)overDueArray {
+    
     for (int i = 0; i < array.count; i++) {
         Items *tempItems = [[Items alloc] init];
        [tempItems setValuesForKeysWithDictionary:array[i]];
         NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
         NSDateComponents *comp = [calendar components:NSCalendarUnitDay fromDate:[NSDate date] toDate:tempItems.overDue options:NSCalendarWrapComponents];
         NSNumber *number = [NSNumber numberWithInteger:comp.day];
-        if ([number intValue] <= 0) {
+        if ([number intValue] < 1) {
             tempItems.itemsState = [NSNumber numberWithInt:1];
             NSMutableDictionary *dict2 = [NSMutableDictionary dictionaryWithObjects:@[tempItems.addDate,tempItems.attribute,tempItems.imageData,tempItems.name,tempItems.numberOfItem,tempItems.overDue,tempItems.productionDate,tempItems.shelfLifeNumber,tempItems.dataType, tempItems.itemsState, tempItems.describeString] forKeys:@[@"addDate",@"attribute",@"imageData",@"name",@"numberOfItem",@"overDue",@"productionDate",@"shelfLifeNumber",@"dataType", @"itemsState", @"decribeString"]];
             [overDueArray addObject:dict2];
             [array removeObjectAtIndex:i];
+            i = -1;
         }
     }
 }
@@ -71,7 +73,7 @@
         NSLog(@"数据库打开成功");
     }
    
-    NSString *sqlToCreat = @"create table if not exists wh_items('name' TEXT NOT NULL, 'attribute' TEXT NOT NULL, 'shelfLifeNumber' INTEGER, 'productionDate' TEXT NOT NULL, 'addDate' TEXT NOT NULL, 'imageData' BLOB, 'numberOfItem' INTEGER, 'overDue' TEXT NOT NULL, 'dataType' TEXT NOT NULL, 'itemsState' INTEGER, describeString TEXT NOT NULL);";
+    NSString *sqlToCreat = @"create table if not exists wh_items('id' integer primary key AUTOINCREMENT, 'name' TEXT NOT NULL, 'attribute' TEXT NOT NULL, 'shelfLifeNumber' INTEGER, 'productionDate' TEXT NOT NULL, 'addDate' TEXT NOT NULL, 'imageData' BLOB, 'numberOfItem' INTEGER, 'overDue' TEXT NOT NULL, 'dataType' TEXT NOT NULL, 'itemsState' INTEGER, describeString TEXT NOT NULL);";
     BOOL resultToCreat = [db executeUpdate:sqlToCreat];
        if (resultToCreat) {
            NSLog(@"create table success");
@@ -175,5 +177,21 @@
             }
             [db close];
         }
+}
+
+- (NSMutableArray *)itemsShouldDeleteFromBackGround:(NSMutableArray *)overDueArray {
+    NSMutableArray *array = [[NSMutableArray alloc] init];
+    for (int i = 0; i < overDueArray.count; i++) {
+        Items *tempItems = [[Items alloc] init];
+        [tempItems setValuesForKeysWithDictionary:overDueArray[i]];
+         NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
+         NSDateComponents *comp = [calendar components:NSCalendarUnitDay fromDate:[NSDate date] toDate:tempItems.overDue options:NSCalendarWrapComponents];
+         NSNumber *number = [NSNumber numberWithInteger:comp.day];
+        if ([number intValue] < -15) {
+            //[overDueArray removeObjectAtIndex:i];
+            [array addObject:overDueArray[i]];
+        }
+    }
+    return array;
 }
 @end

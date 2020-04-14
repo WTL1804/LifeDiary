@@ -80,6 +80,8 @@
     self.goodsView.itemsArray = mutArray;
     //[self.goodsView.mainTableView reloadData];
     [_goodsModel goodsInspection:_goodsView.itemsArray overDueMutArray:_goodsView.itemsOverDueMutArray];
+    NSLog(@"%lu", (unsigned long)_goodsView.itemsOverDueMutArray.count);
+   // NSLog(@"%@", _goodsView.itemsArray);
 }
 - (void)loginToAccessSession {
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
