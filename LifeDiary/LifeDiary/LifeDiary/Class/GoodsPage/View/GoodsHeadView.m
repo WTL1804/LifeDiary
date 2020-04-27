@@ -63,5 +63,9 @@
 }
 - (void)textFieldDidBeginEditing:(UITextField *)textField {
     textField.text = @"";
+    [self.textFieldFocusedDelegate textFieldFocused];
+}
+- (void)textFieldDidEndEditing:(UITextField *)textField {
+    textField.text = @" 输入要搜索的物品";
 }
 @end

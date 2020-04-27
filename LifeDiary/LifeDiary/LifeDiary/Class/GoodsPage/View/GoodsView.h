@@ -10,6 +10,8 @@
 @class BaseTableViewCell;
 NS_ASSUME_NONNULL_BEGIN
 
+
+
 @interface GoodsView : UIView <UITableViewDelegate, UITableViewDataSource>
 
 - (void)setUI;
@@ -21,6 +23,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) NSMutableArray *itemsDeletedMutArray;
 
 @property (nonatomic, strong) BaseTableViewCell *cell;
+
 
 @end
 

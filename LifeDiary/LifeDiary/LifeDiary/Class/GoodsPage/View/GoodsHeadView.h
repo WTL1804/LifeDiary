@@ -20,6 +20,13 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)clickPersonBtn;
 
 @end
+
+@protocol textFieldFocusedDelegate <NSObject>
+
+- (void)textFieldFocused;
+
+@end
+
 @interface GoodsHeadView : UIView <UITextFieldDelegate>
 - (void)setUI;
 
@@ -27,10 +34,12 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, strong) UIButton *personBtn;
 @property (nonatomic, strong) UIButton *allBtn;
+
 @property (nonatomic, weak) id <clickAllBtnDeleage>deleagate;
 @property (nonatomic, weak) id <clickPersonDelegate>personBtnDelegate;
-@property (nonatomic, strong) UILabel *titleLabel;
+@property (nonatomic, weak) id <textFieldFocusedDelegate> textFieldFocusedDelegate;
 
+@property (nonatomic, strong) UILabel *titleLabel;
 
 @end
 

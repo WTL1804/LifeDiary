@@ -17,7 +17,8 @@
 #import <QuartzCore/QuartzCore.h>
 #import "LifeDiaryManage.h"
 #import "ItemsGoodsViewModel.h"
-@interface GoodsViewController () <clickAllBtnDeleage, clickTheHeadCell, clickPersonDelegate>
+#import "SearchViewController.h"
+@interface GoodsViewController () <clickAllBtnDeleage, clickTheHeadCell, clickPersonDelegate, textFieldFocusedDelegate>
 
 @end
 
@@ -38,6 +39,7 @@
     [self.view addSubview:_headView];
     _headView.deleagate = self;
     _headView.personBtnDelegate = self;
+    _headView.textFieldFocusedDelegate = self;
     [_headView setUI];
     
    // self.tabBarController.tabBar.tintColor = [UIColor colorWithRed:0.133333 green:0.1647 blue:0.2549 alpha:1];
@@ -80,8 +82,7 @@
     self.goodsView.itemsArray = mutArray;
     //[self.goodsView.mainTableView reloadData];
     [_goodsModel goodsInspection:_goodsView.itemsArray overDueMutArray:_goodsView.itemsOverDueMutArray];
-    NSLog(@"%lu", (unsigned long)_goodsView.itemsOverDueMutArray.count);
-   // NSLog(@"%@", _goodsView.itemsArray);
+
 }
 - (void)loginToAccessSession {
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
@@ -120,7 +121,15 @@
             self.goodsView.itemsOverDueMutArray = arrayOver;
             //替换物品数组
             self.goodsView.itemsArray = databaseArray;
-           
+           //删除已经过期15天的物品  异步删除
+          NSMutableArray *arrayShouldDelete = [self.goodsModel itemsShouldDeleteFromBackGround:arrayOver];
+             dispatch_async(dispatch_get_main_queue(), ^{
+                [[LifeDiaryManage sharedLeton] DeleteItemsThatAreFifteenDaysOldWithMutArray:arrayShouldDelete success:^(NSDictionary * _Nonnull dict) {
+                    NSLog(@"过期15天物品删除成功");
+                } error:^(NSError * _Nonnull error) {
+                    NSLog(@"过期15天物品删除失败");
+                }];
+            });
             dispatch_async(dispatch_get_main_queue(), ^{
                 [self.goodsView.mainTableView reloadData];
             });
@@ -168,7 +177,7 @@
 }
 - (void)viewWillDisappear:(BOOL)animated {
     self.navigationController.navigationBar.hidden = NO;
-    self.tabBarController.tabBar.hidden = YES;
+   // self.tabBarController.tabBar.hidden = YES;
 }
 
 //添加物品界面确定按钮的方法实现
@@ -233,6 +242,14 @@
     // Pass the selected object to the new view controller.
 }
 */
+
+- (void)textFieldFocused {
+    SearchViewController *searchViewController = [[SearchViewController alloc] init];
+    searchViewController.allItemsArray = self.goodsView.itemsArray;
+    searchViewController.modalPresentationStyle = 0;
+    [self.navigationController presentViewController:searchViewController animated:NO completion:nil];
+}
+
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
     NSLog(@"1234");
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];

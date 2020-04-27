@@ -280,4 +280,16 @@ static LifeDiaryManage *manageCustom;
         self.image = [change valueForKey:@"new"];
     }
 }
+- (void)DeleteItemsThatAreFifteenDaysOldWithMutArray:(NSMutableArray *)array success:(DeletFifhteenHandle)successBlock error:(ErrorHandle)errorBlock {
+        AFHTTPSessionManager *manage = [AFHTTPSessionManager manager];
+        NSDictionary *paramDict = @{@"itemsName":array};
+        NSString *url = @"";
+        [manage POST:url parameters:paramDict progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+            NSDictionary *dict = [[NSDictionary alloc] initWithDictionary:responseObject];
+            successBlock(dict);
+        } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+            
+        }];
+
+}
 @end

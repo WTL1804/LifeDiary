@@ -82,5 +82,8 @@
     [_itemsArray removeObject:dict];
     [_mainTableView reloadData];
 }
+- (void)textFieldDidBeginEditing:(UITextField *)textField {
+    
+}
 
 @end

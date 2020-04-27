@@ -15,6 +15,8 @@
 		8441DC942410E9D000851AEB /* miaoshu.png in Resources */ = {isa = PBXBuildFile; fileRef = 8441DC932410E9D000851AEB /* miaoshu.png */; };
 		8441DC962410EA6200851AEB /* shuliang.png in Resources */ = {isa = PBXBuildFile; fileRef = 8441DC952410EA6200851AEB /* shuliang.png */; };
 		8441DC99241230BB00851AEB /* ItemsGoodsViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8441DC98241230BB00851AEB /* ItemsGoodsViewModel.m */; };
+		8444E80C245719C100301289 /* SearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8444E80B245719C100301289 /* SearchViewController.m */; };
+		8444E80F24571C2B00301289 /* SearchView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8444E80E24571C2B00301289 /* SearchView.m */; };
 		8446020023E8401A0077227C /* BaseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 844601FF23E8401A0077227C /* BaseModel.m */; };
 		8446020423E840570077227C /* ModelOne.m in Sources */ = {isa = PBXBuildFile; fileRef = 8446020323E840570077227C /* ModelOne.m */; };
 		8446020723E8406A0077227C /* ModelTwo.m in Sources */ = {isa = PBXBuildFile; fileRef = 8446020623E8406A0077227C /* ModelTwo.m */; };
@@ -103,6 +105,10 @@
 		8441DC952410EA6200851AEB /* shuliang.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = shuliang.png; sourceTree = "<group>"; };
 		8441DC97241230BB00851AEB /* ItemsGoodsViewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ItemsGoodsViewModel.h; sourceTree = "<group>"; };
 		8441DC98241230BB00851AEB /* ItemsGoodsViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ItemsGoodsViewModel.m; sourceTree = "<group>"; };
+		8444E80A245719C100301289 /* SearchViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SearchViewController.h; sourceTree = "<group>"; };
+		8444E80B245719C100301289 /* SearchViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SearchViewController.m; sourceTree = "<group>"; };
+		8444E80D24571C2B00301289 /* SearchView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SearchView.h; sourceTree = "<group>"; };
+		8444E80E24571C2B00301289 /* SearchView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SearchView.m; sourceTree = "<group>"; };
 		844601FE23E8401A0077227C /* BaseModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BaseModel.h; sourceTree = "<group>"; };
 		844601FF23E8401A0077227C /* BaseModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BaseModel.m; sourceTree = "<group>"; };
 		8446020223E840570077227C /* ModelOne.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ModelOne.h; sourceTree = "<group>"; };
@@ -309,6 +315,8 @@
 				84544FE123D09AB100639E34 /* AddItemsView.m */,
 				84C9A81C23EFDEB9002EA55D /* AllItemsView.h */,
 				84C9A81D23EFDEB9002EA55D /* AllItemsView.m */,
+				8444E80D24571C2B00301289 /* SearchView.h */,
+				8444E80E24571C2B00301289 /* SearchView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -324,6 +332,8 @@
 				84C9A81723ED40AA002EA55D /* MoreViewController.m */,
 				84C9A81923EEE525002EA55D /* AllItemsViewController.h */,
 				84C9A81A23EEE525002EA55D /* AllItemsViewController.m */,
+				8444E80A245719C100301289 /* SearchViewController.h */,
+				8444E80B245719C100301289 /* SearchViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -768,6 +778,7 @@
 				8441DC99241230BB00851AEB /* ItemsGoodsViewModel.m in Sources */,
 				84C9A81E23EFDEB9002EA55D /* AllItemsView.m in Sources */,
 				84BB92CB240F38FF00FC8183 /* LoginViewViewController.m in Sources */,
+				8444E80C245719C100301289 /* SearchViewController.m in Sources */,
 				84C9A82723F2D461002EA55D /* UIBezierPath+GetAllPoints.m in Sources */,
 				84468FDD241654D700A4C162 /* UploadImageModel.m in Sources */,
 				84762BA723A632A300713ECA /* WelcomeViewController.m in Sources */,
@@ -780,6 +791,7 @@
 				84544FEA23D3E23A00639E34 /* LifeDiaryManage.m in Sources */,
 				84DD174C2395383B00B10515 /* main.m in Sources */,
 				8446020423E840570077227C /* ModelOne.m in Sources */,
+				8444E80F24571C2B00301289 /* SearchView.m in Sources */,
 				84C5B18523F642980026569E /* PersonView.m in Sources */,
 				8446020723E8406A0077227C /* ModelTwo.m in Sources */,
 				846BD36923DEAD7B00133FF7 /* Items.m in Sources */,

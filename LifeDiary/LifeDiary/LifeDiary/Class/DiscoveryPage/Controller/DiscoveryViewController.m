@@ -24,6 +24,12 @@
     self.title = @"发现";
     
 }
+- (void)viewWillAppear:(BOOL)animated {
+    self.tabBarController.tabBar.hidden  = NO;
+}
+- (void)viewWillDisappear:(BOOL)animated {
+    self.tabBarController.tabBar.hidden = NO;
+}
 
 /*
 #pragma mark - Navigation

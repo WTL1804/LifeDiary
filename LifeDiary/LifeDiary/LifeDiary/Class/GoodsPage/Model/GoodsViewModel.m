@@ -31,7 +31,7 @@
         NSNumber *number = [NSNumber numberWithInteger:comp.day];
         if ([number intValue] < 1) {
             tempItems.itemsState = [NSNumber numberWithInt:1];
-            NSMutableDictionary *dict2 = [NSMutableDictionary dictionaryWithObjects:@[tempItems.addDate,tempItems.attribute,tempItems.imageData,tempItems.name,tempItems.numberOfItem,tempItems.overDue,tempItems.productionDate,tempItems.shelfLifeNumber,tempItems.dataType, tempItems.itemsState, tempItems.describeString] forKeys:@[@"addDate",@"attribute",@"imageData",@"name",@"numberOfItem",@"overDue",@"productionDate",@"shelfLifeNumber",@"dataType", @"itemsState", @"decribeString"]];
+            NSMutableDictionary *dict2 = [NSMutableDictionary dictionaryWithObjects:@[tempItems.addDate,tempItems.attribute,tempItems.imageData,tempItems.name,tempItems.numberOfItem,tempItems.overDue,tempItems.productionDate,tempItems.shelfLifeNumber,tempItems.dataType, tempItems.itemsState, tempItems.describeString] forKeys:@[@"addDate",@"attribute",@"imageData",@"name",@"numberOfItem",@"overDue",@"productionDate",@"shelfLifeNumber",@"dataType", @"itemsState", @"describeString"]];
             [overDueArray addObject:dict2];
             [array removeObjectAtIndex:i];
             i = -1;
@@ -189,7 +189,7 @@
          NSNumber *number = [NSNumber numberWithInteger:comp.day];
         if ([number intValue] < -15) {
             //[overDueArray removeObjectAtIndex:i];
-            [array addObject:overDueArray[i]];
+            [array addObject:tempItems.name];
         }
     }
     return array;
