@@ -15,8 +15,12 @@
 		8441DC942410E9D000851AEB /* miaoshu.png in Resources */ = {isa = PBXBuildFile; fileRef = 8441DC932410E9D000851AEB /* miaoshu.png */; };
 		8441DC962410EA6200851AEB /* shuliang.png in Resources */ = {isa = PBXBuildFile; fileRef = 8441DC952410EA6200851AEB /* shuliang.png */; };
 		8441DC99241230BB00851AEB /* ItemsGoodsViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8441DC98241230BB00851AEB /* ItemsGoodsViewModel.m */; };
-		8444E80C245719C100301289 /* SearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8444E80B245719C100301289 /* SearchViewController.m */; };
 		8444E80F24571C2B00301289 /* SearchView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8444E80E24571C2B00301289 /* SearchView.m */; };
+		8444E8152457C81200301289 /* ModelSearch.m in Sources */ = {isa = PBXBuildFile; fileRef = 8444E8142457C81200301289 /* ModelSearch.m */; };
+		8444E8182457C83F00301289 /* ModelSearchCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8444E8172457C83F00301289 /* ModelSearchCell.m */; };
+		8444E81B2457CED900301289 /* SearchViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8444E81A2457CED900301289 /* SearchViewModel.m */; };
+		8444E81C24584D9700301289 /* GoodsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84AA2CF023A5A4C4008B38E8 /* GoodsViewController.m */; };
+		8444E81D24584DC300301289 /* SearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8444E80B245719C100301289 /* SearchViewController.m */; };
 		8446020023E8401A0077227C /* BaseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 844601FF23E8401A0077227C /* BaseModel.m */; };
 		8446020423E840570077227C /* ModelOne.m in Sources */ = {isa = PBXBuildFile; fileRef = 8446020323E840570077227C /* ModelOne.m */; };
 		8446020723E8406A0077227C /* ModelTwo.m in Sources */ = {isa = PBXBuildFile; fileRef = 8446020623E8406A0077227C /* ModelTwo.m */; };
@@ -48,7 +52,6 @@
 		84A93D4824029D2E00EAFDA2 /* sousuo-2.png in Resources */ = {isa = PBXBuildFile; fileRef = 84A93D4724029D2E00EAFDA2 /* sousuo-2.png */; };
 		84A93D4C2403AB3300EAFDA2 /* head2.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 84A93D4B2403AB3300EAFDA2 /* head2.jpeg */; };
 		84A93D4E2403B15200EAFDA2 /* backGround.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 84A93D4D2403B15200EAFDA2 /* backGround.jpg */; };
-		84AA2CF123A5A4C4008B38E8 /* GoodsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84AA2CF023A5A4C4008B38E8 /* GoodsViewController.m */; };
 		84BB929E2405566D00FC8183 /* PersonSettingModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 84BB929D2405566D00FC8183 /* PersonSettingModel.m */; };
 		84BB92A224066BCB00FC8183 /* ItemsShowsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 84BB92A124066BCB00FC8183 /* ItemsShowsView.m */; };
 		84BB92CB240F38FF00FC8183 /* LoginViewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84BB92CA240F38FF00FC8183 /* LoginViewViewController.m */; };
@@ -109,6 +112,12 @@
 		8444E80B245719C100301289 /* SearchViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SearchViewController.m; sourceTree = "<group>"; };
 		8444E80D24571C2B00301289 /* SearchView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SearchView.h; sourceTree = "<group>"; };
 		8444E80E24571C2B00301289 /* SearchView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SearchView.m; sourceTree = "<group>"; };
+		8444E8132457C81200301289 /* ModelSearch.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ModelSearch.h; sourceTree = "<group>"; };
+		8444E8142457C81200301289 /* ModelSearch.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ModelSearch.m; sourceTree = "<group>"; };
+		8444E8162457C83F00301289 /* ModelSearchCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ModelSearchCell.h; sourceTree = "<group>"; };
+		8444E8172457C83F00301289 /* ModelSearchCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ModelSearchCell.m; sourceTree = "<group>"; };
+		8444E8192457CED900301289 /* SearchViewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SearchViewModel.h; sourceTree = "<group>"; };
+		8444E81A2457CED900301289 /* SearchViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SearchViewModel.m; sourceTree = "<group>"; };
 		844601FE23E8401A0077227C /* BaseModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BaseModel.h; sourceTree = "<group>"; };
 		844601FF23E8401A0077227C /* BaseModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BaseModel.m; sourceTree = "<group>"; };
 		8446020223E840570077227C /* ModelOne.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ModelOne.h; sourceTree = "<group>"; };
@@ -270,6 +279,8 @@
 				8446020323E840570077227C /* ModelOne.m */,
 				8446020523E8406A0077227C /* ModelTwo.h */,
 				8446020623E8406A0077227C /* ModelTwo.m */,
+				8444E8132457C81200301289 /* ModelSearch.h */,
+				8444E8142457C81200301289 /* ModelSearch.m */,
 			);
 			path = CellModel;
 			sourceTree = "<group>";
@@ -283,6 +294,8 @@
 				8446021323E847F00077227C /* ModelOneCell.m */,
 				8446021523E8480C0077227C /* ModelTwoCell.h */,
 				8446021623E8480C0077227C /* ModelTwoCell.m */,
+				8444E8162457C83F00301289 /* ModelSearchCell.h */,
+				8444E8172457C83F00301289 /* ModelSearchCell.m */,
 				84C9A82523F2D461002EA55D /* UIBezierPath+GetAllPoints.h */,
 				84C9A82623F2D461002EA55D /* UIBezierPath+GetAllPoints.m */,
 			);
@@ -351,6 +364,8 @@
 				84468FDC241654D700A4C162 /* UploadImageModel.m */,
 				84468FDE241657F000A4C162 /* AdditemsModel.h */,
 				84468FDF241657F000A4C162 /* AdditemsModel.m */,
+				8444E8192457CED900301289 /* SearchViewModel.h */,
+				8444E81A2457CED900301289 /* SearchViewModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -768,8 +783,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				84C9A81B23EEE525002EA55D /* AllItemsViewController.m in Sources */,
+				8444E81B2457CED900301289 /* SearchViewModel.m in Sources */,
 				84BB92D7240FCACC00FC8183 /* RegisterViewController.m in Sources */,
 				84C9A81823ED40AA002EA55D /* MoreViewController.m in Sources */,
+				8444E8152457C81200301289 /* ModelSearch.m in Sources */,
 				84544FED23D3E40900639E34 /* Access_tokenModel.m in Sources */,
 				8462477223A5A4F50022EF97 /* GoodsView.m in Sources */,
 				84544FDF23D0998100639E34 /* AddItemsViewController.m in Sources */,
@@ -778,15 +795,16 @@
 				8441DC99241230BB00851AEB /* ItemsGoodsViewModel.m in Sources */,
 				84C9A81E23EFDEB9002EA55D /* AllItemsView.m in Sources */,
 				84BB92CB240F38FF00FC8183 /* LoginViewViewController.m in Sources */,
-				8444E80C245719C100301289 /* SearchViewController.m in Sources */,
 				84C9A82723F2D461002EA55D /* UIBezierPath+GetAllPoints.m in Sources */,
 				84468FDD241654D700A4C162 /* UploadImageModel.m in Sources */,
+				8444E8182457C83F00301289 /* ModelSearchCell.m in Sources */,
 				84762BA723A632A300713ECA /* WelcomeViewController.m in Sources */,
 				84544FE223D09AB100639E34 /* AddItemsView.m in Sources */,
 				84BB92A224066BCB00FC8183 /* ItemsShowsView.m in Sources */,
 				846BD31F23D3F0A100133FF7 /* PhotoIdentificationModel.m in Sources */,
 				8446021723E8480C0077227C /* ModelTwoCell.m in Sources */,
 				84544FDC23D0962900639E34 /* BaseTableViewCell.m in Sources */,
+				8444E81D24584DC300301289 /* SearchViewController.m in Sources */,
 				8462478023A5ADF80022EF97 /* DiscoveryViewController.m in Sources */,
 				84544FEA23D3E23A00639E34 /* LifeDiaryManage.m in Sources */,
 				84DD174C2395383B00B10515 /* main.m in Sources */,
@@ -800,8 +818,8 @@
 				84BB929E2405566D00FC8183 /* PersonSettingModel.m in Sources */,
 				84C5B18223F6426E0026569E /* PersonSettingViewController.m in Sources */,
 				84468FE0241657F000A4C162 /* AdditemsModel.m in Sources */,
+				8444E81C24584D9700301289 /* GoodsViewController.m in Sources */,
 				8446020023E8401A0077227C /* BaseModel.m in Sources */,
-				84AA2CF123A5A4C4008B38E8 /* GoodsViewController.m in Sources */,
 				84BB92D4240F3D0800FC8183 /* LoginView.m in Sources */,
 				84C9A82123F0063A002EA55D /* GoodsViewModel.m in Sources */,
 				8446021423E847F00077227C /* ModelOneCell.m in Sources */,

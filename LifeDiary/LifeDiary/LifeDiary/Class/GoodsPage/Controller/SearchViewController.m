@@ -8,6 +8,7 @@
 
 #import "SearchViewController.h"
 #import "SearchView.h"
+#import "SearchViewModel.h"
 @interface SearchViewController ()
 
 @end
@@ -21,6 +22,19 @@
     _searchView.backgroundColor = [UIColor whiteColor];
     [_searchView setUI];
     [self.view addSubview:_searchView];
+    _searchModel = [[SearchViewModel alloc] init];
+    SearchViewModel __weak * searchModel = _searchModel;
+    NSMutableArray  __block *resultArray = [[NSMutableArray alloc] init];
+    NSMutableArray __weak *allItemsArray = _allItemsArray;
+    SearchView __weak *searchView = _searchView;
+    
+    _searchView.changeTextBlock = ^(NSString * _Nonnull string) {
+        
+        NSArray *array = [searchModel searchDataBaseUseingText:string];
+        resultArray = [searchModel matchingItemsFromNameArray:array originalArray:allItemsArray];
+        searchView.resultMutArray = resultArray;
+        [searchView.mainTableView reloadData];
+    };
 }
 
 /*

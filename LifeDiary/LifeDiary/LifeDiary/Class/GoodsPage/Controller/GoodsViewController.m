@@ -123,13 +123,15 @@
             self.goodsView.itemsArray = databaseArray;
            //删除已经过期15天的物品  异步删除
           NSMutableArray *arrayShouldDelete = [self.goodsModel itemsShouldDeleteFromBackGround:arrayOver];
-             dispatch_async(dispatch_get_main_queue(), ^{
-                [[LifeDiaryManage sharedLeton] DeleteItemsThatAreFifteenDaysOldWithMutArray:arrayShouldDelete success:^(NSDictionary * _Nonnull dict) {
-                    NSLog(@"过期15天物品删除成功");
-                } error:^(NSError * _Nonnull error) {
-                    NSLog(@"过期15天物品删除失败");
-                }];
-            });
+            if (arrayShouldDelete.count != 0) {
+                 dispatch_async(dispatch_get_main_queue(), ^{
+                    [[LifeDiaryManage sharedLeton] DeleteItemsThatAreFifteenDaysOldWithMutArray:arrayShouldDelete success:^(NSDictionary * _Nonnull dict) {
+                        NSLog(@"过期15天物品删除成功");
+                    } error:^(NSError * _Nonnull error) {
+                        NSLog(@"过期15天物品删除失败%@",error);
+                    }];
+                });
+            }
             dispatch_async(dispatch_get_main_queue(), ^{
                 [self.goodsView.mainTableView reloadData];
             });
@@ -245,7 +247,16 @@
 
 - (void)textFieldFocused {
     SearchViewController *searchViewController = [[SearchViewController alloc] init];
-    searchViewController.allItemsArray = self.goodsView.itemsArray;
+    
+    searchViewController.allItemsArray = [[NSMutableArray alloc] init];
+    for (int i = 0; i < self->_goodsView.itemsArray.count; i++) {
+        NSMutableDictionary *dict = [self->_goodsView.itemsArray[i] mutableCopy];
+        NSString *dataType = @"ModelSearch";
+        [dict removeObjectForKey:@"dataType"];
+        [dict setValue:dataType forKey:@"dataType"];
+        [searchViewController.allItemsArray addObject:dict];
+        //NSLog(@"转换完成");
+    }
     searchViewController.modalPresentationStyle = 0;
     [self.navigationController presentViewController:searchViewController animated:NO completion:nil];
 }

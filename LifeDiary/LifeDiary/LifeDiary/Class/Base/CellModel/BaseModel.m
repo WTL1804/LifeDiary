@@ -9,6 +9,7 @@
 #import "BaseModel.h"
 #import "ModelOne.h"
 #import "ModelTwo.h"
+#import "ModelSearch.h"
 @implementation BaseModel
 
 + (instancetype)initWithDictionary:(NSDictionary *)dictionary {
@@ -17,6 +18,8 @@
         baseModel =  [[ModelOne alloc] init];
     } else if ([dictionary[@"dataType"]isEqual:@"ModelTwo"]) {
         baseModel =  [[ModelTwo alloc] init];
+    } else if ([dictionary[@"dataType"] isEqual:@"ModelSearch"]) {
+        baseModel = [[ModelSearch alloc] init];
     }
     [baseModel setValuesForKeysWithDictionary:dictionary];
     return baseModel;

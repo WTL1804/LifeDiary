@@ -10,6 +10,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+
 @interface SearchView : UIView <UITextFieldDelegate, UITableViewDelegate, UITableViewDataSource>
 
 @property (nonatomic, strong) UIView *headView;
@@ -18,6 +19,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, strong) UITableView *mainTableView;
 
+@property (nonatomic, strong) NSMutableArray *resultMutArray;
+
+@property (nonatomic, copy) void(^changeTextBlock)(NSString *string);
 - (void)setUI;
 
 @end

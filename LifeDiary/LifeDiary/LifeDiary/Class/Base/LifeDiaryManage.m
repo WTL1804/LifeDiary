@@ -260,7 +260,7 @@ static LifeDiaryManage *manageCustom;
      [manage.requestSerializer setValue:jsession forHTTPHeaderField:@"Cookie"];
        // manage.responseSerializer = [AFHTTPResponseSerializer serializer];
      //manage.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json",@"text/html",@"text/json", @"text/javascript,multipart/form-data",nil];
-       manage.requestSerializer = [AFHTTPRequestSerializer serializer];
+        manage.requestSerializer = [AFHTTPRequestSerializer serializer];
       manage.responseSerializer = [AFJSONResponseSerializer new];
     NSDictionary *dict = @{};
        NSString *url = @"http://116.62.179.174:8080/whpro/product/list.do";
@@ -281,14 +281,15 @@ static LifeDiaryManage *manageCustom;
     }
 }
 - (void)DeleteItemsThatAreFifteenDaysOldWithMutArray:(NSMutableArray *)array success:(DeletFifhteenHandle)successBlock error:(ErrorHandle)errorBlock {
-        AFHTTPSessionManager *manage = [AFHTTPSessionManager manager];
-        NSDictionary *paramDict = @{@"itemsName":array};
-        NSString *url = @"";
-        [manage POST:url parameters:paramDict progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+        NSString *str = [array componentsJoinedByString:@","];
+        NSDictionary *paramDict = @{@"itemsName":str};
+        NSString *url = @"http://116.62.179.174:8080/whpro/product/delete.do";
+        [manager POST:url parameters:paramDict progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
             NSDictionary *dict = [[NSDictionary alloc] initWithDictionary:responseObject];
             successBlock(dict);
         } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-            
+            errorBlock(error);
         }];
 
 }

@@ -16,14 +16,7 @@
 
 - (void)setLayOutInSubclass:(BaseModel *)baseModel {
     
-    
-    
-    
-    
-    
     _modelTwo = (ModelTwo *)baseModel;
-    
-   
     
     if (!_imageViewOfItems) {
     _imageViewOfItems = [[UIImageView alloc] initWithImage:[UIImage imageWithData:_modelTwo.imageData]];

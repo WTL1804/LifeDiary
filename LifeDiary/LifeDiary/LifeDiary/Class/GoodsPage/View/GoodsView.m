@@ -54,7 +54,6 @@
         _cell = [BaseTableViewCell initWithModel:baseModel];
         
     }
-    
     [_cell setLayOutInSubclass:baseModel];
     return _cell;
 }
@@ -81,9 +80,6 @@
     dict = _itemsArray[indexPath.section];
     [_itemsArray removeObject:dict];
     [_mainTableView reloadData];
-}
-- (void)textFieldDidBeginEditing:(UITextField *)textField {
-    
 }
 
 @end
