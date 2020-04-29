@@ -9,7 +9,7 @@
 #import "SearchViewController.h"
 #import "SearchView.h"
 #import "SearchViewModel.h"
-@interface SearchViewController ()
+@interface SearchViewController () <passNameFromSelectCellDelegate>
 
 @end
 
@@ -21,6 +21,7 @@
     _searchView = [[SearchView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
     _searchView.backgroundColor = [UIColor whiteColor];
     [_searchView setUI];
+    _searchView.passNameFromCellDelegate = self;
     [self.view addSubview:_searchView];
     _searchModel = [[SearchViewModel alloc] init];
     SearchViewModel __weak * searchModel = _searchModel;
@@ -35,6 +36,11 @@
         searchView.resultMutArray = resultArray;
         [searchView.mainTableView reloadData];
     };
+}
+- (void)passNameStrig:(NSString *)string {
+    NSInteger cellNumber = [_searchModel matchingLocationFromString:string originalArray:_allItemsArray];
+    [self.passSectionDelegate passSection:cellNumber];
+    [self dismissViewControllerAnimated:NO completion:nil];
 }
 
 /*

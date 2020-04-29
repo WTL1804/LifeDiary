@@ -17,6 +17,8 @@ NS_ASSUME_NONNULL_BEGIN
 - (NSArray *)searchDataBaseUseingText:(NSString *)text;
 //根据物品名字更新view中的resultArray
 - (NSMutableArray *)matchingItemsFromNameArray:(NSArray *)nameArray originalArray:(NSMutableArray *)originalMutArray;
+//根据点击的cell移位到合适的主cell
+- (NSInteger)matchingLocationFromString:(NSString *)string originalArray:(NSMutableArray *)originalMutArray;
 @end
 
 NS_ASSUME_NONNULL_END

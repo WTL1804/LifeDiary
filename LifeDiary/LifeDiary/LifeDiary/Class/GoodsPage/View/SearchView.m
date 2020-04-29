@@ -9,6 +9,7 @@
 #import "SearchView.h"
 #import "BaseModel.h"
 #import "BaseTableViewCell.h"
+#import "ModelSearchCell.h"
 @implementation SearchView
 
 /*
@@ -93,6 +94,8 @@
     [_searchField resignFirstResponder];
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    ModelSearchCell *cell = (ModelSearchCell *)[tableView cellForRowAtIndexPath:indexPath];
+    [self.passNameFromCellDelegate passNameStrig: cell.nameLabel.text];
     [_searchField resignFirstResponder];
 }
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {

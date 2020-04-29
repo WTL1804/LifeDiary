@@ -9,7 +9,11 @@
 #import <UIKit/UIKit.h>
 
 NS_ASSUME_NONNULL_BEGIN
+@protocol passNameFromSelectCellDelegate <NSObject>
 
+- (void)passNameStrig:(NSString *)string;
+
+@end
 
 @interface SearchView : UIView <UITextFieldDelegate, UITableViewDelegate, UITableViewDataSource>
 
@@ -22,6 +26,9 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) NSMutableArray *resultMutArray;
 
 @property (nonatomic, copy) void(^changeTextBlock)(NSString *string);
+
+@property (nonatomic, weak) id <passNameFromSelectCellDelegate> passNameFromCellDelegate;
+
 - (void)setUI;
 
 @end

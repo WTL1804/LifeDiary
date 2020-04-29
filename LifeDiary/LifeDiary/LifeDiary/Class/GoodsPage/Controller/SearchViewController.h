@@ -11,6 +11,11 @@
 NS_ASSUME_NONNULL_BEGIN
 @class SearchView;
 @class SearchViewModel;
+@protocol passCellOfSection <NSObject>
+
+- (void)passSection:(NSInteger)number;
+
+@end
 @interface SearchViewController : UIViewController
 
 @property (nonatomic, strong) NSMutableArray *allItemsArray;
@@ -18,6 +23,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) SearchView *searchView;
 
 @property (nonatomic, strong) SearchViewModel *searchModel;
+
+@property (nonatomic, weak) id <passCellOfSection> passSectionDelegate;
 
 @end
 NS_ASSUME_NONNULL_END

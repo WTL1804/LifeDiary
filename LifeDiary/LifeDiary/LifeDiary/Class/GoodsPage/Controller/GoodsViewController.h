@@ -15,6 +15,8 @@
 
 NS_ASSUME_NONNULL_BEGIN
 typedef void(^numberChangeBlock)(UIStepper *sc);
+
+
 @interface GoodsViewController : UIViewController <addItemDelegate>
 
 @property (nonatomic, strong) GoodsView *goodsView;

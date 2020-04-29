@@ -18,7 +18,7 @@
 #import "LifeDiaryManage.h"
 #import "ItemsGoodsViewModel.h"
 #import "SearchViewController.h"
-@interface GoodsViewController () <clickAllBtnDeleage, clickTheHeadCell, clickPersonDelegate, textFieldFocusedDelegate>
+@interface GoodsViewController () <clickAllBtnDeleage, clickTheHeadCell, clickPersonDelegate, textFieldFocusedDelegate, passCellOfSection>
 
 @end
 
@@ -34,6 +34,7 @@
     [self.view addSubview:_goodsView];
     [_goodsView setUI];
     //_goodsView.cell.numberChangeDelegate = self;
+    
     
     _headView = [[GoodsHeadView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 135)];
     [self.view addSubview:_headView];
@@ -247,7 +248,7 @@
 
 - (void)textFieldFocused {
     SearchViewController *searchViewController = [[SearchViewController alloc] init];
-    
+    searchViewController.passSectionDelegate = self;
     searchViewController.allItemsArray = [[NSMutableArray alloc] init];
     for (int i = 0; i < self->_goodsView.itemsArray.count; i++) {
         NSMutableDictionary *dict = [self->_goodsView.itemsArray[i] mutableCopy];
@@ -260,7 +261,16 @@
     searchViewController.modalPresentationStyle = 0;
     [self.navigationController presentViewController:searchViewController animated:NO completion:nil];
 }
-
+- (void)passSection:(NSInteger)number {
+    self.goodsView.mainTableView.contentOffset = CGPointMake(0, number *(self.goodsView.frame.size.height)/1.5);
+//    [UIView animateWithDuration:3 animations:^{
+//        cell.backgroundColor = [UIColor blackColor];
+//    }];
+//    [UIView animateWithDuration:3 animations:^{
+//        cell.backgroundColor = [UIColor whiteColor];
+//    }];
+    
+}
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
     NSLog(@"1234");
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];

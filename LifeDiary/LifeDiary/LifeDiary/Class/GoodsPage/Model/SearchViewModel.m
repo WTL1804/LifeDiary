@@ -49,4 +49,14 @@
     }
     return temp;
 }
+- (NSInteger)matchingLocationFromString:(NSString *)string originalArray:(NSMutableArray *)originalMutArray {
+    NSInteger number = 0;
+    for (int i = 0; i < originalMutArray.count; i++) {
+        NSMutableDictionary *dict = originalMutArray[i];
+        if ([[dict valueForKey:@"name"] isEqual:string]) {
+            number = i;
+        }
+    }
+    return number;
+}
 @end
