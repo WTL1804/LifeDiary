@@ -13,8 +13,8 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)changeNumberOfItem:(NSMutableDictionary *)itemsDict value:(double)value array:(NSMutableArray *)array number:(int)i;
 
 @property (nonatomic, copy) NSString *doPath;
-//检查物品过期
-- (void)goodsInspection:(NSMutableArray *)array overDueMutArray: (NSMutableArray *)overDueArray;
+//检查物品过期和是否被删除
+- (void)goodsInspection:(NSMutableArray *)array overDueMutArray: (NSMutableArray *)overDueArray deleteMutArray:(NSMutableArray *)deleteMutArray;
 //处理网络请求下来的数据
 - (NSDictionary *)ProcessingNetworkRequestDataOfItems:(NSDictionary *)dict;
 //将字符串转为NSDate数据

@@ -60,7 +60,10 @@
        // _headCellBlock(@"执行headCell的点击事件");
         [self.delegate clickHeadCell];
         [self dismissViewControllerAnimated:NO completion:nil];
-        
+    }
+    if (indexPath.section == 1) {
+        [self.delegate clickSecondCell];
+        [self dismissViewControllerAnimated:NO completion:nil];
     }
 }
 - (void)viewWillAppear:(BOOL)animated {

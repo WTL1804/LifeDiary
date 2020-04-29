@@ -293,4 +293,15 @@ static LifeDiaryManage *manageCustom;
         }];
 
 }
+- (void)ModifyStatusCodeWithString:(NSString *)string success:(ModifyStatusCodeHandle)successBlock error:(ErrorHandle)errorBlock {
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    NSDictionary *paramDict = @{@"itemsName":string};
+    NSString *url = @"";
+    [manager POST:url parameters:paramDict progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        NSDictionary *dict = [[NSDictionary alloc] initWithDictionary:responseObject];
+        successBlock(dict);
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        errorBlock(error);
+    }];
+}
 @end

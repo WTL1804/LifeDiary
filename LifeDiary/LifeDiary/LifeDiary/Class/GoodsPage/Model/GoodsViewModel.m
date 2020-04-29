@@ -21,7 +21,7 @@
     [array removeObjectAtIndex:i];
     [array insertObject:dict2 atIndex:i];
 }
-- (void)goodsInspection:(NSMutableArray *)array overDueMutArray:(nonnull NSMutableArray *)overDueArray {
+- (void)goodsInspection:(NSMutableArray *)array overDueMutArray:(NSMutableArray *)overDueArray deleteMutArray:(NSMutableArray *)deleteMutArray {
     
     for (int i = 0; i < array.count; i++) {
         Items *tempItems = [[Items alloc] init];
@@ -29,12 +29,21 @@
         NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
         NSDateComponents *comp = [calendar components:NSCalendarUnitDay fromDate:[NSDate date] toDate:tempItems.overDue options:NSCalendarWrapComponents];
         NSNumber *number = [NSNumber numberWithInteger:comp.day];
-        if ([number intValue] < 1) {
+        
+        
+        if ([number intValue] < 1 || [tempItems.itemsState intValue] == 3) {
+            if([number intValue] < 1)
             tempItems.itemsState = [NSNumber numberWithInt:1];
             NSMutableDictionary *dict2 = [NSMutableDictionary dictionaryWithObjects:@[tempItems.addDate,tempItems.attribute,tempItems.imageData,tempItems.name,tempItems.numberOfItem,tempItems.overDue,tempItems.productionDate,tempItems.shelfLifeNumber,tempItems.dataType, tempItems.itemsState, tempItems.describeString] forKeys:@[@"addDate",@"attribute",@"imageData",@"name",@"numberOfItem",@"overDue",@"productionDate",@"shelfLifeNumber",@"dataType", @"itemsState", @"describeString"]];
-            [overDueArray addObject:dict2];
-            [array removeObjectAtIndex:i];
-            i = -1;
+            if([number intValue] < 1) {
+                [overDueArray addObject:dict2];
+                [array removeObjectAtIndex:i];
+                i = -1;
+            } else {
+                [deleteMutArray addObject:dict2];
+                [array removeObjectAtIndex:i];
+                i = -1;
+            }
         }
     }
 }

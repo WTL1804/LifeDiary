@@ -25,6 +25,7 @@ typedef void (^UploadImageHandle)(UploadImageModel *uploadModel);
 typedef void (^AcquireHeadImageHandle)(NSDictionary *dict);
 typedef void (^ALLItemsListHandle)(ItemsGoodsViewModel *itemsListViewModel);
 typedef void (^DeletFifhteenHandle)(NSDictionary *dict);
+typedef void (^ModifyStatusCodeHandle)(NSDictionary *dict);
 @interface LifeDiaryManage : NSObject
 
 //获取百度ai开放能力的key
@@ -56,6 +57,8 @@ typedef void (^DeletFifhteenHandle)(NSDictionary *dict);
 - (void)itemsAllWithJsession:(NSString *)jsession success:(ALLItemsListHandle)successBlock error:(ErrorHandle)errorBlock;
 //删除过期15天的物品
 - (void)DeleteItemsThatAreFifteenDaysOldWithMutArray:(NSMutableArray *)array success:(DeletFifhteenHandle)successBlock error:(ErrorHandle)errorBlock;
+//修改物品的状态码
+- (void)ModifyStatusCodeWithString:(NSString *)string success:(ModifyStatusCodeHandle)successBlock error:(ErrorHandle)errorBlock;
 
 @property (nonatomic, copy) NSString *access_token;
 @property (nonatomic, copy) NSString *image;

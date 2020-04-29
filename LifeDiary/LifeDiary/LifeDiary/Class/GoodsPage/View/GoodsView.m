@@ -9,6 +9,7 @@
 #import "GoodsView.h"
 #import "BaseTableViewCell.h"
 #import "BaseModel.h"
+#import "LifeDiaryManage.h"
 @implementation GoodsView
 
 /*
@@ -76,9 +77,21 @@
     return YES;
 }
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
-    NSDictionary *dict = [NSDictionary dictionaryWithObject:indexPath forKey:@"section"];
+    NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithObject:indexPath forKey:@"section"];
     dict = _itemsArray[indexPath.section];
     [_itemsArray removeObject:dict];
+    NSNumber *number = [NSNumber numberWithInt:3];
+    [dict removeObjectForKey:@"itemsState"];
+    [dict setValue:number forKey:@"itemsState"];
+    [_itemsDeletedMutArray addObject:dict];
+    
+    [[LifeDiaryManage sharedLeton] ModifyStatusCodeWithString:[dict valueForKey:@"name"] success:^(NSDictionary * _Nonnull dict) {
+        NSLog(@"修改状态码成功");
+    } error:^(NSError * _Nonnull error) {
+        NSLog(@"修改状态码失败%@",error);
+    }];
+    
+    
     [_mainTableView reloadData];
 }
 
