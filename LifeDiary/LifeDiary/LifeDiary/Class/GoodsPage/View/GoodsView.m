@@ -85,12 +85,7 @@
     [dict setValue:number forKey:@"itemsState"];
     [_itemsDeletedMutArray addObject:dict];
     
-    [[LifeDiaryManage sharedLeton] ModifyStatusCodeWithString:[dict valueForKey:@"name"] success:^(NSDictionary * _Nonnull dict) {
-        NSLog(@"修改状态码成功");
-    } error:^(NSError * _Nonnull error) {
-        NSLog(@"修改状态码失败%@",error);
-    }];
-    
+    [self.deleteItemsDelegate deleteItems:dict];
     
     [_mainTableView reloadData];
 }

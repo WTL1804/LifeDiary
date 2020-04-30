@@ -27,7 +27,7 @@
 - (void)timeTask {
     
     self.number = self.number +1;
-    if (self.number == 2) {
+    if (self.number > 2) {
         [self.timer invalidate];
         [self dismissViewControllerAnimated:NO completion:nil];
     }

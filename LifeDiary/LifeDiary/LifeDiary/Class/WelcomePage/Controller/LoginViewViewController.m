@@ -27,7 +27,9 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
    
-
+    WelcomeViewController *wel = [[WelcomeViewController alloc] init];
+    wel.modalPresentationStyle = 0;
+    [self presentViewController:wel animated:NO completion:nil];
     self.view.backgroundColor = [UIColor whiteColor];
     _loginView = [[LoginView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
     [self.view addSubview:_loginView];

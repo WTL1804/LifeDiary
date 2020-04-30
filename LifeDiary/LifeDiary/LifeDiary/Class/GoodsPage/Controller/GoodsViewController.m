@@ -18,7 +18,7 @@
 #import "LifeDiaryManage.h"
 #import "ItemsGoodsViewModel.h"
 #import "SearchViewController.h"
-@interface GoodsViewController () <clickAllBtnDeleage, clickTheHeadCell, clickPersonDelegate, textFieldFocusedDelegate, passCellOfSection>
+@interface GoodsViewController () <clickAllBtnDeleage, clickTheHeadCell, clickPersonDelegate, textFieldFocusedDelegate, passCellOfSection, DeleteItemsDelegate>
 
 @end
 
@@ -34,7 +34,7 @@
     [self.view addSubview:_goodsView];
     [_goodsView setUI];
     //_goodsView.cell.numberChangeDelegate = self;
-    
+    _goodsView.deleteItemsDelegate = self;
     
     _headView = [[GoodsHeadView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 135)];
     [self.view addSubview:_headView];
@@ -136,9 +136,10 @@
                 });
             }
             //删除已经被用户删除15天的物品 异步删除
-            if (arrayDelete.count != 0) {
+            NSMutableArray *arrayDeleteShouldDeleted = [self.goodsModel itemsShouldDeleteFromBackGround:arrayDelete];;
+            if (arrayDeleteShouldDeleted.count != 0) {
                  dispatch_async(dispatch_get_main_queue(), ^{
-                    [[LifeDiaryManage sharedLeton] DeleteItemsThatAreFifteenDaysOldWithMutArray:arrayDelete success:^(NSDictionary * _Nonnull dict) {
+                    [[LifeDiaryManage sharedLeton] DeleteItemsThatAreFifteenDaysOldWithMutArray:arrayDeleteShouldDeleted success:^(NSDictionary * _Nonnull dict) {
                         NSLog(@"过期15天物品删除成功");
                     } error:^(NSError * _Nonnull error) {
                         NSLog(@"过期15天物品删除失败%@",error);
@@ -204,8 +205,8 @@
     [_goodsView.itemsArray addObject:dict];
 //    [_goodsModel goodsInspection:_goodsView.itemsArray overDueMutArray:_goodsView.itemsOverDueMutArray];
     [_goodsView.mainTableView reloadData];
-//    //物品存入数据库
-//    [self.goodsModel storeTheItemsIntoDataBase: self.goodsView.itemsArray];
+    //物品存入数据库
+    [self.goodsModel storeTheItemsIntoDataBase: self.goodsView.itemsArray];
     
 
 }
@@ -296,6 +297,17 @@
 //    [UIView animateWithDuration:3 animations:^{
 //        cell.backgroundColor = [UIColor whiteColor];
 //    }];
+    
+}
+- (void)deleteItems:(NSMutableDictionary *)dict {
+    //从后台删除物品
+    [[LifeDiaryManage sharedLeton] ModifyStatusCodeWithString:[dict valueForKey:@"name"] success:^(NSDictionary * _Nonnull dict) {
+        NSLog(@"修改状态码成功");
+    } error:^(NSError * _Nonnull error) {
+        NSLog(@"修改状态码失败%@",error);
+    }];
+    //从数据库删除物品
+    [self.goodsModel deleteItemsFromdataBase:[dict valueForKey:@"name"]];
     
 }
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {

@@ -20,9 +20,9 @@
     
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     
-//     [userDefaults removeObjectForKey:@"userName"];
-//        [userDefaults removeObjectForKey:@"passWord"];
-//        [userDefaults removeObjectForKey:@"ID"];
+     [userDefaults removeObjectForKey:@"userName"];
+        [userDefaults removeObjectForKey:@"passWord"];
+        [userDefaults removeObjectForKey:@"ID"];
     [userDefaults removeObjectForKey:@"jsession"];
         [userDefaults synchronize];
    // NSString *string = [userDefaults objectForKey:@"userName"];

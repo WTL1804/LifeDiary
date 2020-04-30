@@ -50,7 +50,6 @@ typedef void (^ModifyStatusCodeHandle)(NSDictionary *dict);
 //获取登录cookie.value
 - (NSString *)ObtaionCookie;
 
-
 //获取头像图片
 - (void)acquireHeadImageWithUserID:(NSString *)ID success:(AcquireHeadImageHandle)successBlock error:(ErrorHandle)errorBlock;
 //请求全部物品

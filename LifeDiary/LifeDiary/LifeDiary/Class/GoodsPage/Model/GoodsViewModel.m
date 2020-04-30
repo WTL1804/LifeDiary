@@ -203,4 +203,18 @@
     }
     return array;
 }
+//下次app打开，刚开始就看不到被删的物品了
+- (void)deleteItemsFromdataBase:(NSString *)nameString {
+    FMDatabase *db = [FMDatabase databaseWithPath:self.doPath];
+           if ([db open]) {
+               NSString *sql =[NSString stringWithFormat: @"delete * from wh_items where name = %@;", nameString];
+               BOOL res = [db executeUpdate:sql];
+               if (!res) {
+                   NSLog(@"数据删除失败");
+               } else {
+                   NSLog(@"数据删除成功");
+               }
+               [db close];
+           }
+}
 @end

@@ -9,7 +9,11 @@
 #import <UIKit/UIKit.h>
 @class BaseTableViewCell;
 NS_ASSUME_NONNULL_BEGIN
+@protocol DeleteItemsDelegate <NSObject>
 
+- (void)deleteItems:(NSMutableDictionary *)dict;
+
+@end
 
 
 @interface GoodsView : UIView <UITableViewDelegate, UITableViewDataSource>
@@ -24,7 +28,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, strong) BaseTableViewCell *cell;
 
-
+@property (nonatomic, weak) id <DeleteItemsDelegate> deleteItemsDelegate;
 
 @end
 
