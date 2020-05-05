@@ -138,7 +138,7 @@
 }
 - (void)registerApp {
     RegisterViewController *registerViewController = [[RegisterViewController alloc] init];
-    [self.navigationController pushViewController:registerViewController animated:NO];
+    [self.navigationController pushViewController:registerViewController animated:YES];
     registerViewController.returnUserName = ^(NSString * _Nonnull userName, UIImage * _Nonnull image) {
         self.loginView.userTextField.text = userName;
         [self.loginView.headImageView setImage:image];

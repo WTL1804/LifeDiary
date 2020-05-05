@@ -248,9 +248,9 @@
         [all.itemsTempMutArray addObject:dict];
         //NSLog(@"转换完成");
     }
-    [self.navigationController pushViewController:all animated:NO];
+    [self.navigationController pushViewController:all animated:YES];
 }
-//被删除的物品
+//被删除的物品 
 - (void)clickSecondCell {
     AllItemsViewController *all = [[AllItemsViewController alloc] init];
     all.itemsTempMutArray = [[NSMutableArray alloc] init];
@@ -262,7 +262,7 @@
         [all.itemsTempMutArray addObject:dict];
         //NSLog(@"转换完成");
     }
-    [self.navigationController pushViewController:all animated:NO];
+    [self.navigationController pushViewController:all animated:YES];
 }
 /*
 #pragma mark - Navigation
@@ -287,7 +287,7 @@
         //NSLog(@"转换完成");
     }
     searchViewController.modalPresentationStyle = 0;
-    [self.navigationController presentViewController:searchViewController animated:NO completion:nil];
+    [self.navigationController presentViewController:searchViewController animated:YES completion:nil];
 }
 - (void)passSection:(NSInteger)number {
     self.goodsView.mainTableView.contentOffset = CGPointMake(0, number *(self.goodsView.frame.size.height)/1.5);

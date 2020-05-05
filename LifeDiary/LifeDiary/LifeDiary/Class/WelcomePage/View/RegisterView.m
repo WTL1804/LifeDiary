@@ -27,6 +27,7 @@
     //[self.headImageButton setImage: ]
     self.headImageButton.titleLabel.font = [UIFont systemFontOfSize:25];
     UIImage *image = [[UIImage imageNamed:@"headRegisterImage.png"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    _headImage = image;
     [_headImageButton setImage:image forState:UIControlStateNormal];
     [self.headImageButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     [self addSubview:_headImageButton];
