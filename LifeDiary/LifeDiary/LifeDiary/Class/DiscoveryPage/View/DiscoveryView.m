@@ -23,6 +23,15 @@
     UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(100, 100, 100, 100)];
     imageView.image = [UIImage imageNamed:@"tianjia.png"];
     [self addSubview:imageView];
+    
+    
+    _webView = [[WKWebView alloc] initWithFrame:self.bounds];//初始化
+
+    NSMutableURLRequest * request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:@"https://main.m.taobao.com/index.html"]];
+
+    [_webView loadRequest:request];
+    _webView.allowsBackForwardNavigationGestures = YES;
+    [self addSubview:_webView];
 
 }
 @end
